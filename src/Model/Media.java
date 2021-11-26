@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public abstract class Media {
     protected String name;
-    protected int startYear;
+    protected String year;
     protected String[] genre;
     protected double rating;
     protected String billede;

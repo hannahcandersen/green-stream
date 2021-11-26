@@ -46,7 +46,7 @@ public class StreamingService {
     public void listAllMovies() {
         System.out.println("Listing all movies");
         for (Movie m: movies) {
-            System.out.println(m.picture);
+            System.out.println(m.name);
         }
     }
 

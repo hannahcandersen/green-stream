@@ -5,9 +5,8 @@ public class Main {
     public static void main(String[] args) {
         StreamingService s = new StreamingService();
         Reader r = new Reader(s);
-        //r.fillMovies();
-        r.fillSeries();
-        //s.listAllMovies();
+        r.fillCollections();
+        s.listAllMovies();
         s.listAllSeries();
     }
 }
