@@ -1,28 +1,29 @@
 package Model;
 
-public class Serie extends Medie {
-    private int saesoner;
-    private int afsnit;
-    private int slutAarstal;
+import java.util.ArrayList;
 
-    public Serie(String navn, int startAarstal, String genre, double rating, String billede, int saesoner, int afsnit, int slutAarstal){
-        super(navn, startAarstal, genre, rating, billede);
-        this.saesoner = saesoner;
-        this.afsnit = afsnit;
-        this.slutAarstal = slutAarstal;
+public class Serie extends Media {
+    private int seasons;
+    private ArrayList<Integer> episodes;
+    private int endYear;
+
+    public Serie(String name, int startYear, String genre, double rating, String picture, int seasons, ArrayList<Integer> episodes, int endYear){
+        super(name, startYear, genre, rating, picture);
+        this.seasons = seasons;
+        this.episodes = episodes;
+        this.endYear = endYear;
     }
 
     public int getSaesoner() {
-        return saesoner;
+        return seasons;
     }
 
-    public int getAfsnit() {
-        return afsnit;
+    public ArrayList<Integer> getAfsnit() {
+        return episodes;
     }
 
     public int getSlutAarstal() {
-        return slutAarstal;
+        return endYear;
     }
 
-    public void Afspille(){}
 }

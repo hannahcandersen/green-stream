@@ -1,7 +1,7 @@
 package Model;
 
-public class Film extends Medie {
-    public Film(String navn, int startAarstal, String genre, double rating, String billede) {
+public class Movie extends Media {
+    public Movie(String navn, int startAarstal, String genre, double rating, String billede) {
         super(navn, startAarstal, genre, rating, billede);
     }
 // ttt

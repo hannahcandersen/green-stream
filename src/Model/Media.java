@@ -1,8 +1,8 @@
 package Model;
 
-public abstract class Medie {
-    protected String navn;
-    protected int startAarstal;
+public abstract class Media {
+    protected String name;
+    protected int startYear;
     protected String genre;
     protected double rating;
     protected String billede;

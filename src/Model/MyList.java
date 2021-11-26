@@ -2,13 +2,13 @@ package Model;
 
 import java.util.*;
 
-public class MinListe {
+public class MyList {
 
-    private List<Medie> minListe;
-    public MinListe(){
+    private List<Media> minListe;
+    public MyList(){
         this.minListe = new ArrayList<>();
     }
-    public void addMedie(Medie m){
+    public void addMedie(Media m){
         minListe.add(m);
     }
 }
