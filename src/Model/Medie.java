@@ -20,6 +20,7 @@ public abstract class Medie {
 
     }
 
+    // alle getter metoder
     public String getNavn() {
         return navn;
     }

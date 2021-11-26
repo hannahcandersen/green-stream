@@ -12,6 +12,7 @@ public class Serie extends Medie {
         this.slutAarstal = slutAarstal;
     }
 
+    // alle getter metoder
     public int getSaesoner() {
         return saesoner;
     }
@@ -23,6 +24,4 @@ public class Serie extends Medie {
     public int getSlutAarstal() {
         return slutAarstal;
     }
-
-    public void Afspille(){}
 }
