@@ -1,27 +1,27 @@
 package Model;
 
 public class Profile {
-    private String navn;
-    private MyList minListe;
-    private String billede;
+    private String name;
+    private MyList myList;
+    private String picture;
 
-    public Profile(String navn, String billede){
-        this.navn = navn;
-        this.minListe = new MyList();
-        this.billede = billede;
+    public Profile(String name, String picture){
+        this.name = name;
+        this.myList = new MyList();
+        this.picture = picture;
     }
 
-    public void setNavn(String newNavn){
-        this.navn = newNavn;
+    public void setName(String newName){
+        this.name = newName;
     }
-    public void setBillede(String newBillede){
-         this.billede = newBillede;
+    public void setPicture(String newPicture){
+         this.picture = newPicture;
     }
-    public String getNavn(){
-        return navn;
+    public String getName(){
+        return name;
     }
-    public String getBillede(){
-        return billede;
+    public String getPicture(){
+        return picture;
     }
 
 

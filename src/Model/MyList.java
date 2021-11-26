@@ -4,11 +4,13 @@ import java.util.*;
 
 public class MyList {
 
-    private List<Media> minListe;
+    private List<Media> myList;
+
     public MyList(){
-        this.minListe = new ArrayList<>();
+        this.myList = new ArrayList<>();
     }
-    public void addMedie(Media m){
-        minListe.add(m);
+
+    public void addMedia(Media m){
+        myList.add(m);
     }
 }
