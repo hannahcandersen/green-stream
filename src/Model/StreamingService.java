@@ -3,6 +3,10 @@ package Model;
 import java.util.ArrayList;
 
 public class StreamingService {
+
+    // singleton
+    private static final StreamingService streamingService = new StreamingService();
+
     private ArrayList<Movie> movies;
     private ArrayList<Serie> series;
     private Profile[] profiles;
@@ -11,11 +15,15 @@ public class StreamingService {
     /**
      *
      */
-    public StreamingService() {
+    private StreamingService() {
         this.movies = new ArrayList<>();
         this.series = new ArrayList<>();
         this.profiles = new Profile[4];
 
+    }
+
+    public static StreamingService getInstance() {
+        return streamingService;
     }
 
     public Media Seach() {
