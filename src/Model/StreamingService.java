@@ -49,4 +49,13 @@ public class StreamingService {
             System.out.println(m.picture);
         }
     }
+
+    // til test
+    public void listAllSeries() {
+        System.out.println("Listing all series");
+        for (Serie m: series) {
+            System.out.println(m.name);
+        }
+    }
+
 }
