@@ -1,9 +1,11 @@
 package Model;
 
+import java.util.ArrayList;
+
 public abstract class Media {
     protected String name;
     protected int startYear;
-    protected String genre;
+    protected String[] genre;
     protected double rating;
     protected String billede;
     protected boolean TilføjetTilMinListe;
@@ -28,7 +30,7 @@ public abstract class Media {
         return startAarstal;
     }
 
-    public String getGenre() {
+    public String[] getGenre() {
         return genre;
     }
 

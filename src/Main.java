@@ -1,9 +1,12 @@
+import Model.Reader;
+import Model.StreamingService;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("jdijsdofjisd");
-        System.out.println("fedt fedt");
-        System.out.println("nedern");
-        System.out.println("Silke");
-        System.out.println("er du her");
+        StreamingService s = new StreamingService();
+        Reader r = new Reader(s);
+        r.fillMovies();
+
+        s.listAllMovies();
     }
 }

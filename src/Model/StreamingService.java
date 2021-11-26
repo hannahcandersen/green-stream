@@ -10,12 +10,10 @@ public class StreamingService {
 
     /**
      *
-     * @param movies
-     * @param series
      */
-    public StreamingService(ArrayList<Movie> movies, ArrayList<Serie> series) {
-        this.movies = movies;
-        this.series = series;
+    public StreamingService() {
+        this.movies = new ArrayList<>();
+        this.series = new ArrayList<>();
         this.profiles = new Profile[4];
 
     }
@@ -34,5 +32,21 @@ public class StreamingService {
     // fjerner en profil fra arrayet af profiler
     public void removeProfile() {
 
+    }
+
+    public void addMovie(Movie movie) {
+        movies.add(movie);
+    }
+
+    public void addSerie(Serie serie) {
+        series.add(serie);
+    }
+
+    // til test
+    public void listAllMovies() {
+        System.out.println("Listing all movies");
+        for (Movie m: movies) {
+            System.out.println(m.picture);
+        }
     }
 }
