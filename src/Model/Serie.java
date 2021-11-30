@@ -3,6 +3,9 @@ package Model;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
+/**
+ * Der hvor serier adskiller sig fra film er ved at serier har sæsoner og afsnit.
+ */
 public class Serie extends Media {
     private int seasons;
     private ArrayList<Integer> episodes;

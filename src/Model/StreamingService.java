@@ -2,6 +2,10 @@ package Model;
 
 import java.util.ArrayList;
 
+/**
+ * Dette er den klasse der samler de andre. Det er en singelton da der ikke skal kunne oprettes flere instanser af
+ * streaming tjenesten.
+ */
 public class StreamingService {
 
     // singleton
@@ -13,8 +17,10 @@ public class StreamingService {
     private int currentProfileNumber;
 
     /**
-     *
+     * Streaming tjenesten har en list med film, en med serier og så en array med profiler, da man højst må
+     * oprette fire profiler.
      */
+
     private StreamingService() {
         this.movies = new ArrayList<>();
         this.series = new ArrayList<>();
@@ -26,7 +32,7 @@ public class StreamingService {
         return streamingService;
     }
 
-    public Media Seach() {
+    public void Seach() {
 
         // indtil vi har lavet en søge funktion
         return null;

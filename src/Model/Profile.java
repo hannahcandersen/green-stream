@@ -1,5 +1,9 @@
 package Model;
 
+/**
+ * Man kan tilføje nye profiler. Hver profil har sit eget navn og et billede.
+ * Min Liste, er også forskellig for hver bruger.
+ */
 public class Profile {
     private String name;
     private MyList myList;

@@ -2,32 +2,36 @@ package Model;
 
 import java.util.ArrayList;
 
+/**
+ * Denne er den abstrakte til film og serier. Feltet addedToMyList er et boolean felt der fortæller
+ * om en film eller serie er blevet tilføjet til Min Liste.
+ */
 public abstract class Media {
     protected String name;
     protected String year;
     protected String[] genre;
     protected double rating;
-    protected String billede;
-    protected boolean TilføjetTilMinListe;
+    protected String picture;
+    protected boolean addedToMyList;
 
-    public Medie(String navn, int startAarstal, String genre, double rating, String billede) {
-        this.navn = navn;
-        this.startAarstal = startAarstal;
-        this.genre = genre;
+    public Media(String name, String year, String genre, double rating, String picture) {
+        this.name = name;
+        this.year = year;
         this.rating = rating;
-        this.billede = billede;
+        this.picture= picture;
+        this.addedToMyList = false;
     }
 
-    public void Afspille() {
+    public void play() {
 
     }
 
     public String getNavn() {
-        return navn;
+        return name;
     }
 
-    public int getStartAarstal() {
-        return startAarstal;
+    public String getStartAarstal() {
+        return year;
     }
 
     public String[] getGenre() {
@@ -39,11 +43,11 @@ public abstract class Media {
     }
 
     public String getBillede() {
-        return billede;
+        return picture;
     }
 
-    public boolean isTilføjetTilMinListe() {
-        return TilføjetTilMinListe;
+    public boolean isAddedToMyList() {
+        return addedToMyList;
     }
 
 }
