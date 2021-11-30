@@ -1,7 +1,5 @@
 package Model;
 
-import java.util.ArrayList;
-
 public abstract class Media {
     protected String name;
     protected String year;
@@ -10,24 +8,27 @@ public abstract class Media {
     protected String billede;
     protected boolean TilføjetTilMinListe;
 
-    public Medie(String navn, int startAarstal, String genre, double rating, String billede) {
-        this.navn = navn;
-        this.startAarstal = startAarstal;
+    public void Medie(String name, String year, String[] genre, double rating, String billede) {
+        this.name = name;
+        this.year = year;
         this.genre = genre;
         this.rating = rating;
         this.billede = billede;
+    }
+
+    public Media(String name, String year, String[] genre, double rating, String picture) {
     }
 
     public void Afspille() {
 
     }
 
-    public String getNavn() {
-        return navn;
+    public String getName() {
+        return name;
     }
 
-    public int getStartAarstal() {
-        return startAarstal;
+    public String getYear() {
+        return year;
     }
 
     public String[] getGenre() {
