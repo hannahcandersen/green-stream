@@ -1,5 +1,10 @@
 package Model;
 
+import java.util.ArrayList;
+
+/**
+ * Den abstrakte klasse til film og serier.
+ */
 public abstract class Media {
     protected String name;
     protected String year;
@@ -8,27 +13,24 @@ public abstract class Media {
     protected String billede;
     protected boolean TilføjetTilMinListe;
 
-    public void Medie(String name, String year, String[] genre, double rating, String billede) {
-        this.name = name;
-        this.year = year;
+    public Medie(String navn, int startAarstal, String genre, double rating, String billede) {
+        this.navn = navn;
+        this.startAarstal = startAarstal;
         this.genre = genre;
         this.rating = rating;
         this.billede = billede;
-    }
-
-    public Media(String name, String year, String[] genre, double rating, String picture) {
     }
 
     public void Afspille() {
 
     }
 
-    public String getName() {
-        return name;
+    public String getNavn() {
+        return navn;
     }
 
-    public String getYear() {
-        return year;
+    public int getStartAarstal() {
+        return startAarstal;
     }
 
     public String[] getGenre() {
