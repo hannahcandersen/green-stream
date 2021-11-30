@@ -2,6 +2,9 @@ package Model;
 
 import java.util.ArrayList;
 
+/**
+ * Den abstrakte klasse til film og serier.
+ */
 public abstract class Media {
     protected String name;
     protected String year;

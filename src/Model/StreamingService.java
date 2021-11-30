@@ -35,7 +35,7 @@ public class StreamingService {
     public void Seach() {
 
         // indtil vi har lavet en søge funktion
-        return null;
+
     }
 
     // tilføjer en profil til arrayet af profiler hvis der er plads
