@@ -7,11 +7,6 @@ import java.util.ArrayList;
 
 public class Movie extends Media {
     public Movie(String name, String year, String[] genre, double rating, String picture) {
-        super(name, year, genre[genre.length], rating, picture);
-    }
-
-    @Override
-    public void play() {
-        // lav afspille metode
+        super(name, year, genre, rating, picture);
     }
 }

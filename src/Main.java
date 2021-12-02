@@ -2,7 +2,9 @@
 
 public class Main {
     public static void main(String[] args) {
-       Search search = new Search();
+        //StreamingService streamingService = new StreamingService();
+        MainPage mainPage = new MainPage();
+        mainPage.main();
 
     }
 }

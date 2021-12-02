@@ -4,12 +4,12 @@ import java.util.Scanner;
 
 public class Profil {
     private String name;
-    private MinListe minListe;
+    private MyList myList;
 
     public Profil(){
         Scanner sc = new Scanner(System.in);
         this.name = sc.nextLine();
-        this.minListe = new MinListe();
+        this.myList = new MyList();
     }
 
 }

@@ -10,27 +10,35 @@ public abstract class Media {
     protected String year;
     protected String[] genre;
     protected double rating;
-    protected String billede;
-    protected boolean TilføjetTilMinListe;
+    protected String picture;
+    protected boolean addedToMyList;
 
-    public Medie(String navn, int startAarstal, String genre, double rating, String billede) {
-        this.navn = navn;
-        this.startAarstal = startAarstal;
+    /**
+     *
+     * @param name
+     * @param year
+     * @param genre
+     * @param rating
+     * @param picture
+     */
+    public Media(String name, String year, String[] genre, double rating, String picture) {
+        this.name = name;
+        this.year = year;
         this.genre = genre;
         this.rating = rating;
-        this.billede = billede;
+        this.picture = picture;
     }
 
-    public void Afspille() {
+    public void Play() {
 
     }
 
-    public String getNavn() {
-        return navn;
+    public String getName() {
+        return name;
     }
 
-    public int getStartAarstal() {
-        return startAarstal;
+    public String getYear() {
+        return year;
     }
 
     public String[] getGenre() {
@@ -41,12 +49,12 @@ public abstract class Media {
         return rating;
     }
 
-    public String getBillede() {
-        return billede;
+    public String getPicture() {
+        return picture;
     }
 
-    public boolean isTilføjetTilMinListe() {
-        return TilføjetTilMinListe;
+    public boolean addToMyList() {
+        return addedToMyList;
     }
 
 }
