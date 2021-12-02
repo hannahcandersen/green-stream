@@ -5,10 +5,12 @@ import java.awt.*;
 
 public class MainPage extends JPanel {
 
-    Color darkGreen;
+    Color LimeGreen;
+    Color BackgrundGreen;
 
     public MainPage(){
-        //Vores grundd farver
-        darkGreen = new Color(23, 23, 23);
+        //Vores grund farver
+        LimeGreen = new Color(121, 186, 17);
+        BackgrundGreen = new Color(196,224,177);
     }
 }
