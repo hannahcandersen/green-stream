@@ -14,3 +14,4 @@ public class MainPage extends JPanel {
         BackgrundGreen = new Color(196,224,177);
     }
 }
+
