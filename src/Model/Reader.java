@@ -47,7 +47,7 @@ public class Reader {
             }
             scanner.close();
         // tilføj flere catch statements
-        // et genereisk catch statement der fanger alle fejl og udskriver fejl i terminalen
+        // et generisk catch statement der fanger alle fejl og udskriver fejl i terminalen
         } catch (Exception e) {
             System.out.println("Der skete en fejl");
             System.out.println(e.getMessage());
