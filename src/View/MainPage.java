@@ -20,5 +20,19 @@ public class MainPage {
         //String[] genre = new String[1];
         //menubarClass = new Menubar(limeGreen, frame, genre, "Green");
     }
+
+    public void main(){
+        JMenuBar menuBar = menubarClass.makeMenu();
+        //frame.setJMenuBar(menuBar);
+        frame.setSize(ScreenDim.width, ScreenDim.height);
+
+        Container contentPane = frame.getContentPane();
+        contentPane.setBackground(backgroundGreen);
+
+        mainPanel = new JPanel();
+        //frame.add(mainPanel);
+
+        frame.setVisible(true);
+    }
 }
 

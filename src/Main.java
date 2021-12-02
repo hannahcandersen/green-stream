@@ -1,4 +1,12 @@
+import Model.Reader;
+import Model.StreamingService;
 
+import javax.swing.*;
+import javax.swing.text.View;
+import View.SearchPage;
+
+import Controller.SceneBuilder;
+import Model.StreamingService;
 
 public class Main {
     public static void main(String[] args) {
