@@ -17,8 +17,8 @@ public class MainPage {
         frame = new JFrame();
 
         // for test
-        String[] genre = new String[1];
-        menubarClass = new Menubar(limeGreen, frame, genre, "Green");
+        //String[] genre = new String[1];
+        //menubarClass = new Menubar(limeGreen, frame, genre, "Green");
     }
 }
 

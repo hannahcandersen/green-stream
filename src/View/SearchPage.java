@@ -30,10 +30,3 @@ public class SearchPage extends JFrame {
         contentPane.setSize(30, 10);
         contentPane.add(panel);
 
-
-        pack();
-        setVisible(true);
-
-
-    }
-}

@@ -15,6 +15,7 @@ public class StreamingService {
     private ArrayList<Serie> series;
     private Profile[] profiles;
     private int currentProfileNumber;
+    private final String[] genreList = {"Crime", "Drama", "Biography", "History", "Sport", "Romance", "War", "Mystery", "Adventure", "Family", "Fantasy", "Thriller", "Horror", "Film-Noir", "Musical", "Action", "Sci-fi", "Comedy", "Western", "Music", "Animation", "Documentary", "Talk-show"};
 
     /**
      * Streaming tjenesten har en list med film, en med serier og så en array med profiler, da man højst må
@@ -25,7 +26,6 @@ public class StreamingService {
         this.movies = new ArrayList<>();
         this.series = new ArrayList<>();
         this.profiles = new Profile[4];
-
     }
 
     public static StreamingService getInstance() {
@@ -54,6 +54,15 @@ public class StreamingService {
 
     public void addSerie(Serie serie) {
         series.add(serie);
+    }
+
+    public String[] getGenreList() {
+        return genreList;
+    }
+
+
+    public Profile getCurrentProfile() {
+        return profiles[currentProfileNumber];
     }
 
     // til test

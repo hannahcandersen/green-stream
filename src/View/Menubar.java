@@ -7,7 +7,6 @@ import java.awt.*;
 
 public class Menubar {
     private final Color backgroundGreen;
-    private JFrame frame;
     private JMenuBar menuBar;
     private ImageIcon logo = new ImageIcon("Pictures/Logo.png");
     private ImageIcon burgerMenu = new ImageIcon("Pictures/Burgermenu.png");
@@ -17,9 +16,8 @@ public class Menubar {
     private final Dimension dimensionLarge = new Dimension(100, 100);
     private String[] genreList;
 
-    public Menubar(Color backgroundGreen, JFrame frame, String[] genreList, String profilePicture) {
+    public Menubar(Color backgroundGreen, String[] genreList, String profilePicture) {
         this.backgroundGreen = backgroundGreen;
-        this.frame = frame;
         menuBar = new JMenuBar();
         this.genreList = genreList;
         this.profileIcon = new ImageIcon(("Pictures/" + profilePicture + ".png"));
@@ -27,7 +25,6 @@ public class Menubar {
     }
 
     public JMenuBar makeMenu() {
-        frame.setJMenuBar(menuBar);
 
         JMenu menu = new JMenu("");
         menuBar.add(menu, BorderLayout.LINE_START);

@@ -2,9 +2,13 @@
 
 public class Main {
     public static void main(String[] args) {
-        //StreamingService streamingService = new StreamingService();
-        MainPage mainPage = new MainPage();
-        mainPage.main();
+        StreamingService streamingService = StreamingService.getInstance();
+        Reader reader = new Reader(streamingService);
+        JFrame theOnlyFrame = new JFrame("GreenStream");
+        SceneBuilder sceneBuilder = new SceneBuilder(theOnlyFrame);
 
+        // test
+        SearchPage searchPage = new SearchPage();
+        sceneBuilder.loadPage(searchPage);
     }
 }
