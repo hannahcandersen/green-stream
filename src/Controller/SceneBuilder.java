@@ -22,12 +22,14 @@ public class SceneBuilder {
     public SceneBuilder(JFrame frame) {
         this.frame = frame;
         frame.setSize(ScreenDim.width, ScreenDim.height);
-        Container container = frame.getContentPane();
+        //Container container = frame.getContentPane();
+        /*
         contentPane = new JPanel();
         contentPane.setBackground(backgroundGreen);
-        container.add(contentPane);
-
-        menuBar = menubarClass.makeMenu();
+        contentPane.setPreferredSize(ScreenDim);
+        contentPane.add(contentPane);
+*/
+        //menuBar = menubarClass.makeMenu();
     }
 
     public void loadPage(View page) {
@@ -35,6 +37,8 @@ public class SceneBuilder {
         frame.add(page.getPanel());
 
         if (page.isMenubarVisible()) {
+
+            menuBar = menubarClass.makeMenu();
             frame.setJMenuBar(menuBar);
         }
         else {

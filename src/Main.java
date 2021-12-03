@@ -4,6 +4,7 @@ import Model.StreamingService;
 import javax.swing.*;
 import javax.swing.text.View;
 import View.SearchPage;
+import View.LoginPage;
 
 import Controller.SceneBuilder;
 import Model.StreamingService;
@@ -16,7 +17,11 @@ public class Main {
         SceneBuilder sceneBuilder = new SceneBuilder(theOnlyFrame);
 
         // test
-        SearchPage searchPage = new SearchPage();
-        sceneBuilder.loadPage(searchPage);
+        //SearchPage searchPage = new SearchPage();
+        //sceneBuilder.loadPage(searchPage);
+
+        LoginPage loginPage = new LoginPage();
+        sceneBuilder.loadPage(loginPage);
+
     }
 }
