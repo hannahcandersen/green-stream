@@ -1,6 +1,7 @@
 package View;
 
 import Controller.MenubarController;
+import Controller.SceneBuilder;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -8,7 +9,8 @@ import java.awt.*;
 
 
 public class Menubar {
-    private final Color backgroundGreen;
+
+    private final Color backgroundGreen = new Color(196,224,177);
     private JMenuBar menuBar = new JMenuBar();
 
     private ImageIcon logo = new ImageIcon("Pictures/Logo.png");
@@ -20,12 +22,12 @@ public class Menubar {
     private final Dimension dimensionLarge = new Dimension(100, 100);
     private String[] genreList;
 
-    private MenubarController menubarController = new MenubarController();
+    private MenubarController menubarController;
 
-    public Menubar(Color backgroundGreen, String[] genreList, String profilePicture) {
-        this.backgroundGreen = backgroundGreen;
+    public Menubar(String[] genreList, String profilePicture, MenubarController menubarController) {
         this.genreList = genreList;
         this.profileIcon = new ImageIcon(("Pictures/" + profilePicture + ".png"));
+        this.menubarController = menubarController;
     }
 
     public JMenuBar makeMenu() {

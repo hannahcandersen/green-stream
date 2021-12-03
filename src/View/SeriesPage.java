@@ -11,6 +11,7 @@ public class SeriesPage implements ItemListener {
     static JComboBox valgSeason, valgEpisode;
 
     public SeriesPage(){
+        /*
         // left BoxLayout
         JPanel billedeLayout = new JPanel();
 

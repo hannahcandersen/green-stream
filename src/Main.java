@@ -1,3 +1,4 @@
+import Controller.Controller;
 import Model.Reader;
 import Model.StreamingService;
 
@@ -10,20 +11,12 @@ import Controller.SceneBuilder;
 
 public class Main {
     public static void main(String[] args) {
-        StreamingService streamingService = StreamingService.getInstance();
-        Reader reader = new Reader(streamingService);
 
         //streamingService.listAllSeries();
 
-        JFrame frame = new JFrame();
-        SceneBuilder sceneBuilder = new SceneBuilder(frame);
-
+        Controller controller = new Controller();
         // test
-        SearchPage searchPage = new SearchPage(streamingService.getMovies());
-        sceneBuilder.loadPage(searchPage);
 
-        //LoginPage loginPage = new LoginPage();
-        //sceneBuilder.loadPage(loginPage);
 
     }
 }
