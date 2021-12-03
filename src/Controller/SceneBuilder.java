@@ -9,8 +9,10 @@ import java.awt.*;
 
 public class SceneBuilder {
 
-    JFrame frame;
-    JPanel contentPane;
+    //private static final SceneBuilder sceneBuilder = new SceneBuilder();
+
+    JFrame theOnlyFrame;
+
     StreamingService streamingService = StreamingService.getInstance();
     private final Color limeGreen = new Color(121, 186, 17);
     private final Color backgroundGreen = new Color(196,224,177);
@@ -20,31 +22,23 @@ public class SceneBuilder {
     JMenuBar menuBar;
 
     public SceneBuilder(JFrame frame) {
-        this.frame = frame;
-        frame.setSize(ScreenDim.width, ScreenDim.height);
-        //Container container = frame.getContentPane();
-        /*
-        contentPane = new JPanel();
-        contentPane.setBackground(backgroundGreen);
-        contentPane.setPreferredSize(ScreenDim);
-        contentPane.add(contentPane);
-*/
-        //menuBar = menubarClass.makeMenu();
+        theOnlyFrame = frame;
+        theOnlyFrame.setSize(ScreenDim.width, ScreenDim.height);
     }
 
     public void loadPage(View page) {
 
-        frame.add(page.getPanel());
+        theOnlyFrame.add(page.getPanel());
 
         if (page.isMenubarVisible()) {
 
             menuBar = menubarClass.makeMenu();
-            frame.setJMenuBar(menuBar);
+            theOnlyFrame.setJMenuBar(menuBar);
         }
         else {
-            frame.setJMenuBar(null);
+            theOnlyFrame.setJMenuBar(null);
         }
-        frame.setVisible(true);
+        theOnlyFrame.setVisible(true);
     }
 
 }

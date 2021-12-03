@@ -81,4 +81,8 @@ public class StreamingService {
         }
     }
 
+    public ArrayList<Movie> getMovies() {
+        return movies;
+    }
+
 }

@@ -1,5 +1,8 @@
 package View;
 
+import Controller.LoginPageController;
+import Model.StreamingService;
+
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
@@ -7,6 +10,8 @@ import javax.swing.border.EmptyBorder;
 public class LoginPage extends View{
 
     public LoginPage() {
+
+        LoginPageController loginPageController = new LoginPageController();
 
         //panel.setBackground(Color.RED);
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -31,6 +36,7 @@ public class LoginPage extends View{
         // Sætter plusButton ind i bottomPanel
         ImageIcon plusIcon = new ImageIcon(("Pictures/Plus.png"));
         JButton plusButton = new JButton(plusIcon);
+        plusButton.addActionListener(e -> loginPageController.addProfile());
         plusButton.setIcon(plusIcon);
         plusButton.setBorder(new EmptyBorder(0,0,0,0));
         bottomPanel.add(plusButton);

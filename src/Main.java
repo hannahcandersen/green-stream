@@ -2,26 +2,28 @@ import Model.Reader;
 import Model.StreamingService;
 
 import javax.swing.*;
-import javax.swing.text.View;
+
 import View.SearchPage;
 import View.LoginPage;
 
 import Controller.SceneBuilder;
-import Model.StreamingService;
 
 public class Main {
     public static void main(String[] args) {
         StreamingService streamingService = StreamingService.getInstance();
         Reader reader = new Reader(streamingService);
-        JFrame theOnlyFrame = new JFrame("GreenStream");
-        SceneBuilder sceneBuilder = new SceneBuilder(theOnlyFrame);
+
+        //streamingService.listAllSeries();
+
+        JFrame frame = new JFrame();
+        SceneBuilder sceneBuilder = new SceneBuilder(frame);
 
         // test
-        //SearchPage searchPage = new SearchPage();
-        //sceneBuilder.loadPage(searchPage);
+        SearchPage searchPage = new SearchPage(streamingService.getMovies());
+        sceneBuilder.loadPage(searchPage);
 
-        LoginPage loginPage = new LoginPage();
-        sceneBuilder.loadPage(loginPage);
+        //LoginPage loginPage = new LoginPage();
+        //sceneBuilder.loadPage(loginPage);
 
     }
 }

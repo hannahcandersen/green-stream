@@ -10,7 +10,9 @@ public class Reader {
     StreamingService streamingService;
 
     public Reader(StreamingService streamingService) {
+
         this.streamingService = streamingService;
+        fillCollections();
     }
 
     public void fillCollections() {

@@ -1,5 +1,7 @@
 package View;
 
+import Controller.MenubarController;
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -7,21 +9,23 @@ import java.awt.*;
 
 public class Menubar {
     private final Color backgroundGreen;
-    private JMenuBar menuBar;
+    private JMenuBar menuBar = new JMenuBar();
+
     private ImageIcon logo = new ImageIcon("Pictures/Logo.png");
     private ImageIcon burgerMenu = new ImageIcon("Pictures/Burgermenu.png");
     private ImageIcon searchIcon = new ImageIcon("Pictures/Search.png");
     private ImageIcon profileIcon;
+
     private final Dimension dimensionSmall = new Dimension(70,60);
     private final Dimension dimensionLarge = new Dimension(100, 100);
     private String[] genreList;
 
+    private MenubarController menubarController = new MenubarController();
+
     public Menubar(Color backgroundGreen, String[] genreList, String profilePicture) {
         this.backgroundGreen = backgroundGreen;
-        menuBar = new JMenuBar();
         this.genreList = genreList;
         this.profileIcon = new ImageIcon(("Pictures/" + profilePicture + ".png"));
-
     }
 
     public JMenuBar makeMenu() {
@@ -32,14 +36,17 @@ public class Menubar {
         menu.setIcon(burgerMenu);
         menu.setPreferredSize(dimensionLarge);
 
-        JMenuItem minListe = new JMenuItem("Min Liste");
-        menu.add(minListe);
+        JMenuItem myList = new JMenuItem("Min Liste");
+        menu.add(myList);
+        myList.addActionListener(e -> menubarController.myListActionListener());
 
-        JMenuItem film = new JMenuItem("Film");
-        menu.add(film);
+        JMenuItem movie = new JMenuItem("Film");
+        menu.add(movie);
+        movie.addActionListener(e -> menubarController.movieActionListener());
 
         JMenuItem serie = new JMenuItem("Serie");
         menu.add(serie);
+        serie.addActionListener(e -> menubarController.serieActionListener());
 
         JMenu genre = new JMenu("genre");
         menu.add(genre);
@@ -47,6 +54,7 @@ public class Menubar {
         for (String genreName : genreList) {
             JMenuItem genreItem = new JMenuItem(genreName);
             genre.add(genreItem);
+            genreItem.addActionListener(e -> menubarController.genreActionListener(genreName));
         }
 
         JPanel panel = new JPanel();
@@ -70,6 +78,7 @@ public class Menubar {
         searchButton.setIcon(searchIcon);
         searchButton.setBorder(new EmptyBorder(0,0,0,0));
         right.add(searchButton, BorderLayout.LINE_START);
+        searchButton.addActionListener(e -> menubarController.searchActionListener());
 
         JButton profileButton  = new JButton("");
         profileIcon = scaleImage(50, 80, profileIcon);
@@ -77,6 +86,7 @@ public class Menubar {
         profileButton.setPreferredSize(dimensionSmall);
         profileButton.setBorder(new EmptyBorder(0,0,0,0));
         right.add(profileButton, BorderLayout.LINE_END);
+        profileButton.addActionListener(e -> {menubarController.profileActionListener();});
 
         return menuBar;
     }
@@ -85,6 +95,10 @@ public class Menubar {
         Image image = imageIcon.getImage();
         image = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
         return new ImageIcon(image);
+    }
+
+    private void test() {
+        System.out.println("test");
     }
 
 }

@@ -16,5 +16,7 @@ public class View extends JPanel {
     public JPanel getPanel() {
         return panel;
     }
+    
+    
 
 }
