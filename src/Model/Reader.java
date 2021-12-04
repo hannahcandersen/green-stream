@@ -39,6 +39,7 @@ public class Reader {
                 String movieName = arrayInfoMovie[0];
                 String movieYear = arrayInfoMovie[1].substring(1);
                 String movieGenreString = arrayInfoMovie[2].substring(1);
+                movieGenreString = movieGenreString.replaceAll("\\s+","");
                 String[] movieGenres = movieGenreString.split(",");
                 double movieRating = Double.parseDouble(arrayInfoMovie[3].substring(1).replace(',','.'));
                 String moviePicture = movieName + ".jpg";
@@ -75,6 +76,7 @@ public class Reader {
                 String seriesName = arrayInfoSeries[0];
                 String serieYears = arrayInfoSeries[1].substring(1);
                 String serieGenreString = arrayInfoSeries[2].substring(1);
+                serieGenreString = serieGenreString.replaceAll("\\s+","");
                 String[] serieGenres = serieGenreString.split(",");
                 double serieRating = Double.parseDouble(arrayInfoSeries[3].substring(1).replace(',','.'));
 

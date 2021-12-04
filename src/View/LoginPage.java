@@ -1,6 +1,7 @@
 package View;
 
 import Controller.LoginPageController;
+import Model.Profile;
 import Model.StreamingService;
 
 import javax.swing.*;
@@ -9,9 +10,14 @@ import javax.swing.border.EmptyBorder;
 
 public class LoginPage extends View{
 
-    public LoginPage() {
+    private JPanel bottomPanel = new JPanel();
 
-        LoginPageController loginPageController = new LoginPageController();
+    private LoginPageController loginPageController;
+    Profile[] profiles;
+
+    public LoginPage(LoginPageController loginPageController) {
+        this.loginPageController = loginPageController;
+        this.profiles = loginPageController.getStreamingService().getProfiles();
 
         //panel.setBackground(Color.RED);
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));

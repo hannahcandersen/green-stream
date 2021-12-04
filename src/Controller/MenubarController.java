@@ -8,7 +8,6 @@ import javax.swing.*;
 
 public class MenubarController {
 
-
     SceneBuilder sceneBuilder;
     SearchPage searchPage;
     LoginPage loginPage;
@@ -43,6 +42,7 @@ public class MenubarController {
 
     public void myListActionListener() {
         // gå til mylist
+        sceneBuilder.loadPage(myListPage);
     }
 
     public void movieActionListener() {
@@ -55,22 +55,17 @@ public class MenubarController {
 
     public void genreActionListener(String genre) {
         // gå til genre siden
-
-        System.out.println("gå til seachpage");
         //sceneBuilder.loadPage(searchPage);
-        System.out.println("gå til seachpage");
     }
 
     public void searchActionListener(){
         // gå til search siden
         sceneBuilder.loadPage(searchPage);
-        System.out.println("gå til seachpage");
     }
 
     public void profileActionListener() {
         // gå til LoginPage
         sceneBuilder.loadPage(loginPage);
         //sb.loadPage(this.loginPage);
-        System.out.println("gå til loginpage");
     }
 }

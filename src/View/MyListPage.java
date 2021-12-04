@@ -1,4 +1,4 @@
 package View;
 
-public class MyListPage {
+public class MyListPage  extends View{
 }

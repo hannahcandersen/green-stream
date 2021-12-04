@@ -10,6 +10,7 @@ import java.awt.*;
 
 public class Menubar {
 
+    private final Color limeGreen = new Color(121, 186, 17);
     private final Color backgroundGreen = new Color(196,224,177);
     private JMenuBar menuBar = new JMenuBar();
 
@@ -62,7 +63,7 @@ public class Menubar {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
         menuBar.add(panel);
-        panel.setBackground(backgroundGreen);
+        panel.setBackground(limeGreen);
 
         logo = scaleImage(300, 100, logo);
         JLabel logoLabel = new JLabel(logo);
@@ -71,7 +72,7 @@ public class Menubar {
 
         JPanel right = new JPanel();
         right.setLayout(new BorderLayout());
-        right.setBackground(backgroundGreen);
+        right.setBackground(limeGreen);
         panel.add(right, BorderLayout.LINE_END);
 
         JButton searchButton = new JButton("");
@@ -99,8 +100,5 @@ public class Menubar {
         return new ImageIcon(image);
     }
 
-    private void test() {
-        System.out.println("test");
-    }
 
 }
