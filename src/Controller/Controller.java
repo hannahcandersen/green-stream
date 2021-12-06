@@ -39,16 +39,6 @@ public class Controller {
         moviePageController = new MoviePageController(this);
         allMovieSeriesGenrePageController = new AllMovieSeriesGenrePageController(this);
 
-        //sceneBuilder.makeMenuBar(menubarController.getMenubar().makeMenu());
-
-
-        //test
-
-        //streamingService.addProfile(new Profile("Silke", "Pictures/Blue.png"));
-        //streamingService.addProfile(new Profile("Clara", "Pictures/Yellow.png"));
-        //streamingService.addProfile(new Profile("Hannah", "Pictures/Pink.png"));
-        //streamingService.addProfile(new Profile("Alexander", "Pictures/Green.png"));
-
         loginPage = new LoginPage(loginPageController, streamingService.getProfiles(), streamingService.getCurrentLength());
         sceneBuilder.loadPage(loginPage);
         //ArrayList<Media> media = streamingService.allNameSearch("cat");
