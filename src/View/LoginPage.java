@@ -40,22 +40,40 @@ public class LoginPage extends View{
         panel.add(topPanel);
 
         // Opretter bottomPanel og tilføjer til contentPane
-        JPanel bottomPanel = new JPanel();
-        bottomPanel.setBackground(backgroundGreen);
-        bottomPanel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
+        bottomPanel.setLayout(new FlowLayout());
+        bottomPanel.setBackground(limeGreen);
         bottomPanel.add(Box.createRigidArea(new Dimension(0, 700)));
         panel.add(bottomPanel);
 
-        // Sætter plusButton ind i bottomPanel
-        ImageIcon plusIcon = new ImageIcon(("Pictures/Plus.png"));
-        JButton plusButton = new JButton(plusIcon);
-        plusButton.addActionListener(e -> loginPageController.addProfile());
-        plusButton.setIcon(plusIcon);
-        plusButton.setBorder(new EmptyBorder(0,0,0,0));
-        bottomPanel.add(plusButton);
-        bottomPanel.revalidate();
+        // vil kræve at der er adgang til StreamingService
+        for (int i = 0; i < currentLength; i++){
+            addProfilePicture(profiles[i].getPicture(), profiles[i].getName(), i);
+            System.out.println("print");
+        }
 
+        if (currentLength < 4) {
+            // Sætter plusButton ind i bottomPanel
+            ImageIcon plusIcon = new ImageIcon(("Pictures/Plus.png"));
+            JButton plusButton = new JButton(plusIcon);
+            plusButton.setIcon(plusIcon);
+            plusButton.setBorder(new EmptyBorder(0, 0, 0, 0));
+            bottomPanel.add(plusButton);
+            bottomPanel.revalidate();
+            plusButton.addActionListener(e -> loginPageController.addProfileActionListener());
+        }
     }
 
+    private void addProfilePicture(String profilePicture, String name, int profileNumber){ // parameter (Profile profile) eller (String picture)
+        ImageIcon userIcon = new ImageIcon(profilePicture); // hvordan får vi adgang til billedet fra Profile?
+        JButton userButton = new JButton(userIcon);
+        userButton.setIcon(userIcon);
+        userButton.setBorder(new EmptyBorder(0,0,0,0));
+        userButton.setText(name);
+        userButton.setHorizontalTextPosition(JButton.CENTER);
+        userButton.setVerticalTextPosition(JButton.CENTER);
+        bottomPanel.add(userButton);
+        bottomPanel.revalidate();
+        userButton.addActionListener(e -> loginPageController.goToMainPageActionListener(profileNumber));
+    }
 
 }
