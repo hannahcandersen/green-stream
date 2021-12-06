@@ -8,41 +8,25 @@ import javax.swing.*;
 
 public class MenubarController {
 
-    SceneBuilder sceneBuilder;
-    SearchPage searchPage;
-    LoginPage loginPage;
-    MoviePage moviePage;
-    SeriesPage seriesPage;
-    MyListPage myListPage;
-    StreamingService streamingService;
+    private Controller controller;
+    private Menubar menubar;
 
-    Menubar menubar;
+    public MenubarController(Controller controller) {
+        this.controller = controller;
 
-
-    public MenubarController(SceneBuilder sb, SearchPage searchPage, LoginPage loginPage, MoviePage moviePage,
-                             SeriesPage seriesPage, MyListPage myListPage, StreamingService streamingService) {
-        this.sceneBuilder = sb;
-        this.searchPage = searchPage;
-        this.loginPage = loginPage;
-        this.moviePage = moviePage;
-        this.seriesPage = seriesPage;
-        this.myListPage = myListPage;
-        this.streamingService = streamingService;
-
-
-        //menubar = new Menubar(streamingService.getGenreList(), streamingService.getCurrentProfile().getPicture(), this);
-
+        //menubar = new Menubar(controller.getStreamingService().getGenreList(), controller.getStreamingService().getCurrentProfile().getPicture(), this);
         // til test
-        menubar = new Menubar(streamingService.getGenreList(), "Green", this);
+        //menubar = new Menubar(controller.getStreamingService().getGenreList(), "Green", this);
     }
 
     public Menubar getMenubar() {
-        return menubar;
+        System.out.println(controller.getStreamingService().getCurrentProfile().getPicture());
+        return new Menubar(controller.getStreamingService().getGenreList(), controller.getStreamingService().getCurrentProfile().getPicture(), this);
     }
 
     public void myListActionListener() {
         // gå til mylist
-        sceneBuilder.loadPage(myListPage);
+        controller.getSceneBuilder().loadPage(controller.getMyListPageController().getMyListPage());
     }
 
     public void movieActionListener() {
@@ -60,12 +44,11 @@ public class MenubarController {
 
     public void searchActionListener(){
         // gå til search siden
-        sceneBuilder.loadPage(searchPage);
+        controller.getSceneBuilder().loadPage(controller.getSearchPageController().getSearchPage());
     }
 
     public void profileActionListener() {
         // gå til LoginPage
-        sceneBuilder.loadPage(loginPage);
-        //sb.loadPage(this.loginPage);
+        controller.getSceneBuilder().loadPage(new LoginPage(controller.getLoginPageController(), controller.getStreamingService().getProfiles(), controller.getStreamingService().getCurrentLength()));
     }
 }

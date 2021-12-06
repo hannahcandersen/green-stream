@@ -5,34 +5,17 @@ import java.awt.*;
 
 public class MainPage {
     private JPanel mainPanel;
-    private JFrame frame;
-    // Vores grundfarver
-    private final Color limeGreen = new Color(121, 186, 17);
-    private final Color backgroundGreen = new Color(196,224,177);
-    private Menubar menubarClass;
-
-    private final Dimension ScreenDim = Toolkit.getDefaultToolkit().getScreenSize();
 
     public MainPage(){
-        frame = new JFrame();
-
+        menubarVisible = true;
         // for test
         //String[] genre = new String[1];
         //menubarClass = new Menubar(limeGreen, frame, genre, "Green");
     }
 
     public void main(){
-        JMenuBar menuBar = menubarClass.makeMenu();
-        //frame.setJMenuBar(menuBar);
-        frame.setSize(ScreenDim.width, ScreenDim.height);
-
-        Container contentPane = frame.getContentPane();
-        contentPane.setBackground(backgroundGreen);
 
         mainPanel = new JPanel();
-        //frame.add(mainPanel);
-
-        frame.setVisible(true);
     }
 }
 

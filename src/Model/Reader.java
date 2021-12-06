@@ -35,7 +35,7 @@ public class Reader {
                 // arraylist med filmens info
                 String[] arrayInfoMovie = line.split(";");
 
-                // seriens info fra arraylisten med filmens info til variable med filmens info
+                // filmens info fra arraylisten med filmens info til variable med filmens info
                 String movieName = arrayInfoMovie[0];
                 String movieYear = arrayInfoMovie[1].substring(1);
                 String movieGenreString = arrayInfoMovie[2].substring(1);

@@ -14,10 +14,17 @@ public class LoginPage extends View{
 
     private LoginPageController loginPageController;
     Profile[] profiles;
+    private int currentLength;
 
-    public LoginPage(LoginPageController loginPageController) {
+    public LoginPage(LoginPageController loginPageController, Profile[] profiles, int currentLength) {
         this.loginPageController = loginPageController;
-        this.profiles = loginPageController.getStreamingService().getProfiles();
+        this.profiles = profiles;
+        this.currentLength = currentLength;
+
+        buildLoginPage();
+    }
+
+    private void buildLoginPage() {
 
         //panel.setBackground(Color.RED);
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));

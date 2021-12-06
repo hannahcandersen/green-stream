@@ -13,49 +13,101 @@ public class Controller {
 
     // Controllers
     private SceneBuilder sceneBuilder;
-    private MenubarController menubarController;
     private LoginPageController loginPageController;
+    private AddProfilePageController addProfilePageController;
+    private MenubarController menubarController;
+    private MainPageController mainPageController;
+    private SearchPageController searchPageController;
+    private MyListPageController myListPageController;
+    private SeriesPageController seriesPageController;
+    private MoviePageController moviePageController;
+    private AllMovieSeriesGenrePageController allMovieSeriesGenrePageController;
 
-    // Views
-
-    private SearchPage searchPage = new SearchPage(null);
-    //private LoginPage loginPage = new LoginPage();
-    private MoviePage moviePage = new MoviePage();
-    private SeriesPage seriesPage = new SeriesPage();
-    private MyListPage myListPage = new MyListPage();
-    private AddProfilePage addProfilePage;
-
+    private LoginPage loginPage;
     public Controller() {
 
         JFrame frame = new JFrame();
         sceneBuilder = new SceneBuilder(frame);
 
-        loginPageController = new LoginPageController(addProfilePage, sceneBuilder, streamingService);
+        loginPageController = new LoginPageController(this);
+        addProfilePageController = new AddProfilePageController(this);
+        menubarController = new MenubarController(this);
+        mainPageController = new MainPageController(this);
+        searchPageController = new SearchPageController(this);
+        myListPageController = new MyListPageController(this);
+        seriesPageController = new SeriesPageController(this);
+        moviePageController = new MoviePageController(this);
+        allMovieSeriesGenrePageController = new AllMovieSeriesGenrePageController(this);
 
-        menubarController = new MenubarController(sceneBuilder, searchPage, loginPageController.getLoginPage(), moviePage,
-                seriesPage, myListPage, streamingService);
-        sceneBuilder.makeMenuBar(menubarController.getMenubar().makeMenu());
+        //sceneBuilder.makeMenuBar(menubarController.getMenubar().makeMenu());
 
-        // instantiere controllers
-
-        // instantiere views
-
-
-        //SearchPage searchPage = new SearchPage(streamingService.getMovies());
-        //sceneBuilder.loadPage(searchPage);
 
         //test
-        /*
-        streamingService.addProfile(new Profile("Silke", "Pictures/Blue.png"));
-        streamingService.addProfile(new Profile("Clara", "Pictures/Yellow.png"));
-        streamingService.addProfile(new Profile("Hannah", "Pictures/Pink.png"));
-        streamingService.addProfile(new Profile("Alexander", "Pictures/Green.png"));
 
-        LoginPage loginPage = new LoginPage(loginPageController);
+        //streamingService.addProfile(new Profile("Silke", "Pictures/Blue.png"));
+        //streamingService.addProfile(new Profile("Clara", "Pictures/Yellow.png"));
+        //streamingService.addProfile(new Profile("Hannah", "Pictures/Pink.png"));
+        //streamingService.addProfile(new Profile("Alexander", "Pictures/Green.png"));
+
+        loginPage = new LoginPage(loginPageController, streamingService.getProfiles(), streamingService.getCurrentLength());
         sceneBuilder.loadPage(loginPage);
-*/
-        ArrayList<Media> media = streamingService.allNameSearch("cat");
+        //ArrayList<Media> media = streamingService.allNameSearch("cat");
 
+       //SeriesPage seriesPage = new SeriesPage();
+       //sceneBuilder.loadPage(seriesPage);
+
+    }
+
+    public void makeMenuBar() {
+        sceneBuilder.makeMenuBar(menubarController.getMenubar().makeMenu());
+    }
+
+    public LoginPage getLoginPage() {
+        return loginPage;
+    }
+
+    public StreamingService getStreamingService() {
+        return streamingService;
+    }
+
+    public SceneBuilder getSceneBuilder() {
+        return sceneBuilder;
+    }
+
+    public MenubarController getMenubarController() {
+        return menubarController;
+    }
+
+    public LoginPageController getLoginPageController() {
+        return loginPageController;
+    }
+
+    public AddProfilePageController getAddProfilePageController() {
+        return addProfilePageController;
+    }
+
+    public MainPageController getMainPageController() {
+        return mainPageController;
+    }
+
+    public SearchPageController getSearchPageController() {
+        return searchPageController;
+    }
+
+    public MyListPageController getMyListPageController() {
+        return myListPageController;
+    }
+
+    public SeriesPageController getSeriesPageController() {
+        return seriesPageController;
+    }
+
+    public MoviePageController getMoviePageController() {
+        return moviePageController;
+    }
+
+    public AllMovieSeriesGenrePageController getAllMovieSeriesGenrePageController() {
+        return allMovieSeriesGenrePageController;
     }
 
 

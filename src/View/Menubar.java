@@ -27,7 +27,7 @@ public class Menubar {
 
     public Menubar(String[] genreList, String profilePicture, MenubarController menubarController) {
         this.genreList = genreList;
-        this.profileIcon = new ImageIcon(("Pictures/" + profilePicture + ".png"));
+        this.profileIcon = new ImageIcon(profilePicture);
         this.menubarController = menubarController;
     }
 

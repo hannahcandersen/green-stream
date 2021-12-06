@@ -125,6 +125,9 @@ public class StreamingService {
         return genreList;
     }
 
+    public void setCurrentProfileNumber(int currentProfileNumber) {
+        this.currentProfileNumber = currentProfileNumber;
+    }
 
     public Profile getCurrentProfile() {
         return profiles[currentProfileNumber];

@@ -1,35 +1,35 @@
 package Controller;
 
+import Model.Profile;
 import Model.StreamingService;
 import View.AddProfilePage;
 import View.LoginPage;
 
 public class LoginPageController {
 
-    private AddProfilePage addProfilePage;
-    private SceneBuilder sceneBuilder;
-    private StreamingService streamingService;
-
     private LoginPage loginPage;
+    private Controller controller;
 
-    public LoginPageController(AddProfilePage addProfilePage, SceneBuilder sceneBuilder, StreamingService streamingService) {
-        this.addProfilePage = addProfilePage;
-        this.sceneBuilder = sceneBuilder;
-        this.streamingService = streamingService;
+    public LoginPageController(Controller controller) {
 
-        loginPage = new LoginPage(this);
+        this.controller = controller;
+        loginPage = controller.getLoginPage();
     }
 
     public LoginPage getLoginPage() {
         return loginPage;
     }
 
-    public StreamingService getStreamingService() {
-        return streamingService;
+    public void addProfileActionListener() {
+        controller.getSceneBuilder().loadPage(new AddProfilePage(0, "Brugernavn", controller.getAddProfilePageController()));
+        System.out.println("add profile");
     }
 
-    public void addProfile() {
-        System.out.println("add profile");
+    public void goToMainPageActionListener(int profileNumber) {
+        controller.getStreamingService().setCurrentProfileNumber(profileNumber);
+        controller.makeMenuBar();
+        controller.getSceneBuilder().loadPage(controller.getMainPageController().getMainPage());
+        System.out.println("gå til main page");
     }
 
 }

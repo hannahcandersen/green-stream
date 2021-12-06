@@ -12,10 +12,7 @@ import Controller.SceneBuilder;
 public class Main {
     public static void main(String[] args) {
 
-        //streamingService.listAllSeries();
-
         Controller controller = new Controller();
-        // test
 
     }
 }

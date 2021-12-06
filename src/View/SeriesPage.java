@@ -5,32 +5,32 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-public class SeriesPage implements ItemListener {
+public class SeriesPage extends View implements ItemListener {
     static JLabel seasontext, episodetext;
     static JButton playtext;
     static JComboBox valgSeason, valgEpisode;
 
     public SeriesPage(){
-        /*
+
         // left BoxLayout
         JPanel billedeLayout = new JPanel();
 
         // season combobox
-        SeriesPage ddd = new SeriesPage();
+        //SeriesPage ddd = new SeriesPage();
         String Seasons[] = {"Season 1", "Season 2", "Season 3", "Season 4"};
         valgSeason = new JComboBox(Seasons);
         valgSeason.setSize(30, 60);
-        valgSeason.addItemListener(ddd);
+        valgSeason.addItemListener(this);
         seasontext = new JLabel("Select your season ");
         valgSeason.setMaximumRowCount(5);
         seasontext.setForeground(Color.red);
 
         // episode combobox
-        SeriesPage qqq = new SeriesPage();
+        //SeriesPage qqq = new SeriesPage();
         String Episode[] = {"Episode 1", "Episode 2", "Episode 3", "Episode 4", "Episode 5", "Episode 6"};
         valgEpisode = new JComboBox(Episode);
         valgEpisode.setSize(30, 60);
-        valgEpisode.addItemListener(qqq);
+        valgEpisode.addItemListener(this);
         valgEpisode.setMaximumRowCount(5);
         episodetext = new JLabel("Select your episode ");
         episodetext.setForeground(Color.red);
@@ -90,14 +90,7 @@ public class SeriesPage implements ItemListener {
         buttonPanel.add(infoLayout, BorderLayout.CENTER);
         buttonPanel.add(resume, BorderLayout.EAST);
 
-        // Show it
-        /*
-        mainSeason.setContentPane(buttonPanel);
-        mainSeason.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainSeason.setSize(850, 400);
-        mainSeason.show();
-        mainSeason.setVisible(true);
-        */
+        panel.add(buttonPanel);
     }
 
     @Override
