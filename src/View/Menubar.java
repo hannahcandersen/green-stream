@@ -7,7 +7,10 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-
+/**
+ * Denne klasse ræpresentere menubaren som skal være i toppen af siden. Menubaren indeholder vores logo,
+ * en burgermenu, en søgeknap og til sidst brugerens valgte profil billede.
+ */
 public class Menubar {
 
     //private final Color limeGreen = new Color(121, 186, 17);

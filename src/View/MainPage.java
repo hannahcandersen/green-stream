@@ -3,7 +3,7 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
-public class MainPage {
+public class MainPage extends View {
     private JPanel mainPanel;
 
     public MainPage(){
