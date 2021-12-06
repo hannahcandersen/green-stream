@@ -10,8 +10,8 @@ import java.awt.*;
 
 public class Menubar {
 
-    private final Color limeGreen = new Color(121, 186, 17);
-    private final Color backgroundGreen = new Color(196,224,177);
+    //private final Color limeGreen = new Color(121, 186, 17);
+    private final Color limeGreen = new Color(196,224,177);
     private JMenuBar menuBar = new JMenuBar();
 
     private ImageIcon logo = new ImageIcon("Pictures/Logo.png");

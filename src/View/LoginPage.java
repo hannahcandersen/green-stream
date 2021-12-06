@@ -32,7 +32,7 @@ public class LoginPage extends View{
         // Opretter topLabel med logo i midten og tilføjer til contentPane
         ImageIcon logo = new ImageIcon(("Pictures/Logo.png"));
         JPanel topPanel = new JPanel();
-        topPanel.setBackground(backgroundGreen);
+        topPanel.setBackground(limeGreen);
         JLabel logoLabel = new JLabel(logo);
         topPanel.add(logoLabel);
         topPanel.setAlignmentX(JLabel.CENTER_ALIGNMENT);

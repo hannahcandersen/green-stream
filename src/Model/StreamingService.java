@@ -58,8 +58,7 @@ public class StreamingService {
     }
 
     public ArrayList<Media> allNameSearch(String genre) {
-        ArrayList<Media> mediaReturn = new ArrayList<Media>();
-        mediaReturn.addAll(nameSearch(genre, movies));
+        ArrayList<Media> mediaReturn = nameSearch(genre, movies);
         mediaReturn.addAll(nameSearch(genre, series));
         return mediaReturn;
     }
