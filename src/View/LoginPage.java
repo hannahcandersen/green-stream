@@ -44,7 +44,6 @@ public class LoginPage extends View{
         bottomPanel.add(Box.createRigidArea(new Dimension(0, 700)));
         panel.add(bottomPanel);
 
-        // vil kræve at der er adgang til StreamingService
         for (int i = 0; i < currentLength; i++){
             addProfilePicture(profiles[i].getPicture(), profiles[i].getName(), i);
             System.out.println("print");
@@ -62,8 +61,8 @@ public class LoginPage extends View{
         }
     }
 
-    private void addProfilePicture(String profilePicture, String name, int profileNumber){ // parameter (Profile profile) eller (String picture)
-        ImageIcon userIcon = new ImageIcon(profilePicture); // hvordan får vi adgang til billedet fra Profile?
+    private void addProfilePicture(String profilePicture, String name, int profileNumber){
+        ImageIcon userIcon = new ImageIcon(profilePicture);
         JButton userButton = new JButton(userIcon);
         userButton.setIcon(userIcon);
         userButton.setBorder(new EmptyBorder(0,0,0,0));
