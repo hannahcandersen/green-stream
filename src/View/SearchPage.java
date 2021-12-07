@@ -62,4 +62,4 @@ public class SearchPage extends View {
          panel.add(scrollPane(mediaList));
 
      }
-    }
+}
