@@ -1,7 +1,9 @@
 package Controller;
 
+import View.MoviePage;
 import View.SearchPage;
 import View.SeriesPage;
+import Model.*;
 
 /**
  * SearchPage's controller der indeholder searchPage's ActionListeners
@@ -27,7 +29,11 @@ public class SearchPageController {
         controller.getSceneBuilder().loadPage(new SearchPage(controller.getStreamingService().allNameSearch(search), this));
     }
 
-    public void showSerieActionListener() {
-        controller.getSceneBuilder().loadPage(new SeriesPage(controller.getSeriesPageController()));
+    public void showSerieActionListener(Media media) {
+        controller.getSceneBuilder().loadPage(new SeriesPage(controller.getSeriesPageController(), (Serie)media));
+    }
+
+    public void showMovieActionListener(Media media) {
+        controller.getSceneBuilder().loadPage(new MoviePage(controller.getMoviePageController(), (Movie)media));
     }
 }

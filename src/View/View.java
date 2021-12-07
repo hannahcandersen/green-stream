@@ -9,6 +9,8 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
+import Controller.*;
+
 /**
  * View klassen som alle sider nedarver fra, bortset fra menubaren
  */
@@ -23,7 +25,7 @@ public class View extends JPanel {
     protected final Color backgroundGreen = new Color(236, 242, 223);
     protected final Color limeGreen = new Color(196,224,177);
 
-    private Controller controller;
+
 
     // Getter metode for om menubaren er synlig
     public boolean isMenubarVisible() {
@@ -34,7 +36,8 @@ public class View extends JPanel {
     public JPanel getPanel() {
         return panel;
     }
-    
+
+/*
     public JScrollPane scrollPane(ArrayList<Media> mediaList) {
 
         JPanel col = new JPanel();
@@ -63,6 +66,7 @@ public class View extends JPanel {
                         // Hvis mediet er en film findes filmens plakat, ellers er det en serie og dennes plakat findes
                         if (mediaList.get(counter) instanceof Movie) {
                             plakat = new JButton(new ImageIcon("resources/filmplakater/" + mediaList.get(counter).getPicture()));
+                            //plakat.addActionListener(e -> controller.showSerieActionListener());
                         }
                         else {
                             plakat = new JButton(new ImageIcon("resources/Serierforsider/" + mediaList.get(counter).getPicture()));
@@ -84,5 +88,5 @@ public class View extends JPanel {
         // Gør såden at man kan scrolle i listen med rækker
         return new JScrollPane(col);
     }
-
+*/
 }

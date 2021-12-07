@@ -42,7 +42,7 @@ public class Reader {
                 movieGenreString = movieGenreString.replaceAll("\\s+","");
                 String[] movieGenres = movieGenreString.split(",");
                 double movieRating = Double.parseDouble(arrayInfoMovie[3].substring(1).replace(',','.'));
-                String moviePicture = movieName + ".jpg";
+                String moviePicture = "resources/filmplakater/" + movieName + ".jpg";
 
                 // indsætter filmen i streamingService
                 Movie movie = new Movie(movieName, movieYear, movieGenres, movieRating, moviePicture);
@@ -95,7 +95,7 @@ public class Reader {
                 }
 
                 // billedefilens navn er det samme som navnet på filen + .jpg
-                String seriePicture = seriesName + ".jpg";
+                String seriePicture =  "resources/Serierforsider/" + seriesName + ".jpg";
 
                 // indsætter en serie i streamingService
                 Serie serie = new Serie(seriesName, serieYears, serieGenres, serieRating, seriePicture, serieSeasons, serieEpisodes);

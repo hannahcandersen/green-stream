@@ -33,6 +33,10 @@ public class Profile {
     public void addToMyList(Media media) {
         myList.add(media);
     }
+    
+    public void removeFromMyList(Media media) {
+        myList.remove(media);
+    }
 
     public ArrayList<Media> getMyList() {
         return myList;

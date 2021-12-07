@@ -54,6 +54,7 @@ public class Controller {
         sceneBuilder.loadPage(loginPage);
 
 
+
     }
 
     // Laver menubaren
@@ -110,7 +111,6 @@ public class Controller {
     public AllMovieSeriesGenrePageController getAllMovieSeriesGenrePageController() {
         return allMovieSeriesGenrePageController;
     }
-
 
 
 }

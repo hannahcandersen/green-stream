@@ -1,6 +1,7 @@
 package View;
 
 import Controller.SeriesPageController;
+import Model.Serie;
 
 import java.awt.event.*;
 import java.awt.*;
@@ -14,14 +15,14 @@ public class SeriesPage extends View implements ItemListener {
 
     private SeriesPageController seriesPageController;
 
-    public SeriesPage(SeriesPageController seriesPageController){
+    public SeriesPage(SeriesPageController seriesPageController, Serie serie){
 
         this.seriesPageController = seriesPageController;
 
-        buildPage();
+        buildPage(serie);
     }
 
-    public void buildPage() {
+    public void buildPage(Serie serie) {
 
         // left BoxLayout
         JPanel billedeLayout = new JPanel();
@@ -68,13 +69,26 @@ public class SeriesPage extends View implements ItemListener {
         play.setBackground(new Color(15, 15, 127));
         play.setContentAreaFilled(false);
         infoLayout.add(play);
-        JButton minList = new JButton();
-        minList.add(new JButton("Tilføj til min liste"));
-        minList.setSize(30, 60);
-        minList.setBorder(new EmptyBorder(5, 20, 5, 20));
-        minList.setBackground(new Color(15, 15, 127));
-        minList.setContentAreaFilled(false);
-        infoLayout.add(minList);
+
+        if (seriesPageController.getCurrentProfile().getMyList().contains(serie)) {
+            JButton minList = new JButton();
+            minList.add(new JButton("Fjern fra min liste"));
+            minList.setSize(30, 60);
+            minList.setBorder(new EmptyBorder(5, 20, 5, 20));
+            minList.setBackground(new Color(15, 15, 127));
+            minList.setContentAreaFilled(false);
+            infoLayout.add(minList);
+        }
+        else {
+            JButton minList = new JButton();
+            minList.add(new JButton("Tilføj til min liste"));
+            minList.setSize(30, 60);
+            minList.setBorder(new EmptyBorder(5, 20, 5, 20));
+            minList.setBackground(new Color(15, 15, 127));
+            minList.setContentAreaFilled(false);
+            infoLayout.add(minList);
+        }
+        
         infoLayout.add(new JLabel("Genre: ______________"));
         infoLayout.add(new JLabel("Udgivelsesår: _______"));
         infoLayout.add(new JLabel("Rating: _____________"));

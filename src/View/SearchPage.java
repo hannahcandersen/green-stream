@@ -61,7 +61,58 @@ public class SearchPage extends View {
          panel.add(container, BorderLayout.CENTER);
 
          // tilføjer et scrollPane med listen af media til panelet
-         panel.add(scrollPane(mediaList));
+
+         JPanel col = new JPanel();
+
+         // holder styr på hvor mange film der er tilføjet til panelet
+         int counter = 0;
+
+         // hvis listen ikke er tom
+         if (mediaList != null && mediaList.size() > 0) {
+             // Jpanel med det antal rækker der er nødvendigt for alle kunne vise alle film
+             col = new JPanel(new GridLayout((mediaList.size() / 6 + 1),1));
+
+             // Går igennem alle rækkerne
+             for (int i = 0; i <= mediaList.size() / 6; i++) {
+
+                 // JPanel med 6 pladser
+                 JPanel row = new JPanel(new GridLayout(1, 6));
+
+                 // Går igennem de 6 pladser på rækken
+                 for (int j = 0; j < 6; j++) {
+
+                     // Hvis der stadig er flere film tilbage at vise
+                     if (counter < mediaList.size()) {
+                         JButton plakat = new JButton();
+
+
+                         Media media = mediaList.get(counter);
+                         // Hvis mediet er en film findes filmens plakat, ellers er det en serie og dennes plakat findes
+                         if (mediaList.get(counter) instanceof Movie) {
+                             plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
+                             plakat.addActionListener(e -> searchPageController.showMovieActionListener(media));
+                         }
+                         else {
+                             plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
+                             plakat.addActionListener(e -> searchPageController.showSerieActionListener(media));
+                         }
+                         plakat.setPreferredSize(new Dimension(100, 200));
+                         plakat.setBorder(new EmptyBorder(0,0,0,0));
+                         //plakat.addActionListener(e -> );
+                         // Tilføjer Mediet til rækken
+                         row.add(plakat);
+                         // Tæller counter op så der er styr på hvor mange film der er tilføjet
+                         counter++;
+                     }
+                 }
+                 row.setBackground(backgroundGreen);
+                 // Tilføjer rækken til listen af rækker
+                 col.add(row);
+             }
+         }
+         // Gør såden at man kan scrolle i listen med rækker
+         JScrollPane scrollPane = new JScrollPane(col);
+         panel.add(scrollPane);
 
      }
 }
