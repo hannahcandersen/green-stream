@@ -15,48 +15,59 @@ public class MainPage extends View {
     private ImageIcon poster;
     private JButton titel;
 
-
+    /**
+     * Vi har på startsiden valgt nogle overskrifter at vise film under, f.eks. Netop Tilføjet.
+     * under disse overskrifter viser vi seks film.
+     */
     public MainPage(){
         menubarVisible = true;
-        panel.setLayout(new GridLayout(2,1));
-        makeJustAdded();
+        panel.setLayout(new BoxLayout(panel,BoxLayout.PAGE_AXIS));
+        main("Netop Tilføjet", new ImageIcon("resources/filmplakater/ET.jpg"),
+                new ImageIcon("resources/filmplakater/Jaws.jpg"),
+                new ImageIcon("resources/Serierforsider/24.jpg"),
+                new ImageIcon("resources/Serierforsider/Daredevil.jpg"),
+                new ImageIcon("resources/Serierforsider/Luke Cage.jpg"),
+                new ImageIcon("resources/Serierforsider/Billions.jpg"));
 
-        //this.justAdded = new ArrayList<>();
-        //this.popular = new ArrayList<>();
-        //this.suggested = new ArrayList<>();
-        // for test
-        //String[] genre = new String[1];
-        //menubarClass = new Menubar(limeGreen, frame, genre, "Green");
+        main("Populære", new ImageIcon("resources/filmplakater/Taxi Driver.jpg"),
+                new ImageIcon("resources/filmplakater/Jurassic Park.jpg"),
+                new ImageIcon("resources/filmplakater/West Side Story.jpg"),
+                new ImageIcon("resources/Serierforsider/Jessica Jones.jpg"),
+                new ImageIcon("resources/Serierforsider/Big Little Lies.jpg"),
+                new ImageIcon("resources/filmplakater/Singin' In The Rain.jpg"));
+
     }
-    public void makeJustAdded(){
+    public void main(String head, ImageIcon icon0, ImageIcon icon1, ImageIcon icon2, ImageIcon icon3,
+                     ImageIcon icon4, ImageIcon icon5){
 
         mainPanel = new JPanel();
 
         //Netop Tilføje List
-        JLabel header = new JLabel("Netop Tilføjet");
+        JLabel header = new JLabel(head);
         header.setFont(new Font("Serif", Font.BOLD, 20));
+        header.setBorder(new EmptyBorder(0, 250, 0, 0));
         
-        poster = new ImageIcon("resources/filmplakater/ET.jpg");
+        poster = icon0;
         this.titel = new JButton(poster);
         mainPanel.add(this.titel);
 
-        poster = new ImageIcon("resources/filmplakater/Jaws.jpg");
+        poster = icon1;
         this.titel = new JButton(poster);
         mainPanel.add(this.titel);
 
-        poster = new ImageIcon("resources/Serierforsider/24.jpg");
+        poster = icon2;
         this.titel = new JButton(poster);
         mainPanel.add(this.titel);
 
-        poster = new ImageIcon("resources/Serierforsider/Daredevil.jpg");
+        poster = icon3;
         this.titel = new JButton(poster);
         mainPanel.add(this.titel);
 
-        poster = new ImageIcon("resources/Serierforsider/Big Little Lies.jpg");
+        poster = icon4;
         this.titel = new JButton(poster);
         mainPanel.add(this.titel);
 
-        poster = new ImageIcon("resources/Serierforsider/Billions.jpg");
+        poster = icon5;
         this.titel = new JButton(poster);
         mainPanel.add(this.titel);
 
@@ -65,17 +76,11 @@ public class MainPage extends View {
         themePanel.add(mainPanel, BorderLayout.CENTER);
         
         panel.setBorder(new EmptyBorder(40, 0, 0, 0));
-
+        JScrollPane scrollPane = new JScrollPane();
+        scrollPane.add(themePanel);
         panel.add(themePanel);
     }
 
-    public void makePopular(){
 
-    }
-    public void main(){
-
-        mainPanel = new JPanel();
-
-    }
 }
 
