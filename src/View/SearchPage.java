@@ -38,7 +38,7 @@ public class SearchPage extends View {
 
          // Da den skal kunne vise menubaren selvom man er i søgefeltet.
          menubarVisible = true;
-         JTextField searchTextField = new JTextField("søg på indholdet");
+         JTextField searchTextField = new JTextField();
          JButton searchB = new JButton("Søg");
          searchTextField.setPreferredSize(new Dimension(500, 40));
 
