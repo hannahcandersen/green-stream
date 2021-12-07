@@ -1,5 +1,7 @@
 package View;
 
+import Controller.SeriesPageController;
+
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
@@ -10,7 +12,16 @@ public class SeriesPage extends View implements ItemListener {
     static JButton playtext;
     static JComboBox valgSeason, valgEpisode;
 
-    public SeriesPage(){
+    private SeriesPageController seriesPageController;
+
+    public SeriesPage(SeriesPageController seriesPageController){
+
+        this.seriesPageController = seriesPageController;
+
+        buildPage();
+    }
+
+    public void buildPage() {
 
         // left BoxLayout
         JPanel billedeLayout = new JPanel();

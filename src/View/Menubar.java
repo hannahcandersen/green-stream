@@ -1,7 +1,6 @@
 package View;
 
 import Controller.MenubarController;
-import Controller.SceneBuilder;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -12,35 +11,45 @@ import java.awt.*;
  * en burgermenu, en søgeknap og til sidst brugerens valgte profil billede.
  */
 public class Menubar {
-
-    //private final Color limeGreen = new Color(121, 186, 17);
+    
+    // Farven på menubaren
     private final Color limeGreen = new Color(196,224,177);
-    private JMenuBar menuBar = new JMenuBar();
 
+    // Alle billeder der skal bruges i menubaren
     private ImageIcon logo = new ImageIcon("Pictures/Logo.png");
     private ImageIcon burgerMenu = new ImageIcon("Pictures/Burgermenu.png");
     private ImageIcon searchIcon = new ImageIcon("Pictures/Search.png");
     private ImageIcon profileIcon;
 
-    private final Dimension dimensionSmall = new Dimension(70,60);
-    private final Dimension dimensionLarge = new Dimension(100, 100);
+    // Listen med genre
     private String[] genreList;
 
+    // Instantiere en JMenuBar
+    private JMenuBar menuBar = new JMenuBar();
+
+    // MenuBarens controller
     private MenubarController menubarController;
 
+    /**
+     * Instantiere felter der skal bruges
+     * @param genreList - Listen med genre
+     * @param profilePicture - Profilbilledet (træet) for den bruger der er logget ind
+     * @param menubarController - menubarens controller
+     */
     public Menubar(String[] genreList, String profilePicture, MenubarController menubarController) {
         this.genreList = genreList;
         this.profileIcon = new ImageIcon(profilePicture);
         this.menubarController = menubarController;
     }
 
+    // Metoden der laver menubaren
     public JMenuBar makeMenu() {
 
         JMenu menu = new JMenu("");
         menuBar.add(menu, BorderLayout.LINE_START);
         burgerMenu = scaleImage(100, 100, burgerMenu);
         menu.setIcon(burgerMenu);
-        menu.setPreferredSize(dimensionLarge);
+        menu.setPreferredSize(new Dimension(100, 100));
 
         JMenuItem myList = new JMenuItem("Min Liste");
         menu.add(myList);
@@ -70,7 +79,7 @@ public class Menubar {
 
         logo = scaleImage(300, 100, logo);
         JLabel logoLabel = new JLabel(logo);
-        logoLabel.setPreferredSize(dimensionLarge);
+        logoLabel.setPreferredSize(new Dimension(100, 100));
         panel.add(logoLabel, BorderLayout.CENTER);
 
         JPanel right = new JPanel();
@@ -80,7 +89,7 @@ public class Menubar {
 
         JButton searchButton = new JButton("");
         searchIcon = scaleImage(50, 50, searchIcon);
-        searchButton.setPreferredSize(dimensionSmall);
+        searchButton.setPreferredSize(new Dimension(70,60));
         searchButton.setIcon(searchIcon);
         searchButton.setBorder(new EmptyBorder(0,0,0,0));
         right.add(searchButton, BorderLayout.LINE_START);
@@ -89,7 +98,7 @@ public class Menubar {
         JButton profileButton  = new JButton("");
         profileIcon = scaleImage(50, 80, profileIcon);
         profileButton.setIcon(profileIcon);
-        profileButton.setPreferredSize(dimensionSmall);
+        profileButton.setPreferredSize(new Dimension(70,60));
         profileButton.setBorder(new EmptyBorder(0,0,0,0));
         right.add(profileButton, BorderLayout.LINE_END);
         profileButton.addActionListener(e -> {menubarController.profileActionListener();});
@@ -97,6 +106,7 @@ public class Menubar {
         return menuBar;
     }
 
+    // Ændre størrelsen på billedet
     private ImageIcon scaleImage(int width, int height, ImageIcon imageIcon) {
         Image image = imageIcon.getImage();
         image = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);

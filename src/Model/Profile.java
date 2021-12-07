@@ -1,17 +1,19 @@
 package Model;
 
+import java.util.ArrayList;
+
 /**
  * Man kan tilføje nye profiler. Hver profil har sit eget navn og et billede.
  * Min Liste, er også forskellig for hver bruger.
  */
 public class Profile {
     private String name;
-    private MyList myList;
+    private ArrayList<Media> myList;
     private String picture;
 
     public Profile(String name, String picture){
         this.name = name;
-        this.myList = new MyList();
+        this.myList = new ArrayList<>();
         this.picture = picture;
     }
 
@@ -28,5 +30,12 @@ public class Profile {
         return picture;
     }
 
+    public void addToMyList(Media media) {
+        myList.add(media);
+    }
+
+    public ArrayList<Media> getMyList() {
+        return myList;
+    }
 
 }

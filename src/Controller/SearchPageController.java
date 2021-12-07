@@ -1,27 +1,33 @@
 package Controller;
 
-import Model.Media;
 import View.SearchPage;
+import View.SeriesPage;
 
-import java.util.Scanner;
-
+/**
+ * SearchPage's controller der indeholder searchPage's ActionListeners
+ */
 public class SearchPageController {
 
+    // Controlleren der har adgang til alle de andre view's controllers
     private Controller controller;
-    private SearchPage searchPage;
 
+    /**
+     * Instantiere controlleren
+     * @param controller - Controlleren der har adgang til alle de andre view's controllers
+     */
     public SearchPageController(Controller controller){
         this.controller = controller;
-        searchPage = new SearchPage(null, this);
     }
 
-    public SearchPage getSearchPage() {
-        return searchPage;
-    }
-
+    /**
+     * Bygger SearchPage med listen af de film der indeholdet ordet der er blevet søgt på
+     * @param search - Ordet der er blevet søgt på
+     */
     public void searchActionlistner(String search){
         controller.getSceneBuilder().loadPage(new SearchPage(controller.getStreamingService().allNameSearch(search), this));
-
     }
 
+    public void showSerieActionListener() {
+        controller.getSceneBuilder().loadPage(new SeriesPage(controller.getSeriesPageController()));
+    }
 }

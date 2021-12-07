@@ -4,14 +4,16 @@ import Model.*;
 import View.*;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class Controller {
 
+    // Der hvor vi gemmer alle film, serier og profiler
     private StreamingService streamingService = StreamingService.getInstance();
+
+    // Får alle film og serier fra txt filerne til Arraylisterne i streamingservice
     private Reader reader = new Reader(streamingService);
 
-    // Controllers
+    // ALle controllers
     private SceneBuilder sceneBuilder;
     private LoginPageController loginPageController;
     private AddProfilePageController addProfilePageController;
@@ -23,12 +25,18 @@ public class Controller {
     private MoviePageController moviePageController;
     private AllMovieSeriesGenrePageController allMovieSeriesGenrePageController;
 
+    // Den første side der skal vises når programmet starter
     private LoginPage loginPage;
+
     public Controller() {
 
+        // Den eneste frame vi bruger
         JFrame frame = new JFrame();
+
+        // Scenebuilder får denne frame
         sceneBuilder = new SceneBuilder(frame);
 
+        // Alle controllers bliver instantieret
         loginPageController = new LoginPageController(this);
         addProfilePageController = new AddProfilePageController(this);
         menubarController = new MenubarController(this);
@@ -39,19 +47,22 @@ public class Controller {
         moviePageController = new MoviePageController(this);
         allMovieSeriesGenrePageController = new AllMovieSeriesGenrePageController(this);
 
+        // Instantiere Loginpage siden den er den første side der skal vises
         loginPage = new LoginPage(loginPageController, streamingService.getProfiles(), streamingService.getCurrentLength());
-        sceneBuilder.loadPage(loginPage);
-        //ArrayList<Media> media = streamingService.allNameSearch("cat");
 
-       //SeriesPage seriesPage = new SeriesPage();
-       //sceneBuilder.loadPage(seriesPage);
+        // Giver Scenebuilder Loginsiden så den kan komme på vores Frame of blive vist
+        sceneBuilder.loadPage(loginPage);
+
 
     }
 
+    // Laver menubaren
     public void makeMenuBar() {
         sceneBuilder.makeMenuBar(menubarController.getMenubar().makeMenu());
     }
 
+
+    // Getter metoder for alle felterne
     public LoginPage getLoginPage() {
         return loginPage;
     }

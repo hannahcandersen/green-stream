@@ -6,22 +6,30 @@ import Model.Profile;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Denne klasse er en subklasse af View klassen. Den repræsenterer siden som kan tilføje brugere til listen af brugere
+ */
 public class AddProfilePage extends View {
-    private JButton add;
-    private JButton back;
-    private JComboBox comboBox;
-    private ImageIcon choosenColour;
-    private JLabel color;
 
+    // AddProfilePage's controller
     private AddProfilePageController addProfilePageController;
 
+    /**
+     * Instantiere controlleren og bygger siden
+     * @param colorIndex - Indekset der bestemmer hvilken farve der står på comboboksen
+     * @param username - Navnet der står i tekstfeltet, som default er det "Brugernavn"
+     * @param addProfilePageController - sidens controller
+     */
     public AddProfilePage(int colorIndex, String username, AddProfilePageController addProfilePageController){
-
         this.addProfilePageController = addProfilePageController;
         buildPage(colorIndex, username);
-
     }
 
+    /**
+     * Bygger sidens visuelle indhold
+     * @param colorIndex - Indekset der bestemmer hvilken farve der står på comboboksen
+     * @param usernameString - Navnet der står i tekstfeltet, som default er det "Brugernavn"
+     */
     public void buildPage(int colorIndex, String usernameString) {
         panel.setLayout(new BorderLayout());
         JPanel mainPanel = new JPanel();
@@ -34,13 +42,13 @@ public class AddProfilePage extends View {
         String pink = "Pink";
 
         String comboBoxItems[] ={blue, green, yellow, pink};
-        comboBox = new JComboBox(comboBoxItems);
+        JComboBox comboBox = new JComboBox(comboBoxItems);
         comboBox.setSelectedIndex(colorIndex);
         colorPane.add(comboBox);
 
-        choosenColour = new ImageIcon("Pictures/" + comboBoxItems[colorIndex] + ".png");
-        this.color = new JLabel(choosenColour);
-        colorPane.add(this.color);
+        ImageIcon choosenColour = new ImageIcon("Pictures/" + comboBoxItems[colorIndex] + ".png");
+        JLabel color = new JLabel(choosenColour);
+        colorPane.add(color);
 
         JTextField username = new JTextField(usernameString, 20);
         username.setSize(200, 20);
@@ -49,20 +57,19 @@ public class AddProfilePage extends View {
         usernamePanel.setSize(400,40);
         usernamePanel.setBackground(limeGreen);
 
-        comboBox.addActionListener(e -> addProfilePageController.chooseColor(comboBox.getSelectedIndex(), username.getText()));
+        comboBox.addActionListener(e -> addProfilePageController.chooseColorActionListener(comboBox.getSelectedIndex(), username.getText()));
 
         JPanel buttonPane = new JPanel(new FlowLayout());
         buttonPane.setSize(200,100);
         buttonPane.setBackground(limeGreen);
-        add = new JButton("Tilføj");
-        back = new JButton("Tilbage");
+        JButton add = new JButton("Tilføj");
+        JButton back = new JButton("Tilbage");
         buttonPane.add(back);
         buttonPane.add(add);
 
         add.addActionListener(e -> addProfilePageController.addProfileActionListener(new Profile(username.getText(), "Pictures/"+ comboBoxItems[comboBox.getSelectedIndex()] + ".png")));
-        back.addActionListener(e -> addProfilePageController.goBack());
+        back.addActionListener(e -> addProfilePageController.goBackActionListener());
 
-        //mainPanel.add(colorPane);
         mainPanel.add(usernamePanel);
         mainPanel.add(buttonPane);
 

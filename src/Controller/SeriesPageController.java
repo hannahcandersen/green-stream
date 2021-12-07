@@ -9,10 +9,6 @@ public class SeriesPageController {
 
     public SeriesPageController(Controller controller) {
         this.controller = controller;
-        this.seriesPage = new SeriesPage();
     }
 
-    public SeriesPage getSeriesPage() {
-        return seriesPage;
-    }
 }

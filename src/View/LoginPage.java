@@ -26,7 +26,6 @@ public class LoginPage extends View{
 
     private void buildLoginPage() {
 
-        //panel.setBackground(Color.RED);
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
 
         // Opretter topLabel med logo i midten og tilføjer til contentPane

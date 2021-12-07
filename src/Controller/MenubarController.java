@@ -1,32 +1,32 @@
 package Controller;
-
-import Model.Movie;
-import Model.StreamingService;
 import View.*;
 
-import javax.swing.*;
-
+/**
+ * MenuBar's controller der indeholder menubarens actionListeners
+ */
 public class MenubarController {
 
+    // Controlleren der har adgang til alle de andre view's controllers
     private Controller controller;
-    private Menubar menubar;
 
+    /**
+     * Instantiere controlleren
+     * @param controller - controlleren der har adgang til alle de andre view's controllers
+     */
     public MenubarController(Controller controller) {
         this.controller = controller;
-
-        //menubar = new Menubar(controller.getStreamingService().getGenreList(), controller.getStreamingService().getCurrentProfile().getPicture(), this);
-        // til test
-        //menubar = new Menubar(controller.getStreamingService().getGenreList(), "Green", this);
     }
 
+    // Instantiere menubaren når den skal bruges
     public Menubar getMenubar() {
-        System.out.println(controller.getStreamingService().getCurrentProfile().getPicture());
         return new Menubar(controller.getStreamingService().getGenreList(), controller.getStreamingService().getCurrentProfile().getPicture(), this);
     }
 
+    // Alle menubarens actionListeners
+
     public void myListActionListener() {
         // gå til mylist
-        controller.getSceneBuilder().loadPage(controller.getMyListPageController().getMyListPage());
+        controller.getSceneBuilder().loadPage(new MyListPage(controller.getStreamingService().getCurrentProfile().getMyList(), controller.getMyListPageController()));
     }
 
     public void movieActionListener() {
@@ -39,12 +39,11 @@ public class MenubarController {
 
     public void genreActionListener(String genre) {
         // gå til genre siden
-        //sceneBuilder.loadPage(searchPage);
     }
 
     public void searchActionListener(){
         // gå til search siden
-        controller.getSceneBuilder().loadPage(controller.getSearchPageController().getSearchPage());
+        controller.getSceneBuilder().loadPage(new SearchPage(null, controller.getSearchPageController()));
     }
 
     public void profileActionListener() {
