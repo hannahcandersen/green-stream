@@ -28,7 +28,7 @@ public class SceneBuilder {
         theOnlyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    // Instanitere menubaren når den skal bruges, dvs første gang vi går ind på mainPage
+    // Instaniterer menubaren når den skal bruges, dvs første gang vi går ind på mainPage
     public void makeMenuBar(JMenuBar menubar) {
         this.menuBar = menubar;
     }

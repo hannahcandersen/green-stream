@@ -47,7 +47,7 @@ public class Controller {
         moviePageController = new MoviePageController(this);
         allMovieSeriesGenrePageController = new AllMovieSeriesGenrePageController(this);
 
-        // Instantiere Loginpage siden den er den første side der skal vises
+        // Instantierer Loginpage siden den er den første side der skal vises
         loginPage = new LoginPage(loginPageController, streamingService.getProfiles(), streamingService.getCurrentLength());
 
         // Giver Scenebuilder Loginsiden så den kan komme på vores Frame of blive vist

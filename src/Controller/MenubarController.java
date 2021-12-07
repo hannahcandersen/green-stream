@@ -10,7 +10,7 @@ public class MenubarController {
     private Controller controller;
 
     /**
-     * Instantiere controlleren
+     * Instantierer controlleren
      * @param controller - controlleren der har adgang til alle de andre view's controllers
      */
     public MenubarController(Controller controller) {
