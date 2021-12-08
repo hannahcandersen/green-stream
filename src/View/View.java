@@ -24,6 +24,7 @@ public class View extends JPanel {
     // Vores grundfarver
     protected final Color backgroundGreen = new Color(236, 242, 223);
     protected final Color limeGreen = new Color(196,224,177);
+    protected final Color darkerGreen = new Color(151, 180, 121);
 
 
 

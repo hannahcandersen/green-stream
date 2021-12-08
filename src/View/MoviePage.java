@@ -6,84 +6,81 @@ import Model.Movie;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class MoviePage extends View{
-        static JButton closeButton;
-        private ImageIcon poster;
-
+    private ImageIcon moviePoster;
     private MoviePageController moviePageController;
+    private JPanel titelPanel, rigthPanel, leftPanel, centerPanel, imageLeftCenter, infoCenterCenter, resumeRigthCenter, BorderLayoutPanel;
+    private JLabel titel, rigthFill, leftFill, movieLabel, genreLabel, yearLabel, ratingLabel, resumeTitelLabel;
+    private JButton close, play, minList;
+
 
     public MoviePage(MoviePageController moviePageController, Movie movie){
-
         this.moviePageController = moviePageController;
-
         buildPage(movie);
     }
 
     public void buildPage(Movie movie) {
+        //BorderLayout NORTH
+        titelPanel = new JPanel();
+        titel = new JLabel(movie.getName());
+        titel.setFont(new Font("Serif", Font.BOLD, 40));
+        titelPanel.add(titel);
 
-
-        FlowLayout ccc = new FlowLayout();
-        JPanel closelayout = new JPanel();
-        closelayout.setLayout(ccc);
-        ccc.setAlignment(FlowLayout.TRAILING);
-        closelayout.setComponentOrientation(
-                //ComponentOrientation.RIGHT_TO_LEFT);
-        ComponentOrientation.LEFT_TO_RIGHT);
-
-
-        JButton close = new JButton("X");
+        //BorderLayout WEST
+        rigthPanel = new JPanel();
+        close = new JButton("X");
         close.addActionListener(e -> moviePageController.goBackActionListener());
-        close.setForeground(Color.red);
-        close.setSize(30, 60);
-        close.setBorder(new EmptyBorder(20, 20, 0, 20));
-        close.setBackground(new Color(15, 15, 127));
-        close.setContentAreaFilled(false);
-        closelayout.add(close);
-        closelayout.setBackground(new Color(221,23,23));
-        closelayout.setLayout(new FlowLayout());
+        close.setFont(new Font("Serif", Font.BOLD, 30));
+        close.setContentAreaFilled(false);              // knappen bliver transperent
+        close.setBorder(new EmptyBorder(20, 20, 0, 0));
+        rigthPanel.add(close);
 
+        rigthFill = new JLabel("                                                           ");
+        rigthPanel.add(rigthFill);
 
-        // left BoxLayout
-        JPanel billedeLayout = new JPanel();
+        //BorderLayout EAST
+        leftPanel = new JPanel();
+        leftFill = new JLabel("                                                                        ");
+        leftPanel.add(leftFill);
 
+        //BorderLayout Center
+        centerPanel = new JPanel();
 
+        //Billede Left Center
+        imageLeftCenter = new JPanel();
+        imageLeftCenter.setBorder(new EmptyBorder(15, 15, 0, 15));
+        moviePoster = new ImageIcon(new ImageIcon(movie.getPicture()).getImage().getScaledInstance(250, 400, Image.SCALE_DEFAULT));
+        movieLabel = new JLabel(moviePoster);
+        movieLabel.setIcon(moviePoster);
+        imageLeftCenter.add(movieLabel);
+        imageLeftCenter.setBorder(new EmptyBorder(40, 40, 40, 40));
+        imageLeftCenter.setLayout(new BoxLayout(imageLeftCenter, BoxLayout.PAGE_AXIS));
 
-        billedeLayout.setBorder(new EmptyBorder(15, 15, 0, 15));
+        //Info Center Center
+        infoCenterCenter = new JPanel();
+            // Play button
+            play  = new JButton("Play");
+            play.setSize(800, 60); // size virker ikke
+            play.setContentAreaFilled(false);
+            infoCenterCenter.add(play);
 
-        // filmens poster bliver indsat her
-        poster =  new ImageIcon(movie.getPicture());
-        JLabel posterLabel = new JLabel(poster);
-        billedeLayout.add(posterLabel);
-
-        //billedeLayout.add(new JTable(1, 1));
-        billedeLayout.setBorder(new EmptyBorder(40, 40, 40, 40));
-        billedeLayout.setLayout(new BoxLayout(billedeLayout, BoxLayout.PAGE_AXIS));
-
-        // center BoxLayout
-        JPanel infoLayout = new JPanel();
-
-        // Play button
-
-
-        if (moviePageController.getCurrentProfile().getMyList().contains(movie)) {
-            JButton minList = new JButton("Fjern fra min liste");
-            minList.setSize(30, 60);
-            //minList.setBorder(new EmptyBorder(5, 20, 5, 20));
-            minList.setBackground(new Color(15, 15, 127));
-            minList.setContentAreaFilled(false);
-            minList.addActionListener(e -> moviePageController.removeFromMyListActionListener(movie));
-            infoLayout.add(minList);
-        }
-        else {
-            JButton minList = new JButton("Tilføj til min liste");
-            minList.addActionListener(e -> moviePageController.addToMyListActionListerner(movie));
-            minList.setSize(30, 60);
-            //minList.setBorder(new EmptyBorder(5, 20, 5, 20));
-            minList.setBackground(new Color(15, 15, 127));
-            minList.setContentAreaFilled(false);
-            infoLayout.add(minList);
-        }
+            // minList button
+            if (moviePageController.getCurrentProfile().getMyList().contains(movie)) {
+                minList = new JButton("Fjern fra min liste");
+                minList.setSize(150, 60);
+                minList.setContentAreaFilled(false);
+                minList.addActionListener(e -> moviePageController.removeFromMyListActionListener(movie));
+                infoCenterCenter.add(minList);
+            } else {
+                minList = new JButton("Tilføj til min liste");
+                minList.addActionListener(e -> moviePageController.addToMyListActionListerner(movie));
+                minList.setSize(80, 60);
+                minList.setContentAreaFilled(false);
+                infoCenterCenter.add(minList);
+            }
 
         String genre = "";
         for (int i = 0; i < movie.getGenre().length; i++) {
@@ -92,37 +89,58 @@ public class MoviePage extends View{
             }
             genre += movie.getGenre()[i];
         }
-        infoLayout.add(new JLabel("Genre: " + genre));
-        infoLayout.add(new JLabel("Udgivelsesår: " + movie.getYear()));
-        infoLayout.add(new JLabel("Rating: " + movie.getRating()));
 
-        infoLayout.setBorder(new EmptyBorder(40, 40, 40, 40));
-        infoLayout.setLayout(new BoxLayout(infoLayout, BoxLayout.PAGE_AXIS));
+        genreLabel = new JLabel("Genre: " + genre);
+        genreLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+        yearLabel = new JLabel("Udgivelsesår: " + movie.getYear());
+        yearLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+        ratingLabel = new JLabel("Rating: " + movie.getRating());
+        ratingLabel.setFont(new Font("Serif", Font.PLAIN, 20));
 
-        // rigth BoxLayout
-        JPanel resume = new JPanel();
-        resume.add(new JLabel("Resume:"));
-        resume.add(new JLabel("_______________________"));
-        resume.add(new JLabel("_______________________"));
-        resume.add(new JLabel("_______________________"));
-        resume.add(new JLabel("_______________________"));
-        resume.add(new JLabel("_______________________"));
-        resume.add(new JLabel("_______________________"));
-        resume.setBorder(new EmptyBorder(40, 40, 40, 40));
-        resume.setLayout(new BoxLayout(resume, BoxLayout.PAGE_AXIS));
+        infoCenterCenter.add(new JLabel(" "));
+        infoCenterCenter.add(genreLabel);
+        infoCenterCenter.add(yearLabel);
+        infoCenterCenter.add(ratingLabel);
+        infoCenterCenter.setLayout(new BoxLayout(infoCenterCenter, BoxLayout.PAGE_AXIS));
 
+        //Resume Rigth Center
+        resumeRigthCenter = new JPanel();
+        resumeTitelLabel = new JLabel("Resume: ");
+        resumeTitelLabel.setFont(new Font("Serif", Font.BOLD, 20));
 
-        // add to Borderlayout
-        JPanel buttonPanel = new JPanel(new BorderLayout());
+        resumeRigthCenter.add(resumeTitelLabel);
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.setBorder(new EmptyBorder(40, 40, 40, 40));
+        resumeRigthCenter.setLayout(new BoxLayout(resumeRigthCenter, BoxLayout.PAGE_AXIS));
 
-        buttonPanel.add(closelayout, BorderLayout.NORTH);
-        buttonPanel.add(billedeLayout, BorderLayout.WEST);
-        buttonPanel.add(infoLayout, BorderLayout.CENTER);
-        buttonPanel.add(resume, BorderLayout.EAST);
+        // kombiner alle tre centerPanel
+        centerPanel.add(imageLeftCenter);
+        centerPanel.add(infoCenterCenter);
+        centerPanel.add(resumeRigthCenter);
 
-        panel.add(buttonPanel);
+        // Backgrund farve
+        titelPanel.setBackground(darkerGreen);
+        imageLeftCenter.setBackground(limeGreen);
+        infoCenterCenter.setBackground(limeGreen);
+        resumeRigthCenter.setBackground(limeGreen);
+        rigthPanel.setBackground(limeGreen);
+        centerPanel.setBackground(limeGreen);
+        leftPanel.setBackground(limeGreen);
+        panel.setBackground(limeGreen);
 
+        // Opsæt Borderlayout
+        BorderLayoutPanel = new JPanel(new BorderLayout());
 
+        BorderLayoutPanel.add(titelPanel, BorderLayout.NORTH);
+        BorderLayoutPanel.add(rigthPanel, BorderLayout.WEST);
+        BorderLayoutPanel.add(centerPanel, BorderLayout.CENTER);
+        BorderLayoutPanel.add(leftPanel, BorderLayout.EAST);
 
+        panel.add(BorderLayoutPanel);
     }
 }
