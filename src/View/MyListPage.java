@@ -18,7 +18,7 @@ public class MyListPage extends View{
     private MyListPageController myListPageController;
 
     /**
-     * Instantiere felterne og bygger siden
+     * Instantierer felterne og bygger siden
      * @param myList - Listen af medierne der er på myList
      * @param myListPageController - MyListPage's controller
      */

@@ -154,4 +154,6 @@ public class StreamingService {
         return movies;
     }
 
+    public ArrayList<Media> getSeries() { return series; }
+
 }

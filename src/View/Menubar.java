@@ -24,7 +24,7 @@ public class Menubar {
     // Listen med genre
     private String[] genreList;
 
-    // Instantiere en JMenuBar
+    // Instantierer en JMenuBar
     private JMenuBar menuBar = new JMenuBar();
 
     // MenuBarens controller

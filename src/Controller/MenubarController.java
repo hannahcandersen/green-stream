@@ -17,7 +17,7 @@ public class MenubarController {
         this.controller = controller;
     }
 
-    // Instantiere menubaren når den skal bruges
+    // Instantierer menubaren når den skal bruges
     public Menubar getMenubar() {
         return new Menubar(controller.getStreamingService().getGenreList(), controller.getStreamingService().getCurrentProfile().getPicture(), this);
     }
@@ -31,10 +31,13 @@ public class MenubarController {
 
     public void movieActionListener() {
         // gå til film siden
+        controller.getSceneBuilder().loadPage(new AllMovieSeriesGenrePage(controller.getStreamingService().getGenreList(), controller.getStreamingService().getMovies(), "Film", controller.getAllMovieSeriesGenrePageController()));
     }
 
     public void serieActionListener() {
         // gå til serie siden
+        controller.getSceneBuilder().loadPage(new AllMovieSeriesGenrePage(controller.getStreamingService().getGenreList(), controller.getStreamingService().getSeries(), "Serier", controller.getAllMovieSeriesGenrePageController()));
+
     }
 
     public void genreActionListener(String genre) {
