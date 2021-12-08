@@ -9,7 +9,7 @@ public class AllMovieSeriesGenrePageController {
 
     public AllMovieSeriesGenrePageController(Controller controller) {
         this.controller = controller;
-        allMovieSeriesGenrePage = new AllMovieSeriesGenrePage();
+        //allMovieSeriesGenrePage = new AllMovieSeriesGenrePage();
     }
 
     public AllMovieSeriesGenrePage getAllMovieSeriesGenrePage() {

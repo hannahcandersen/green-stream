@@ -17,7 +17,9 @@ public class StreamingService {
     private Profile[] profiles;
     private int currentProfileNumber;
     private int currentLength = 0;
-    private final String[] genreList = {"Crime", "Drama", "Biography", "History", "Sport", "Romance", "War", "Mystery", "Adventure", "Family", "Fantasy", "Thriller", "Horror", "Film-Noir", "Musical", "Action", "Sci-fi", "Comedy", "Western", "Music", "Animation", "Documentary", "Talk-show"};
+    private final String[] genreList = {"Crime", "Drama", "Biography", "History", "Sport", "Romance", "War",
+            "Mystery", "Adventure", "Family", "Fantasy", "Thriller", "Horror", "Film-Noir", "Musical", "Action",
+            "Sci-fi", "Comedy", "Western", "Music", "Animation", "Documentary", "Talk-show"};
 
     /**
      * Streaming tjenesten har en list med film, en med serier og så en array med profiler, da man højst må
