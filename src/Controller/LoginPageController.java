@@ -1,7 +1,5 @@
 package Controller;
 
-import Model.Profile;
-import Model.StreamingService;
 import View.AddProfilePage;
 import View.LoginPage;
 import View.MainPage;

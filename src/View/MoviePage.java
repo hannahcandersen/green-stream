@@ -7,7 +7,6 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
-import java.awt.Color;
 
 public class MoviePage extends View{
     private ImageIcon moviePoster;

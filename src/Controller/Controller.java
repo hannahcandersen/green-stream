@@ -31,10 +31,10 @@ public class Controller {
     public Controller() {
 
         // Den eneste frame vi bruger
-        JFrame frame = new JFrame();
+        JFrame theOnlyFrame = new JFrame();
 
         // Scenebuilder får denne frame
-        sceneBuilder = new SceneBuilder(frame);
+        sceneBuilder = new SceneBuilder(theOnlyFrame);
 
         // Alle controllers bliver instantieret
         loginPageController = new LoginPageController(this);
