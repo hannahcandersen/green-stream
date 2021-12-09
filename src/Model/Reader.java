@@ -1,5 +1,7 @@
 package Model;
 
+import View.ExceptionView;
+
 import java.io.File;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -12,15 +14,22 @@ public class Reader {
     public Reader(StreamingService streamingService) {
 
         this.streamingService = streamingService;
-        fillCollections();
+        //fillCollections();
     }
 
-    public void fillCollections() {
-        fillMovies();
-        fillSeries();
+    public boolean fillCollectionsSuccesFull() {
+        boolean movies = fillMovies();
+        boolean series = fillSeries();
+        if (movies && series) {
+            return  true;
+        }
+        else {
+            return false;
+        }
+
     }
 
-    public void fillMovies() {
+    public boolean fillMovies() {
         try {
             // finder filen
             File movieFile = new File("resources/film.txt");
@@ -47,17 +56,22 @@ public class Reader {
                 // indsætter filmen i streamingService
                 Movie movie = new Movie(movieName, movieYear, movieGenres, movieRating, moviePicture);
                 streamingService.addMovie(movie);
+
             }
             scanner.close();
+            return true;
+
         // tilføj flere catch statements
         // et generisk catch statement der fanger alle fejl og udskriver fejl i terminalen
         } catch (Exception e) {
-            System.out.println("Der skete en fejl");
-            System.out.println(e.getMessage());
+            System.out.println("Der skete en fejl med at indlæse film fra txt filer");
+            new ExceptionView("Der skete en fejl med indlæsningen af film. Prøv at genstarte programmet");
+
         }
+        return false;
     }
 
-    public void fillSeries() {
+    public boolean fillSeries() {
         try {
             // finder filen
             File seriesFile = new File("resources/serier.txt");
@@ -102,13 +116,15 @@ public class Reader {
                 streamingService.addSerie(serie);
             }
             scanner.close();
+            return true;
         // tilføj flere catch statements
         // et genereisk catch statement der fanger alle fejl og udskriver fejl i terminalen
         } catch (Exception e) {
 
-            System.out.println("Der skete en fejl");
-            System.out.println(e.getMessage());
+            System.out.println("Der skete en fejl med at indlæse serier fra txt filer");
+            new ExceptionView("Der skete en fejl med indlæsningen af serier. Prøv at genstarte programmet");
         }
+        return false;
     }
 
 

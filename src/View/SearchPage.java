@@ -90,10 +90,16 @@ public class SearchPage extends View {
                          // Hvis mediet er en film findes filmens plakat, ellers er det en serie og dennes plakat findes
                          if (mediaList.get(counter) instanceof Movie) {
                              plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
+                             plakat.setContentAreaFilled(false);
+                             plakat.setBackground(limeGreen);
+                             plakat.setBorder(new EmptyBorder(0, 0, 0, 0));
                              plakat.addActionListener(e -> searchPageController.showMovieActionListener(media));
                          }
                          else {
                              plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
+                             plakat.setContentAreaFilled(false);
+                             plakat.setBackground(limeGreen);
+                             plakat.setBorder(new EmptyBorder(0, 0, 0, 0));
                              plakat.addActionListener(e -> searchPageController.showSerieActionListener(media));
                          }
                          plakat.setPreferredSize(new Dimension(100, 200));

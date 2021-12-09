@@ -64,6 +64,7 @@ public class MoviePage extends View{
             play  = new JButton("Play");
             play.setSize(800, 60); // size virker ikke
             play.setContentAreaFilled(false);
+            play.addActionListener(e -> moviePageController.playActionListener());
             infoCenterCenter.add(play);
 
             // minList button

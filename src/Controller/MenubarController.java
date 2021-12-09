@@ -53,4 +53,8 @@ public class MenubarController {
         // gå til LoginPage
         controller.getSceneBuilder().loadPage(new LoginPage(controller.getLoginPageController(), controller.getStreamingService().getProfiles(), controller.getStreamingService().getCurrentLength()));
     }
+
+    public void goToMainPageActionListener() {
+        controller.getSceneBuilder().loadPage(new MainPage(controller.getMainPageController()));
+    }
 }

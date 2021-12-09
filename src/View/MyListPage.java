@@ -33,10 +33,16 @@ public class MyListPage extends View{
         // Sætter menubaren til at være synlig
         menubarVisible = true;
 
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+
+        JPanel topPanel = new JPanel();
+        topPanel.setBackground(backgroundGreen);
+        panel.add(topPanel);
+
         // Tilføjer et tekstfelt
         JLabel text = new JLabel("Min Liste");
         text.setFont(text.getFont().deriveFont(Font.BOLD, 50));
-        panel.add(text);
+        topPanel.add(text, BorderLayout.NORTH);
 
         if (mediaList != null && mediaList.size() > 0) {
 
@@ -69,10 +75,14 @@ public class MyListPage extends View{
                             // Hvis mediet er en film findes filmens plakat, ellers er det en serie og dennes plakat findes
                             if (mediaList.get(counter) instanceof Movie) {
                                 plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
+                                plakat.setContentAreaFilled(false);
+                                plakat.setBackground(limeGreen);
                                 plakat.addActionListener(e -> myListPageController.showMovieActionListener(media));
                             }
                             else {
                                 plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
+                                plakat.setContentAreaFilled(false);
+                                plakat.setBackground(limeGreen);
                                 plakat.addActionListener(e -> myListPageController.showSerieActionListener(media));
                             }
                             plakat.setPreferredSize(new Dimension(100, 200));
@@ -94,26 +104,33 @@ public class MyListPage extends View{
             panel.add(scrollPane);
         }
         else {
-            JPanel emptyListPane = new JPanel(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+            JPanel emptyListPane = new JPanel();
+            emptyListPane.setLayout(new BoxLayout(emptyListPane, BoxLayout.PAGE_AXIS));
+            emptyListPane.setSize(500,300);
             JLabel empty = new JLabel("Listen er tom da du ikke har tilføjet en film/serie endnu");
-            empty.setFont(new Font("Serif", Font.BOLD, 30));
-            emptyListPane.add(empty, SwingConstants.CENTER);
+            empty.setFont(new Font("", Font.BOLD, 30));
+            emptyListPane.add(empty);
+
 
 
             JLabel whatToDo1 = new JLabel("- Vælg en film eller serie");
-            whatToDo1.setFont(new Font("Serif", Font.BOLD, 20));
-            JLabel whatToDo2 = new JLabel("- Tryk herefter på den grønne knap med '+'");
-            whatToDo2.setFont(new Font("Serif", Font.BOLD, 20));
+            whatToDo1.setFont(new Font("", Font.BOLD, 20));
+            JLabel whatToDo2 = new JLabel("- Tryk herefter på knappen 'Tilføj til min liste'");
+            whatToDo2.setFont(new Font("", Font.BOLD, 20));
             JLabel whatToDo3 = new JLabel("- Nu er filmen eller serien tilføjet til din liste");
-            whatToDo3.setFont(new Font("Serif", Font.BOLD, 20));
+            whatToDo3.setFont(new Font("", Font.BOLD, 20));
 
-            emptyListPane.add(whatToDo1, SwingConstants.LEFT);
-            emptyListPane.add(whatToDo2, SwingConstants.LEFT);
-            emptyListPane.add(whatToDo3, SwingConstants.LEFT);
+            emptyListPane.add(whatToDo1);
+            emptyListPane.add(whatToDo2);
+            emptyListPane.add(whatToDo3);
             
             emptyListPane.setBackground(backgroundGreen);
+
+            JPanel p = new JPanel();
+            p.setBackground(backgroundGreen);
+            p.add(emptyListPane);
             
-            panel.add(emptyListPane);
+            panel.add(p);
 
 
 

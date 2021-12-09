@@ -3,6 +3,8 @@ package Controller;
 import Model.Movie;
 import Model.Profile;
 import Model.Serie;
+import View.ExceptionView;
+import View.MainPage;
 import View.MoviePage;
 import View.SeriesPage;
 
@@ -29,4 +31,11 @@ public class SeriesPageController {
         controller.getSceneBuilder().loadPage(new SeriesPage(this, serie));
     }
 
+    public void goBackActionListener() {
+        controller.getSceneBuilder().loadPage(new MainPage(controller.getMainPageController()));
+    }
+
+    public void playActionListener() {
+        new ExceptionView("Virker ikke, gå til Netflix i stedet for");
+    }
 }

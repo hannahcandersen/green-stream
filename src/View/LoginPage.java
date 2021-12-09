@@ -46,7 +46,6 @@ public class LoginPage extends View{
 
         for (int i = 0; i < currentLength; i++){
             addProfilePicture(profiles[i].getPicture(), profiles[i].getName(), i);
-            System.out.println("print");
         }
 
         if (currentLength < 4) {
@@ -64,6 +63,8 @@ public class LoginPage extends View{
     private void addProfilePicture(String profilePicture, String name, int profileNumber){
         ImageIcon userIcon = new ImageIcon(profilePicture);
         JButton userButton = new JButton(userIcon);
+        userButton.setContentAreaFilled(false);
+        userButton.setBackground(limeGreen);
         userButton.setIcon(userIcon);
         userButton.setBorder(new EmptyBorder(0,0,0,0));
         userButton.setText(name);

@@ -1,6 +1,7 @@
 package Controller;
 
 import Model.Profile;
+import View.ExceptionView;
 import View.MainPage;
 import View.MoviePage;
 import Model.*;
@@ -18,7 +19,6 @@ public class MoviePageController {
     }
 
     public void addToMyListActionListerner(Movie movie) {
-        System.out.println("add");
         controller.getStreamingService().getCurrentProfile().addToMyList(movie);
         controller.getSceneBuilder().loadPage(new MoviePage(this, movie));
     }
@@ -29,6 +29,10 @@ public class MoviePageController {
     }
 
     public void goBackActionListener() {
-        controller.getSceneBuilder().loadPage(new MainPage());
+        controller.getSceneBuilder().loadPage(new MainPage(controller.getMainPageController()));
+    }
+
+    public void playActionListener() {
+        new ExceptionView("Virker ikke, gå til Netflix i stedet for");
     }
 }

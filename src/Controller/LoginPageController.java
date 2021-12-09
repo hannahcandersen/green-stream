@@ -27,7 +27,7 @@ public class LoginPageController {
     public void goToMainPageActionListener(int profileNumber) {
         controller.getStreamingService().setCurrentProfileNumber(profileNumber);
         controller.makeMenuBar();
-        controller.getSceneBuilder().loadPage(new MainPage());
+        controller.getSceneBuilder().loadPage(new MainPage(controller.getMainPageController()));
         System.out.println("gå til main page");
     }
 

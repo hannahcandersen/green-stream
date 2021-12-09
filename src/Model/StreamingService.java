@@ -100,6 +100,20 @@ public class StreamingService {
         return mediaReturn;
     }
 
+    public Media findMediaFromPicture(String picture) {
+        for (Media m: movies) {
+            if (picture.equals(m.getPicture())) {
+                return m;
+            }
+        }
+        for (Media m: series) {
+            if (picture.equals(m.getPicture())) {
+                return m;
+            }
+        }
+        return null;
+    }
+
     // tilføjer en profil til arrayet af profiler hvis der er plads
     public void addProfile(Profile profile) {
         if (currentLength < 5) {

@@ -15,11 +15,15 @@ public class MainPageController {
         this.controller = controller;
     }
 
-    public void showSerieActionListener(Media media) {
-        controller.getSceneBuilder().loadPage(new SeriesPage(controller.getSeriesPageController(), (Serie)media));
-    }
+    public void showMediaActionListener(String pictureName) {
 
-    public void showMovieActionListener(Media media) {
-        controller.getSceneBuilder().loadPage(new MoviePage(controller.getMoviePageController(), (Movie)media));
+        Media media = controller.getStreamingService().findMediaFromPicture(pictureName);
+
+        if (media instanceof Movie) {
+            controller.getSceneBuilder().loadPage(new MoviePage(controller.getMoviePageController(), (Movie)media));
+        }
+        else if (media instanceof Serie) {
+            controller.getSceneBuilder().loadPage(new SeriesPage(controller.getSeriesPageController(), (Serie)media));
+        }
     }
 }

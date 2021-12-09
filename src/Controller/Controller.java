@@ -8,10 +8,10 @@ import javax.swing.*;
 public class Controller {
 
     // Der hvor vi gemmer alle film, serier og profiler
-    private StreamingService streamingService = StreamingService.getInstance();
+    private StreamingService streamingService;
 
     // Får alle film og serier fra txt filerne til Arraylisterne i streamingservice
-    private Reader reader = new Reader(streamingService);
+    private Reader reader;
 
     // ALle controllers
     private SceneBuilder sceneBuilder;
@@ -30,6 +30,12 @@ public class Controller {
 
     public Controller() {
 
+        streamingService = StreamingService.getInstance();
+
+        reader = new Reader(streamingService);
+        boolean succesfulReading = reader.fillCollectionsSuccesFull();
+
+
         // Den eneste frame vi bruger
         JFrame theOnlyFrame = new JFrame();
 
@@ -47,12 +53,13 @@ public class Controller {
         moviePageController = new MoviePageController(this);
         allMovieSeriesGenrePageController = new AllMovieSeriesGenrePageController(this);
 
-        // Instantierer Loginpage siden den er den første side der skal vises
-        loginPage = new LoginPage(loginPageController, streamingService.getProfiles(), streamingService.getCurrentLength());
+        if (succesfulReading) {
+            // Instantierer Loginpage siden den er den første side der skal vises
+            loginPage = new LoginPage(loginPageController, streamingService.getProfiles(), streamingService.getCurrentLength());
 
-        // Giver Scenebuilder Loginsiden så den kan komme på vores Frame of blive vist
-        sceneBuilder.loadPage(loginPage);
-
+            // Giver Scenebuilder Loginsiden så den kan komme på vores Frame of blive vist
+            sceneBuilder.loadPage(loginPage);
+        }
 
 
     }
