@@ -62,6 +62,11 @@ public class LoginPage extends View{
 
     private void addProfilePicture(String profilePicture, String name, int profileNumber){
         ImageIcon userIcon = new ImageIcon(profilePicture);
+
+        //Image image = userIcon.getImage(); // transform it
+        //Image newimg = image.getScaledInstance(240, 350,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        //userIcon = new ImageIcon(newimg);  // transform it back
+
         JButton userButton = new JButton(userIcon);
         userButton.setContentAreaFilled(false);
         userButton.setBackground(limeGreen);

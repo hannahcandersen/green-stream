@@ -38,15 +38,22 @@ public class AddProfilePage extends View {
 
         String blue = "Blue";
         String green = "Green";
-        String yellow = "Yellow";
+        String orange = "Orange";
         String pink = "Pink";
+        String red = "Red";
+        String yellow = "Yellow";
 
-        String comboBoxItems[] ={blue, green, yellow, pink};
+
+        String comboBoxItems[] ={blue, green, orange, pink, red, yellow};
         JComboBox comboBox = new JComboBox(comboBoxItems);
         comboBox.setSelectedIndex(colorIndex);
         colorPane.add(comboBox);
 
         ImageIcon choosenColour = new ImageIcon("Pictures/" + comboBoxItems[colorIndex] + ".png");
+        //Image image = userIcon.getImage(); // transform it
+        //Image newimg = image.getScaledInstance(240, 350,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+        //userIcon = new ImageIcon(newimg);  // transform it back
+
         JLabel color = new JLabel(choosenColour);
         colorPane.add(color);
 
