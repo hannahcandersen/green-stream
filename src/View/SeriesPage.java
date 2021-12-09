@@ -7,124 +7,202 @@ import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 
 public class SeriesPage extends View implements ItemListener {
-    static JLabel seasontext, episodetext;
-    static JButton playtext;
+    private ImageIcon seriePoster;
+    private SeriesPageController seriesPageController;
+    private JPanel titelPanel, rigthPanel, leftPanel, centerPanel, imageLeftCenter, infoCenterCenter, resumeRigthCenter, BorderLayoutPanel;
+    private JLabel titel, rigthFill, leftFill, serieLabel, seasontext, episodetext, genreLabel, yearLabel, ratingLabel, resumeTitelLabel;
+    private JButton close, play, minList;
     static JComboBox valgSeason, valgEpisode;
 
-    private SeriesPageController seriesPageController;
+    Serie serie;
 
     public SeriesPage(SeriesPageController seriesPageController, Serie serie){
-
         this.seriesPageController = seriesPageController;
-
-        buildPage(serie);
+        this.serie = serie;
+        buildPage();
     }
 
-    public void buildPage(Serie serie) {
+    public void buildPage() {
+        //BorderLayout NORTH
+        titelPanel = new JPanel();
+        titel = new JLabel(serie.getName());
+        titel.setFont(new Font("Serif", Font.BOLD, 40));
+        titelPanel.add(titel);
 
-        // left BoxLayout
-        JPanel billedeLayout = new JPanel();
+        //BorderLayout WEST
+        rigthPanel = new JPanel();
+        close = new JButton("X");
+        close.addActionListener(e -> seriesPageController.goBackActionListener());
+        close.setFont(new Font("Serif", Font.BOLD, 30));
+        close.setContentAreaFilled(false);              // knappen bliver transperent
+        close.setBorder(new EmptyBorder(20, 20, 0, 0));
+        rigthPanel.add(close);
+
+        rigthFill = new JLabel("                                                           ");
+        rigthPanel.add(rigthFill);
+
+        //BorderLayout EAST
+        leftPanel = new JPanel();
+        leftFill = new JLabel("                                                                        ");
+        leftPanel.add(leftFill);
+
+        //BorderLayout Center
+        centerPanel = new JPanel();
+
+        //Billede/vælg Left Center
+        imageLeftCenter = new JPanel();
+        imageLeftCenter.setBorder(new EmptyBorder(15, 15, 0, 15));
+        seriePoster = new ImageIcon(new ImageIcon(serie.getPicture()).getImage().getScaledInstance(250, 400, Image.SCALE_DEFAULT));
+        serieLabel = new JLabel(seriePoster);
+        serieLabel.setIcon(seriePoster);
+
+
+        Integer[] s = new Integer[serie.getSeasons()];
+        for (int i = 0; i < serie.getSeasons(); i++) {
+            s[i] = (i + 1);
+        }
+
+
+        Integer[] epi = new Integer[serie.getEpisodes().get(0)];
+        for (int i = 0; i < serie.getEpisodes().get(0); i++) {
+            epi[i] = (i + 1);
+        }
+
 
         // season combobox
-        //SeriesPage ddd = new SeriesPage();
-        String Seasons[] = {"Season 1", "Season 2", "Season 3", "Season 4"};
-        valgSeason = new JComboBox(Seasons);
+        //String Seasons[] = {"Season 1", "Season 2", "Season 3", "Season 4"};
+        valgSeason = new JComboBox(s);
         valgSeason.setSize(30, 60);
         valgSeason.addItemListener(this);
-        seasontext = new JLabel("Select your season ");
+        seasontext = new JLabel("Vælg sæson ");
         valgSeason.setMaximumRowCount(5);
-        seasontext.setForeground(Color.red);
+        //seasontext.setForeground(Color.red);
 
         // episode combobox
-        //SeriesPage qqq = new SeriesPage();
-        String Episode[] = {"Episode 1", "Episode 2", "Episode 3", "Episode 4", "Episode 5", "Episode 6"};
-        valgEpisode = new JComboBox(Episode);
+        //String[] episode = {"Episode 1", "Episode 2", "Episode 3", "Episode 4", "Episode 5", "Episode 6"};
+
+        valgEpisode = new JComboBox(epi);
         valgEpisode.setSize(30, 60);
         valgEpisode.addItemListener(this);
         valgEpisode.setMaximumRowCount(5);
-        episodetext = new JLabel("Select your episode ");
-        episodetext.setForeground(Color.red);
+        episodetext = new JLabel("Vælg episode");
+        //episodetext.setForeground(Color.red);
 
-        billedeLayout.setBorder(new EmptyBorder(15, 15, 0, 15));
-        billedeLayout.add(new JTable(1, 1));
-        billedeLayout.add(seasontext);
-        billedeLayout.add(valgSeason);
-        billedeLayout.add(episodetext);
-        billedeLayout.add(valgEpisode);
-        billedeLayout.setBorder(new EmptyBorder(40, 40, 40, 40));
-        billedeLayout.setLayout(new BoxLayout(billedeLayout, BoxLayout.PAGE_AXIS));
+        centerPanel.setBorder(new EmptyBorder(15, 15, 0, 15));
 
-        // center BoxLayout
-        JPanel infoLayout = new JPanel();
+        //centerPanel.setBorder(new EmptyBorder(40, 40, 40, 40));
+        //centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.PAGE_AXIS));
 
+        imageLeftCenter.add(serieLabel);
+        imageLeftCenter.add(seasontext);
+        imageLeftCenter.add(valgSeason);
+        imageLeftCenter.add(episodetext);
+        imageLeftCenter.add(valgEpisode);
+        imageLeftCenter.setBorder(new EmptyBorder(40, 40, 40, 40));
+        imageLeftCenter.setLayout(new BoxLayout(imageLeftCenter, BoxLayout.PAGE_AXIS));
+
+        //Info Center Center
+        infoCenterCenter = new JPanel();
         // Play button
-        JButton play = new JButton();
-        playtext = new JButton("Play Season 1, Episode 1");
-        playtext.setForeground(Color.blue);
-        play.add(playtext);
-        play.setSize(30, 60);
-        play.setBorder(new EmptyBorder(20, 20, 0, 20));
-        play.setBackground(new Color(15, 15, 127));
+        play  = new JButton("Play 1, 1");
+        play.setSize(800, 60); // size virker ikke
         play.setContentAreaFilled(false);
-        infoLayout.add(play);
+        play.addActionListener(e -> seriesPageController.playActionListener());
+        //play.setBorder(new EmptyBorder(20, 20, 0, 20));
+        infoCenterCenter.add(play);
 
+        // minList button
         if (seriesPageController.getCurrentProfile().getMyList().contains(serie)) {
-            JButton minList = new JButton();
-            minList.add(new JButton("Fjern fra min liste"));
-            minList.setSize(30, 60);
-            minList.setBorder(new EmptyBorder(5, 20, 5, 20));
-            minList.setBackground(new Color(15, 15, 127));
+            minList = new JButton("Fjern fra min liste");
+            minList.setSize(150, 60);
             minList.setContentAreaFilled(false);
-            infoLayout.add(minList);
-        }
-        else {
-            JButton minList = new JButton();
-            minList.add(new JButton("Tilføj til min liste"));
-            minList.setSize(30, 60);
-            minList.setBorder(new EmptyBorder(5, 20, 5, 20));
-            minList.setBackground(new Color(15, 15, 127));
+            minList.addActionListener(e -> seriesPageController.removeFromMyListActionListener(serie));
+            infoCenterCenter.add(minList);
+        } else {
+            minList = new JButton("Tilføj til min liste");
+            minList.addActionListener(e -> seriesPageController.addToMyListActionListerner(serie));
+            minList.setSize(80, 60);
             minList.setContentAreaFilled(false);
-            infoLayout.add(minList);
+            infoCenterCenter.add(minList);
         }
-        
-        infoLayout.add(new JLabel("Genre: ______________"));
-        infoLayout.add(new JLabel("Udgivelsesår: _______"));
-        infoLayout.add(new JLabel("Rating: _____________"));
 
-        infoLayout.setBorder(new EmptyBorder(40, 40, 40, 40));
-        infoLayout.setLayout(new BoxLayout(infoLayout, BoxLayout.PAGE_AXIS));
+        String genre = "";
+        for (int i = 0; i < serie.getGenre().length; i++) {
+            if (i != 0) {
+                genre += ", ";
+            }
+            genre += serie.getGenre()[i];
+        }
 
-        // rigth BoxLayout
-        JPanel resume = new JPanel();
-        resume.add(new JLabel("Resume:"));
-        resume.add(new JLabel("_______________________"));
-        resume.add(new JLabel("_______________________"));
-        resume.add(new JLabel("_______________________"));
-        resume.add(new JLabel("_______________________"));
-        resume.add(new JLabel("_______________________"));
-        resume.add(new JLabel("_______________________"));
-        resume.setBorder(new EmptyBorder(40, 40, 40, 40));
-        resume.setLayout(new BoxLayout(resume, BoxLayout.PAGE_AXIS));
+        genreLabel = new JLabel("Genre: " + genre);
+        genreLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+        yearLabel = new JLabel("Udgivelsesår: " + serie.getYear());
+        yearLabel.setFont(new Font("Serif", Font.PLAIN, 20));
+        ratingLabel = new JLabel("Rating: " + serie.getRating());
+        ratingLabel.setFont(new Font("Serif", Font.PLAIN, 20));
 
+        infoCenterCenter.add(new JLabel(" "));
+        infoCenterCenter.add(genreLabel);
+        infoCenterCenter.add(yearLabel);
+        infoCenterCenter.add(ratingLabel);
+        infoCenterCenter.setLayout(new BoxLayout(infoCenterCenter, BoxLayout.PAGE_AXIS));
 
-        // add to Borderlayout
-        JPanel buttonPanel = new JPanel(new BorderLayout());
-        buttonPanel.add(billedeLayout, BorderLayout.WEST);
-        buttonPanel.add(infoLayout, BorderLayout.CENTER);
-        buttonPanel.add(resume, BorderLayout.EAST);
+        //Resume Rigth Center
+        resumeRigthCenter = new JPanel();
+        resumeTitelLabel = new JLabel("Resume: ");
+        resumeTitelLabel.setFont(new Font("Serif", Font.BOLD, 20));
 
-        panel.add(buttonPanel);
+        resumeRigthCenter.add(resumeTitelLabel);
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.add(new JLabel("______________________________________"));
+        resumeRigthCenter.setBorder(new EmptyBorder(40, 40, 40, 40));
+        resumeRigthCenter.setLayout(new BoxLayout(resumeRigthCenter, BoxLayout.PAGE_AXIS));
+
+        // kombiner alle tre centerPanel
+        centerPanel.add(imageLeftCenter);
+        centerPanel.add(infoCenterCenter);
+        centerPanel.add(resumeRigthCenter);
+
+        // Backgrund farve
+        titelPanel.setBackground(darkerGreen);
+        imageLeftCenter.setBackground(limeGreen);
+        infoCenterCenter.setBackground(limeGreen);
+        resumeRigthCenter.setBackground(limeGreen);
+        rigthPanel.setBackground(limeGreen);
+        centerPanel.setBackground(limeGreen);
+        leftPanel.setBackground(limeGreen);
+        panel.setBackground(limeGreen);
+
+        // Opsæt Borderlayout
+        BorderLayoutPanel = new JPanel(new BorderLayout());
+
+        BorderLayoutPanel.add(titelPanel, BorderLayout.NORTH);
+        BorderLayoutPanel.add(rigthPanel, BorderLayout.WEST);
+        BorderLayoutPanel.add(centerPanel, BorderLayout.CENTER);
+        BorderLayoutPanel.add(leftPanel, BorderLayout.EAST);
+
+        panel.add(BorderLayoutPanel);
     }
 
     @Override
     public void itemStateChanged(ItemEvent e) {
         if (e.getSource() == valgSeason) {
-            playtext.setText("Play " + valgSeason.getSelectedItem() + ", " + valgEpisode.getSelectedItem());
+            valgEpisode.removeAllItems();
+            for (int i = 0; i < serie.getEpisodes().get(((int)valgSeason.getSelectedItem())-1); i++) {
+                valgEpisode.addItem((i + 1));
+            }
+
+            play.setText("Play " + valgSeason.getSelectedItem() + ", " + valgEpisode.getSelectedItem());
         }
         if (e.getSource() == valgEpisode) {
-            playtext.setText("Play " + valgSeason.getSelectedItem() + ", " + valgEpisode.getSelectedItem());
+            play.setText("Play " + valgSeason.getSelectedItem() + ", " + valgEpisode.getSelectedItem());
         }
     }
 }  

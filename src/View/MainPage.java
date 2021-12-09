@@ -93,6 +93,10 @@ public class MainPage extends View {
         
         poster = new ImageIcon(icon0);
         this.titel = new JButton(poster);
+        titel.setContentAreaFilled(false);
+        titel.setBackground(limeGreen);
+        titel.setBorder(new EmptyBorder(0, 0, 0, 0));
+        titel.addActionListener(e -> mainPageController.showMediaActionListener(icon0));
         mainPanel.add(this.titel);
 
         poster = new ImageIcon(icon1);
