@@ -34,11 +34,11 @@ public class MainPage extends View {
         endPane.setBorder(new EmptyBorder(40, 0, 0, 0));
         endPane.setBackground(backgroundGreen);
 
-        ImageIcon bigPic = new ImageIcon("Pictures/avatar.jpg");
+        ImageIcon bigPic = new ImageIcon("Pictures/inter.jpg");
 
 
         Image image = bigPic.getImage();
-        image = image.getScaledInstance(700, 300,  java.awt.Image.SCALE_SMOOTH);
+        image = image.getScaledInstance(800, 300,  java.awt.Image.SCALE_SMOOTH);
         bigPic = new ImageIcon(image);
 
         JLabel bigLabel = new JLabel(bigPic);
