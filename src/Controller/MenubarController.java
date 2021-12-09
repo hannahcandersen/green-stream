@@ -31,17 +31,17 @@ public class MenubarController {
 
     public void movieActionListener() {
         // gå til film siden
-        controller.getSceneBuilder().loadPage(new AllMovieSeriesGenrePage(controller.getStreamingService().getGenreList(), controller.getStreamingService().getMovies(), "Film", controller.getAllMovieSeriesGenrePageController()));
+        controller.getSceneBuilder().loadPage(new AllMovieSeriesGenrePage(controller.getStreamingService().getGenreList(), "", controller.getStreamingService().getMovies(), "Film", controller.getAllMovieSeriesGenrePageController()));
     }
 
     public void serieActionListener() {
         // gå til serie siden
-        controller.getSceneBuilder().loadPage(new AllMovieSeriesGenrePage(controller.getStreamingService().getGenreList(), controller.getStreamingService().getSeries(), "Serier", controller.getAllMovieSeriesGenrePageController()));
-
+        controller.getSceneBuilder().loadPage(new AllMovieSeriesGenrePage(controller.getStreamingService().getGenreList(), "", controller.getStreamingService().getSeries(), "Serier", controller.getAllMovieSeriesGenrePageController()));
     }
 
     public void genreActionListener(String genre) {
         // gå til genre siden
+        controller.getSceneBuilder().loadPage(new AllMovieSeriesGenrePage(controller.getStreamingService().getGenreList(), genre, controller.getStreamingService().allGenreSearch(genre), genre, controller.getAllMovieSeriesGenrePageController()));
     }
 
     public void searchActionListener(){

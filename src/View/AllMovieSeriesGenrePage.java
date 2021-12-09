@@ -7,17 +7,21 @@ import Model.Movie;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 
 public class AllMovieSeriesGenrePage extends View {
 
     private AllMovieSeriesGenrePageController allMovieSeriesGenrePageController;
     private String[] genreList; // listen med de forskellige genrer
+    private String genre;
     private ArrayList<Media> mediaList;
     private String pageTitle; // Titlen på siden - om det er film, serier, eller f.eks. crime
+    static JComboBox comboBox;
 
-    public AllMovieSeriesGenrePage(String[] genreList, ArrayList<Media> mediaList, String pageTitle, AllMovieSeriesGenrePageController allMovieSeriesGenrePageController) {
+    public AllMovieSeriesGenrePage(String[] genreList, String genre, ArrayList<Media> mediaList, String pageTitle, AllMovieSeriesGenrePageController allMovieSeriesGenrePageController) {
         this.genreList = genreList;
+        this.genre = genre;
         this.allMovieSeriesGenrePageController = allMovieSeriesGenrePageController;
         this.pageTitle = pageTitle;
         this.mediaList = mediaList;
@@ -33,15 +37,46 @@ public class AllMovieSeriesGenrePage extends View {
         JPanel topPanel = new JPanel();
         topPanel.setSize(30, 10);
 
-        // laver drop down med genrer og tilføjer til topPanel
-        JComboBox comboBox = new JComboBox();
+        // laver drop down menu og tilføjer til topPanel
+        comboBox = new JComboBox();
         comboBox.setEditable(true);
-        comboBox.setSelectedItem("Choose genre");
-        comboBox.setEditable(false);
-        for (String genreName : genreList) {
-            comboBox.addItem(genreName);
-            //genreItem.addActionListener(e -> ;
+        comboBox.setSelectedItem("Vælg genre");
+
+        // hvis man er på siden for film eller serier, tilføjes alle genrer til drop down
+        if (pageTitle.equals("Film") || pageTitle.equals("Serier")) {
+            for (String genreName : genreList) {
+                comboBox.addItem(genreName);
+            }
+
+            // tilføjer item listeners til film og seriers drop down, der får siden til at skifte til den rigtige side
+            comboBox.addItemListener(e -> {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    String selectedGenre = (String) comboBox.getSelectedItem();
+                    if (pageTitle.equals("Film")) {allMovieSeriesGenrePageController.showGenreOfMoviesActionListener(selectedGenre);}
+                    if (pageTitle.equals("Serier")) {allMovieSeriesGenrePageController.showGenreOfSeriesActionListener(selectedGenre);}
+                }
+            });
         }
+        // hvis man ikke er på siden for film og serier, er man på siden for genrer. tilføjer drop down til genrer med kategorierne alle, film og serier
+        else{
+            comboBox.setSelectedItem("Vælg medie");
+            comboBox.addItem("Alle");
+            comboBox.addItem("Film");
+            comboBox.addItem("Serier");
+
+            // tilføjer item listeners til genres drop down, der får siden til at skifte til den rigtige side
+            comboBox.addItemListener(e -> {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    String selectedCategory = (String) comboBox.getSelectedItem();
+                    if (selectedCategory.equals("Alle")) {allMovieSeriesGenrePageController.genreActionListener(genre);}
+                    if (selectedCategory.equals("Film")) {allMovieSeriesGenrePageController.showMoviesOfGenreActionListener(genre);}
+                    if (selectedCategory.equals("Serier")) {allMovieSeriesGenrePageController.showSeriesOfGenreActionListener(genre);}
+                }
+            });
+        }
+
+        //tilføjer comboBox til panel
+        comboBox.setEditable(false);
         topPanel.add(comboBox);
 
         // laver sidens overskrift og tilføjer til topPanel
@@ -49,11 +84,11 @@ public class AllMovieSeriesGenrePage extends View {
         text.setFont(text.getFont().deriveFont(Font.BOLD, 50));
         topPanel.add(text);
 
+        //tilføjer topPanel til panel
         topPanel.setBackground(backgroundGreen);
         panel.add(topPanel, BorderLayout.CENTER);
 
-
-        // tilføjer et scrollPane med listen af media til panelet
+        // laver et scrollPane med listen af media
         JPanel col = new JPanel();
 
         // holder styr på hvor mange film der er tilføjet til panelet
@@ -62,7 +97,7 @@ public class AllMovieSeriesGenrePage extends View {
         // hvis listen ikke er tom
         if (mediaList != null && mediaList.size() > 0) {
             // JPanel med det antal rækker der er nødvendigt for alle kunne vise alle film
-            col = new JPanel(new GridLayout((mediaList.size() / 6 + 1),1));
+            col = new JPanel(new GridLayout((mediaList.size() / 6 + 1), 1));
 
             // Går igennem alle rækkerne
             for (int i = 0; i <= mediaList.size() / 6; i++) {
@@ -81,16 +116,15 @@ public class AllMovieSeriesGenrePage extends View {
                         // Hvis mediet er en film findes filmens plakat, ellers er det en serie og dennes plakat findes
                         if (mediaList.get(counter) instanceof Movie) {
                             plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
-                            //plakat.addActionListener(e -> searchPageController.showMovieActionListener(media));
-                        }
-                        else {
+                            plakat.addActionListener(e -> allMovieSeriesGenrePageController.showMovieActionListener(media));
+                        } else {
                             plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
-                            //plakat.addActionListener(e -> searchPageController.showSerieActionListener(media));
+                            plakat.addActionListener(e -> allMovieSeriesGenrePageController.showSerieActionListener(media));
                         }
                         plakat.setPreferredSize(new Dimension(100, 200));
-                        plakat.setBorder(new EmptyBorder(0,0,0,0));
+                        plakat.setBorder(new EmptyBorder(0, 0, 0, 0));
                         plakat.setContentAreaFilled(false);
-                        //plakat.addActionListener(e -> );
+
                         // Tilføjer Mediet til rækken
                         row.add(plakat);
                         // Tæller counter op så der er styr på hvor mange film der er tilføjet
@@ -109,6 +143,9 @@ public class AllMovieSeriesGenrePage extends View {
 
     }
 }
+
+
+
 
 
 
