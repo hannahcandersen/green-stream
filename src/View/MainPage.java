@@ -34,7 +34,7 @@ public class MainPage extends View {
         endPane.setBorder(new EmptyBorder(40, 0, 0, 0));
         endPane.setBackground(backgroundGreen);
 
-        ImageIcon bigPic = new ImageIcon("Pictures/inter.jpg");
+        ImageIcon bigPic = new ImageIcon("Pictures/inter.png");
 
 
         Image image = bigPic.getImage();
