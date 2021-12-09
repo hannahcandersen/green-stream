@@ -40,36 +40,7 @@ public class MainPage extends View {
 
         endPane.add(bigLabel);
 
-        main("Populære", "resources/filmplakater/Taxi Driver.jpg",
-                "resources/filmplakater/Good Will Hunting.jpg",
-                "resources/filmplakater/West Side Story.jpg",
-                "resources/Serierforsider/Jessica Jones.jpg",
-                "resources/Serierforsider/Big Little Lies.jpg",
-                "resources/filmplakater/Singin' In The Rain.jpg",
-                "resources/Serierforsider/Sex & The City.jpg");
-
-
-        main("Forslag til dig", "resources/filmplakater/Forrest Gump.jpg",
-                "resources/filmplakater/Jurassic Park.jpg",
-                "resources/filmplakater/Pulp Fiction.jpg",
-                "resources/Serierforsider/Ally McBeal.jpg",
-                "resources/Serierforsider/Battlestar Galactica.jpg",
-                "resources/Serierforsider/Glow.jpg",
-                "resources/Serierforsider/Game Of Thrones.jpg");
-
-
-        main("Netop Tilføjet", "resources/filmplakater/ET.jpg",
-                "resources/filmplakater/Jaws.jpg",
-               "resources/Serierforsider/24.jpg",
-                "resources/Serierforsider/Daredevil.jpg",
-                "resources/Serierforsider/Luke Cage.jpg",
-                "resources/Serierforsider/Billions.jpg",
-                "resources/Serierforsider/Sons Of Anarchy.jpg");
-
-        //main("Silkes forslag")
-        //main("Hannahs forslag")
-
-
+       addMedia();
 
 
         this.scrollPane = new JScrollPane(endPane);
@@ -129,6 +100,39 @@ public class MainPage extends View {
 
         endPane.add(this.themePanel);
 
+    }
+
+    public void addMedia(){
+        main("Populære", "resources/filmplakater/Taxi Driver.jpg",
+                "resources/filmplakater/Good Will Hunting.jpg",
+                "resources/filmplakater/West Side Story.jpg",
+                "resources/Serierforsider/Jessica Jones.jpg",
+                "resources/Serierforsider/Big Little Lies.jpg",
+                "resources/filmplakater/Singin' In The Rain.jpg",
+                "resources/Serierforsider/Sex & The City.jpg");
+
+
+        main("Forslag til dig", "resources/filmplakater/Forrest Gump.jpg",
+                "resources/filmplakater/Jurassic Park.jpg",
+                "resources/filmplakater/Pulp Fiction.jpg",
+                "resources/Serierforsider/Ally McBeal.jpg",
+                "resources/Serierforsider/Battlestar Galactica.jpg",
+                "resources/Serierforsider/Glow.jpg",
+                "resources/Serierforsider/Game Of Thrones.jpg");
+
+
+        main("Netop Tilføjet", "resources/filmplakater/ET.jpg",
+                "resources/filmplakater/Jaws.jpg",
+                "resources/Serierforsider/24.jpg",
+                "resources/Serierforsider/Daredevil.jpg",
+                "resources/Serierforsider/Luke Cage.jpg",
+                "resources/Serierforsider/Billions.jpg",
+                "resources/Serierforsider/Sons Of Anarchy.jpg");
+
+        //main("Silkes forslag")
+        //main("Hannahs forslag")
+        //main("Marvel")
+        //main("GreenStream")
     }
 }
 
