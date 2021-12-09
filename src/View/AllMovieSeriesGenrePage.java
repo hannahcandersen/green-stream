@@ -34,8 +34,8 @@ public class AllMovieSeriesGenrePage extends View {
 
         // laver et JPanel "topPanel" øverst
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-        JPanel topPanel = new JPanel();
-        topPanel.setSize(30, 10);
+        JPanel topPanel = new JPanel(new GridLayout(1,5));
+        topPanel.setSize(300, 10);
 
         // laver drop down menu og tilføjer til topPanel
         comboBox = new JComboBox();
