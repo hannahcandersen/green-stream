@@ -151,7 +151,7 @@ public class MainPage extends View {
                 "resources/filmplakater/Pulp Fiction.jpg",
                 "resources/Serierforsider/Ally McBeal.jpg",
                 "resources/Serierforsider/Battlestar Galactica.jpg",
-                "resources/Serierforsider/Glow.jpg",
+                "resources/Serierforsider/GLOW.jpg",
                 "resources/Serierforsider/Game Of Thrones.jpg");
 
 
