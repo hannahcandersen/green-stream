@@ -37,12 +37,12 @@ public class MoviePage extends View{
         close.setBorder(new EmptyBorder(20, 20, 0, 0));
         rigthPanel.add(close);
 
-        rigthFill = new JLabel("                                                 ");
+        rigthFill = new JLabel("                                       ");
         rigthPanel.add(rigthFill);
 
         //BorderLayout EAST
         leftPanel = new JPanel();
-        leftFill = new JLabel("                                                              ");
+        leftFill = new JLabel("                                                    ");
         leftPanel.add(leftFill);
 
         //BorderLayout Center
