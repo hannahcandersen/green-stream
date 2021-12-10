@@ -2,72 +2,87 @@ package View;
 
 import Controller.LoginPageController;
 import Model.Profile;
-import Model.StreamingService;
 
 import javax.swing.*;
 import java.awt.*;
 import javax.swing.border.EmptyBorder;
 
+/**
+ * Denne klasse er en subklasse af View klassen. Den repræsenterer siden som kan viser listen a brugere
+ */
 public class LoginPage extends View{
-
-    private JPanel bottomPanel = new JPanel();
-
     private LoginPageController loginPageController;
-    Profile[] profiles;
     private int currentLength;
+    Profile[] profiles;
+    private JPanel topPanel, bottomPanel;
+    private JLabel logoLabel;
+    private JButton plusButton, userButton;
+    private ImageIcon logo, plusIcon, userIcon;
 
+    /**
+     * Instantiere controlleren og bygger siden
+     * @param loginPageController - Sidens controller
+     * @param profiles - Listen af de addede profiler
+     * @param currentLength - Længden af listen over profiler
+     */
     public LoginPage(LoginPageController loginPageController, Profile[] profiles, int currentLength) {
         this.loginPageController = loginPageController;
         this.profiles = profiles;
         this.currentLength = currentLength;
-
         buildLoginPage();
     }
 
+    /**
+     * Bygger sidens visuelle indhold
+     */
     private void buildLoginPage() {
-
-        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-
-        // Opretter topLabel med logo i midten og tilføjer til contentPane
-        ImageIcon logo = new ImageIcon(("Pictures/Logo.png"));
-        JPanel topPanel = new JPanel();
-        topPanel.setBackground(limeGreen);
-        JLabel logoLabel = new JLabel(logo);
+    // Opretter topPanel
+        topPanel = new JPanel();
+        logo = new ImageIcon(("Pictures/Logo.png"));
+        logoLabel = new JLabel(logo);
         topPanel.add(logoLabel);
         topPanel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-        //topPanel.add(Box.createRigidArea(new Dimension(0, 100)));
-        panel.add(topPanel);
 
-        // Opretter bottomPanel og tilføjer til contentPane
+    // Opretter bottomPanel
+        bottomPanel = new JPanel();
         bottomPanel.setLayout(new FlowLayout());
-        bottomPanel.setBackground(limeGreen);
         bottomPanel.add(Box.createRigidArea(new Dimension(0, 700)));
-        panel.add(bottomPanel);
 
+        // Viser profilerne
         for (int i = 0; i < currentLength; i++){
             addProfilePicture(profiles[i].getPicture(), profiles[i].getName(), i);
         }
 
+        // Sætter plusButton ind, hvis der ikke er over 4 profiler
         if (currentLength < 4) {
-            // Sætter plusButton ind i bottomPanel
-            ImageIcon plusIcon = new ImageIcon(("Pictures/Plus.png"));
-            JButton plusButton = new JButton(plusIcon);
+            plusIcon = new ImageIcon(("Pictures/Plus.png"));
+            plusButton = new JButton(plusIcon);
             plusButton.setIcon(plusIcon);
             plusButton.setBorder(new EmptyBorder(0, 0, 0, 0));
             bottomPanel.add(plusButton);
             bottomPanel.revalidate();
             plusButton.addActionListener(e -> loginPageController.addProfileActionListener());
         }
+
+    // Sætter Brackgrund color
+        bottomPanel.setBackground(limeGreen);
+        topPanel.setBackground(limeGreen);
+
+    // Sammensætter til et panel
+        panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
+        panel.add(topPanel);
+        panel.add(bottomPanel);
     }
 
+    /**
+     * Henter dataen fra profilerne fra listen af "profiles"
+     * @param profilePicture - Henter og viser billederne til profilerne
+     * @param name - Henter og viser navnene til profilerne
+     * @param profileNumber - Giver hver profil et nummer
+     */
     private void addProfilePicture(String profilePicture, String name, int profileNumber){
-        ImageIcon userIcon = new ImageIcon(profilePicture);
-
-        //Image image = userIcon.getImage(); // transform it
-        //Image newimg = image.getScaledInstance(240, 350,  java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
-        //userIcon = new ImageIcon(newimg);  // transform it back
-
-        JButton userButton = new JButton(userIcon);
+        userIcon = new ImageIcon(profilePicture);
+        userButton = new JButton(userIcon);
         userButton.setContentAreaFilled(false);
         userButton.setBackground(limeGreen);
         userButton.setIcon(userIcon);
@@ -75,9 +90,9 @@ public class LoginPage extends View{
         userButton.setText(name);
         userButton.setHorizontalTextPosition(JButton.CENTER);
         userButton.setVerticalTextPosition(JButton.CENTER);
+        userButton.addActionListener(e -> loginPageController.goToMainPageActionListener(profileNumber));
+
         bottomPanel.add(userButton);
         bottomPanel.revalidate();
-        userButton.addActionListener(e -> loginPageController.goToMainPageActionListener(profileNumber));
     }
-
 }
