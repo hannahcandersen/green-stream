@@ -7,6 +7,7 @@ import Model.Media;
 import Model.Movie;
 
 import javax.swing.*;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.border.EmptyBorder;
 
