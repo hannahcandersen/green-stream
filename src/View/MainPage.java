@@ -71,7 +71,9 @@ public class MainPage extends View {
         header.setFont(new Font("Serif", Font.BOLD, 30));
         header.setBorder(new EmptyBorder(20, 0, 0, 0));
 
-        
+
+
+
         poster = new ImageIcon(icon0);
         this.titel = new JButton(poster);
         titel.setContentAreaFilled(false);
@@ -167,10 +169,20 @@ public class MainPage extends View {
                 "resources/Serierforsider/Billions.jpg",
                 "resources/Serierforsider/Sons Of Anarchy.jpg");
 
+        main("GreenStream and chill",
+                "resources/filmplakater/Casablanca.jpg",
+                "resources/filmplakater/Gone With The Wind.jpg",
+                "resources/Serieforsider/Pride And Prejudice",
+                "resources/filmplakater/Some Like It Hot.jpg",
+                "resources/filmplakater/Titanic.jpg",
+                "resources/Serieforsider/Pride And Prejudice",
+                "resources/filmplakater/Wuthering Heights.jpg");
+
+    }
+
         //main("Silkes forslag")
         //main("Hannahs forslag")
         //main("Marvel")
-        //main("GreenStream")
-    }
+
 }
 
