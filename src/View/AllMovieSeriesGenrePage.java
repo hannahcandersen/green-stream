@@ -33,8 +33,13 @@ public class AllMovieSeriesGenrePage extends View {
 
         // laver et JPanel "topPanel" øverst
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-        JPanel topPanel = new JPanel(new GridLayout(1,5));
-        topPanel.setSize(300, 10);
+        JPanel topPanel = new JPanel(new FlowLayout());
+        topPanel.setSize(1000, 10);
+
+        // laver sidens overskrift og tilføjer til topPanel
+        JLabel text = new JLabel(pageTitle);
+        text.setFont(text.getFont().deriveFont(Font.BOLD, 50));
+        topPanel.add(text);
 
         // laver drop down menu og tilføjer til topPanel
         comboBox = new JComboBox();
@@ -75,13 +80,9 @@ public class AllMovieSeriesGenrePage extends View {
         }
 
         //tilføjer comboBox til panel
+        comboBox.setBackground(backgroundGreen);
         comboBox.setEditable(false);
         topPanel.add(comboBox);
-
-        // laver sidens overskrift og tilføjer til topPanel
-        JLabel text = new JLabel(pageTitle);
-        text.setFont(text.getFont().deriveFont(Font.BOLD, 50));
-        topPanel.add(text);
 
         //tilføjer topPanel til panel
         topPanel.setBackground(backgroundGreen);
