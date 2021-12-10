@@ -6,11 +6,10 @@ import Model.Movie;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-import javax.swing.ImageIcon;
 
 public class MoviePage extends View{
-    private ImageIcon moviePoster;
     private MoviePageController moviePageController;
+    private ImageIcon moviePoster;
     private JPanel titelPanel, rigthPanel, leftPanel, centerPanel, imageLeftCenter, infoCenterCenter, resumeRigthCenter, BorderLayoutPanel;
     private JLabel titel, rigthFill, leftFill, movieLabel, genreLabel, yearLabel, ratingLabel, resumeTitelLabel;
     private JButton close, play, minList;
@@ -22,13 +21,13 @@ public class MoviePage extends View{
     }
 
     public void buildPage(Movie movie) {
-        //BorderLayout NORTH
+    //BorderLayout NORTH
         titelPanel = new JPanel();
         titel = new JLabel(movie.getName());
         titel.setFont(new Font("Serif", Font.BOLD, 40));
         titelPanel.add(titel);
 
-        //BorderLayout WEST
+    //BorderLayout WEST
         rigthPanel = new JPanel();
         close = new JButton("X");
         close.addActionListener(e -> moviePageController.goBackActionListener());
@@ -40,15 +39,15 @@ public class MoviePage extends View{
         rigthFill = new JLabel("                                  ");
         rigthPanel.add(rigthFill);
 
-        //BorderLayout EAST
+    //BorderLayout EAST
         leftPanel = new JPanel();
         leftFill = new JLabel("                                               ");
         leftPanel.add(leftFill);
 
-        //BorderLayout Center
+    //BorderLayout Center
         centerPanel = new JPanel();
 
-        //Billede Left Center
+        //Billede Left-Center
         imageLeftCenter = new JPanel();
         imageLeftCenter.setBorder(new EmptyBorder(15, 15, 0, 15));
         moviePoster = new ImageIcon(new ImageIcon(movie.getPicture()).getImage().getScaledInstance(250, 400, Image.SCALE_DEFAULT));
@@ -58,7 +57,7 @@ public class MoviePage extends View{
         imageLeftCenter.setBorder(new EmptyBorder(40, 40, 40, 40));
         imageLeftCenter.setLayout(new BoxLayout(imageLeftCenter, BoxLayout.PAGE_AXIS));
 
-        //Info Center Center
+        //Info Center-Center
         infoCenterCenter = new JPanel();
             // Play button
             play  = new JButton("Play");
@@ -83,7 +82,7 @@ public class MoviePage extends View{
                 minList.setContentAreaFilled(false);
                 infoCenterCenter.add(minList);
             }
-
+        // adder alle mediets genre til en string, så den kan bliver brugt af "genreLabel"
         String genre = "";
         for (int i = 0; i < movie.getGenre().length; i++) {
             if (i != 0) {
@@ -112,11 +111,10 @@ public class MoviePage extends View{
         resumeTitelLabel.setFont(new Font("Serif", Font.BOLD, 20));
 
         resumeArea = new JTextArea();
-        resumeArea.setText("texten er til film bla blaaaaaaaaaaaaa blaaaaaaaaa gggggggggg gggggggggg grhrhh vgrghtrhth ere heh haaaaaaaaaaaaa");
+        resumeArea.setText(movie.getName() + " er en de 100 bedste film i verden (ifølge én liste fra imdb), derfor har GreenStream filmen her til din underholdning. ");
         resumeArea.setLineWrap(true);
         resumeArea.setWrapStyleWord(true);
         resumeArea.setEditable(false);
-        resumeArea.setBackground(limeGreen);
         resumeArea.setBounds(0,05,280,280);
         resumeArea.setBorder(new EmptyBorder(0, 90, 20, 0));
 
@@ -125,13 +123,14 @@ public class MoviePage extends View{
         resumeRigthCenter.setBorder(new EmptyBorder(40, 80, 40, 40));
         resumeRigthCenter.setLayout(new BoxLayout(resumeRigthCenter, BoxLayout.PAGE_AXIS));
 
-        // kombiner alle tre centerPanel
+    //Sammensætning af alle tre centerPanel
         centerPanel.add(imageLeftCenter);
         centerPanel.add(infoCenterCenter);
         centerPanel.add(resumeRigthCenter);
 
-        // Backgrund farve
+        //Backgrund farve
         titelPanel.setBackground(darkerGreen);
+        resumeArea.setBackground(limeGreen);
         imageLeftCenter.setBackground(limeGreen);
         infoCenterCenter.setBackground(limeGreen);
         resumeRigthCenter.setBackground(limeGreen);
@@ -140,7 +139,7 @@ public class MoviePage extends View{
         leftPanel.setBackground(limeGreen);
         panel.setBackground(limeGreen);
 
-        // Opsæt Borderlayout
+    //Sammensætning af Borderlayout
         BorderLayoutPanel = new JPanel(new BorderLayout());
 
         BorderLayoutPanel.add(titelPanel, BorderLayout.NORTH);

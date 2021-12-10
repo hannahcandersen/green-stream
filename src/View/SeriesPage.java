@@ -160,7 +160,7 @@ public class SeriesPage extends View implements ItemListener {
         resumeTitelLabel.setFont(new Font("Serif", Font.BOLD, 20));
 
         resumeArea = new JTextArea();
-        resumeArea.setText("texten er til film bla blaaaaaaaaaaaaa blaaaaaaaaa gggggggggg gggggggggg grhrhh vgrghtrhth ere heh haaaaaaaaaaaaa");
+        resumeArea.setText(serie.getName() + " er en de 100 bedste serier i verden (ifølge én liste fra imdb), derfor har GreenStream serien her til din underholdning. ");
         resumeArea.setLineWrap(true);
         resumeArea.setWrapStyleWord(true);
         resumeArea.setEditable(false);

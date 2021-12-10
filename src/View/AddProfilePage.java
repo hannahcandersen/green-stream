@@ -5,18 +5,13 @@ import Model.Profile;
 
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.JButton;
-
-import javax.swing.JPanel;
-
 
 /**
  * Denne klasse er en subklasse af View klassen. Den repræsenterer siden som kan tilføje brugere til listen af brugere
  */
 public class AddProfilePage extends View {
-
-    // AddProfilePage's controller
     private AddProfilePageController addProfilePageController;
+
 
     /**
      * Instantiere controlleren og bygger siden
