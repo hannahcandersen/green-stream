@@ -148,19 +148,41 @@ public class StreamingService {
         return profiles[currentProfileNumber];
     }
 
+
     // til test
     public void listAllMovies() {
         System.out.println("Listing all movies");
         for (Media m: movies) {
-            System.out.println(m.name);
+            System.out.println("name: " + m.getName());
+            System.out.println("picture: " + m.getPicture());
+            System.out.print("genre: ");
+            for (String s: m.getGenre()) {
+                System.out.print(s + ", ");
+            }
+            System.out.println();
+            System.out.println("year: " + m.getYear());
+            System.out.println("rating: " + m.getRating());
         }
     }
 
     // til test
     public void listAllSeries() {
-        System.out.println("Listing all series");
+        System.out.println("\nListing all series");
         for (Media m: series) {
-            System.out.println(m.name);
+            System.out.println("name: " + m.getName());
+            System.out.println("picture: " + m.getPicture());
+            System.out.print("genre: ");
+            for (String s: m.getGenre()) {
+                System.out.print(s + ", ");
+            }
+            System.out.println();
+            System.out.println("year: " + m.getYear());
+            System.out.println("rating: " + m.getRating());
+            System.out.println("seasons: " + ((Serie) m).getSeasons());
+            System.out.print("episodes: ");
+            for (Integer s: ((Serie) m).getEpisodes()) {
+                System.out.print(s + ", ");
+            }
         }
     }
 
