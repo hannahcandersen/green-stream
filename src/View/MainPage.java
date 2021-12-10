@@ -125,10 +125,10 @@ public class MainPage extends View {
         main("GreenStream and chill",
                 "resources/filmplakater/Casablanca.jpg",
                 "resources/filmplakater/Gone With The Wind.jpg",
-                "resources/Serieforsider/Pride And Prejudice",
+                "resources/Serierforsider/Pride And Prejudice.jpg",
                 "resources/filmplakater/Some Like It Hot.jpg",
                 "resources/filmplakater/Titanic.jpg",
-                "resources/Serieforsider/Pride And Prejudice",
+                "resources/Serierforsider/Smallville.jpg",
                 "resources/filmplakater/Wuthering Heights.jpg");
 
     }
