@@ -71,64 +71,17 @@ public class MainPage extends View {
         header.setFont(new Font("Serif", Font.BOLD, 30));
         header.setBorder(new EmptyBorder(20, 0, 0, 0));
 
+        String[] iconArr = {icon0, icon1, icon2, icon3, icon4, icon5, icon6};
 
-
-
-        poster = new ImageIcon(icon0);
-        this.titel = new JButton(poster);
-        titel.setContentAreaFilled(false);
-        titel.setBackground(limeGreen);
-        titel.setBorder(new EmptyBorder(0, 0, 0, 0));
-        titel.addActionListener(e -> mainPageController.showMediaActionListener(icon0));
-        mainPanel.add(this.titel);
-
-        poster = new ImageIcon(icon1);
-        this.titel = new JButton(poster);
-        titel.setContentAreaFilled(false);
-        titel.setBackground(limeGreen);
-        titel.setBorder(new EmptyBorder(0, 0, 0, 0));
-        titel.addActionListener(e -> mainPageController.showMediaActionListener(icon1));
-        mainPanel.add(this.titel);
-
-        poster = new ImageIcon(icon2);
-        this.titel = new JButton(poster);
-        titel.setContentAreaFilled(false);
-        titel.setBackground(limeGreen);
-        titel.setBorder(new EmptyBorder(0, 0, 0, 0));
-        titel.addActionListener(e -> mainPageController.showMediaActionListener(icon2));
-        mainPanel.add(this.titel);
-
-        poster = new ImageIcon(icon3);
-        this.titel = new JButton(poster);
-        titel.setContentAreaFilled(false);
-        titel.setBackground(limeGreen);
-        titel.setBorder(new EmptyBorder(0, 0, 0, 0));
-        titel.addActionListener(e -> mainPageController.showMediaActionListener(icon3));
-        mainPanel.add(this.titel);
-
-        poster = new ImageIcon(icon4);
-        this.titel = new JButton(poster);
-        titel.setContentAreaFilled(false);
-        titel.setBackground(limeGreen);
-        titel.setBorder(new EmptyBorder(0, 0, 0, 0));
-        titel.addActionListener(e -> mainPageController.showMediaActionListener(icon4));
-        mainPanel.add(this.titel);
-
-        poster = new ImageIcon(icon5);
-        this.titel = new JButton(poster);
-        titel.setContentAreaFilled(false);
-        titel.setBackground(limeGreen);
-        titel.setBorder(new EmptyBorder(0, 0, 0, 0));
-        titel.addActionListener(e -> mainPageController.showMediaActionListener(icon5));
-        mainPanel.add(this.titel);
-
-        poster = new ImageIcon(icon6);
-        this.titel = new JButton(poster);
-        titel.setContentAreaFilled(false);
-        titel.setBackground(limeGreen);
-        titel.setBorder(new EmptyBorder(0, 0, 0, 0));
-        titel.addActionListener(e -> mainPageController.showMediaActionListener(icon6));
-        mainPanel.add(this.titel);
+        for (String icon: iconArr) {
+            poster = new ImageIcon(icon);
+            this.titel = new JButton(poster);
+            titel.setContentAreaFilled(false);
+            titel.setBackground(limeGreen);
+            titel.setBorder(new EmptyBorder(0, 0, 0, 0));
+            titel.addActionListener(e -> mainPageController.showMediaActionListener(icon));
+            mainPanel.add(this.titel);
+        }
 
         themePanel = new JPanel(new BorderLayout());
         themePanel.setBackground(backgroundGreen);
