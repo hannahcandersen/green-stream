@@ -16,6 +16,7 @@ public class SeriesPage extends View implements ItemListener {
     private JLabel titel, rigthFill, leftFill, serieLabel, seasontext, episodetext, genreLabel, yearLabel, ratingLabel, resumeTitelLabel;
     private JButton close, play, minList;
     static JComboBox valgSeason, valgEpisode;
+    private JTextArea resumeArea;
 
     Serie serie;
 
@@ -58,19 +59,17 @@ public class SeriesPage extends View implements ItemListener {
         seriePoster = new ImageIcon(new ImageIcon(serie.getPicture()).getImage().getScaledInstance(250, 400, Image.SCALE_DEFAULT));
         serieLabel = new JLabel(seriePoster);
         serieLabel.setIcon(seriePoster);
-
+        serieLabel.setBorder(new EmptyBorder(0, 0, 10, 0));
 
         Integer[] s = new Integer[serie.getSeasons()];
         for (int i = 0; i < serie.getSeasons(); i++) {
             s[i] = (i + 1);
         }
 
-
         Integer[] epi = new Integer[serie.getEpisodes().get(0)];
         for (int i = 0; i < serie.getEpisodes().get(0); i++) {
             epi[i] = (i + 1);
         }
-
 
         // season combobox
         //String Seasons[] = {"Season 1", "Season 2", "Season 3", "Season 4"};
@@ -89,6 +88,8 @@ public class SeriesPage extends View implements ItemListener {
         valgEpisode.addItemListener(this);
         valgEpisode.setMaximumRowCount(5);
         episodetext = new JLabel("Vælg episode");
+        episodetext.setBorder(new EmptyBorder(5, 0, 0, 0));
+
         //episodetext.setForeground(Color.red);
 
         centerPanel.setBorder(new EmptyBorder(15, 15, 0, 15));
@@ -113,6 +114,8 @@ public class SeriesPage extends View implements ItemListener {
         play.addActionListener(e -> seriesPageController.playActionListener());
         //play.setBorder(new EmptyBorder(20, 20, 0, 20));
         infoCenterCenter.add(play);
+
+        infoCenterCenter.add(new JLabel(" "));
 
         // minList button
         if (seriesPageController.getCurrentProfile().getMyList().contains(serie)) {
@@ -148,6 +151,7 @@ public class SeriesPage extends View implements ItemListener {
         infoCenterCenter.add(genreLabel);
         infoCenterCenter.add(yearLabel);
         infoCenterCenter.add(ratingLabel);
+        infoCenterCenter.setBorder(new EmptyBorder(0, 90, 20, 0));
         infoCenterCenter.setLayout(new BoxLayout(infoCenterCenter, BoxLayout.PAGE_AXIS));
 
         //Resume Rigth Center
@@ -155,14 +159,18 @@ public class SeriesPage extends View implements ItemListener {
         resumeTitelLabel = new JLabel("Resume: ");
         resumeTitelLabel.setFont(new Font("Serif", Font.BOLD, 20));
 
+        resumeArea = new JTextArea();
+        resumeArea.setText("texten er til film bla blaaaaaaaaaaaaa blaaaaaaaaa gggggggggg gggggggggg grhrhh vgrghtrhth ere heh haaaaaaaaaaaaa");
+        resumeArea.setLineWrap(true);
+        resumeArea.setWrapStyleWord(true);
+        resumeArea.setEditable(false);
+        resumeArea.setBackground(limeGreen);
+        resumeArea.setBounds(0,05,280,280);
+        resumeArea.setBorder(new EmptyBorder(0, 90, 20, 0));
+
         resumeRigthCenter.add(resumeTitelLabel);
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.setBorder(new EmptyBorder(40, 40, 40, 40));
+        resumeRigthCenter.add(resumeArea);
+        resumeRigthCenter.setBorder(new EmptyBorder(40, 80, 40, 40));
         resumeRigthCenter.setLayout(new BoxLayout(resumeRigthCenter, BoxLayout.PAGE_AXIS));
 
         // kombiner alle tre centerPanel

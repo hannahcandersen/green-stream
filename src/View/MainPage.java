@@ -50,6 +50,7 @@ public class MainPage extends View {
 
 
         this.scrollPane = new JScrollPane(endPane);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         panel.setBackground(backgroundGreen);
         panel.add(scrollPane);
 
@@ -137,7 +138,8 @@ public class MainPage extends View {
     }
 
     public void addMedia(){
-        main("Populære", "resources/filmplakater/Taxi Driver.jpg",
+        main("Populære",
+                "resources/filmplakater/Taxi Driver.jpg",
                 "resources/filmplakater/Good Will Hunting.jpg",
                 "resources/filmplakater/West Side Story.jpg",
                 "resources/Serierforsider/Jessica Jones.jpg",
@@ -146,7 +148,8 @@ public class MainPage extends View {
                 "resources/Serierforsider/Sex & The City.jpg");
 
 
-        main("Forslag til dig", "resources/filmplakater/Forrest Gump.jpg",
+        main("Medrivende indhold",
+                "resources/filmplakater/Forrest Gump.jpg",
                 "resources/filmplakater/Jurassic Park.jpg",
                 "resources/filmplakater/Pulp Fiction.jpg",
                 "resources/Serierforsider/Ally McBeal.jpg",
@@ -155,7 +158,8 @@ public class MainPage extends View {
                 "resources/Serierforsider/Game Of Thrones.jpg");
 
 
-        main("Netop Tilføjet", "resources/filmplakater/ET.jpg",
+        main("Netop Tilføjet",
+                "resources/filmplakater/ET.jpg",
                 "resources/filmplakater/Jaws.jpg",
                 "resources/Serierforsider/24.jpg",
                 "resources/Serierforsider/Daredevil.jpg",

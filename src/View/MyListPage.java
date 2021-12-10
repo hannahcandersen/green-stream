@@ -101,6 +101,7 @@ public class MyListPage extends View{
             }
             // Gør såden at man kan scrolle i listen med rækker
             JScrollPane scrollPane = new JScrollPane(col);
+            scrollPane.getVerticalScrollBar().setUnitIncrement(16);
             panel.add(scrollPane);
         }
         else {

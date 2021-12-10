@@ -14,7 +14,7 @@ public class MoviePage extends View{
     private JPanel titelPanel, rigthPanel, leftPanel, centerPanel, imageLeftCenter, infoCenterCenter, resumeRigthCenter, BorderLayoutPanel;
     private JLabel titel, rigthFill, leftFill, movieLabel, genreLabel, yearLabel, ratingLabel, resumeTitelLabel;
     private JButton close, play, minList;
-
+    private JTextArea resumeArea;
 
     public MoviePage(MoviePageController moviePageController, Movie movie){
         this.moviePageController = moviePageController;
@@ -67,6 +67,8 @@ public class MoviePage extends View{
             play.addActionListener(e -> moviePageController.playActionListener());
             infoCenterCenter.add(play);
 
+            infoCenterCenter.add(new JLabel(" "));
+
             // minList button
             if (moviePageController.getCurrentProfile().getMyList().contains(movie)) {
                 minList = new JButton("Fjern fra min liste");
@@ -101,6 +103,7 @@ public class MoviePage extends View{
         infoCenterCenter.add(genreLabel);
         infoCenterCenter.add(yearLabel);
         infoCenterCenter.add(ratingLabel);
+        infoCenterCenter.setBorder(new EmptyBorder(0, 90, 20, 0));
         infoCenterCenter.setLayout(new BoxLayout(infoCenterCenter, BoxLayout.PAGE_AXIS));
 
         //Resume Rigth Center
@@ -108,14 +111,18 @@ public class MoviePage extends View{
         resumeTitelLabel = new JLabel("Resume: ");
         resumeTitelLabel.setFont(new Font("Serif", Font.BOLD, 20));
 
+        resumeArea = new JTextArea();
+        resumeArea.setText("texten er til film bla blaaaaaaaaaaaaa blaaaaaaaaa gggggggggg gggggggggg grhrhh vgrghtrhth ere heh haaaaaaaaaaaaa");
+        resumeArea.setLineWrap(true);
+        resumeArea.setWrapStyleWord(true);
+        resumeArea.setEditable(false);
+        resumeArea.setBackground(limeGreen);
+        resumeArea.setBounds(0,05,280,280);
+        resumeArea.setBorder(new EmptyBorder(0, 90, 20, 0));
+
         resumeRigthCenter.add(resumeTitelLabel);
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.add(new JLabel("______________________________________"));
-        resumeRigthCenter.setBorder(new EmptyBorder(40, 40, 40, 40));
+        resumeRigthCenter.add(resumeArea);
+        resumeRigthCenter.setBorder(new EmptyBorder(40, 80, 40, 40));
         resumeRigthCenter.setLayout(new BoxLayout(resumeRigthCenter, BoxLayout.PAGE_AXIS));
 
         // kombiner alle tre centerPanel

@@ -36,15 +36,16 @@ public class AddProfilePage extends View {
         mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.PAGE_AXIS));
         JPanel colorPane = new JPanel(new FlowLayout());
 
-        String blue = "Blue";
-        String green = "Green";
+        String blue = "Blå";
+        String green = "Grøn";
+        String yellow = "Gul";
         String orange = "Orange";
         String pink = "Pink";
-        String red = "Red";
-        String yellow = "Yellow";
+        String red = "Rød";
 
 
-        String comboBoxItems[] ={blue, green, orange, pink, red, yellow};
+
+        String comboBoxItems[] ={blue, green, yellow, orange, pink, red};
         JComboBox comboBox = new JComboBox(comboBoxItems);
         comboBox.setSelectedIndex(colorIndex);
         colorPane.add(comboBox);

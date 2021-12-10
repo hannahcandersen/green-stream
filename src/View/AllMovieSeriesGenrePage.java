@@ -11,7 +11,6 @@ import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 
 public class AllMovieSeriesGenrePage extends View {
-
     private AllMovieSeriesGenrePageController allMovieSeriesGenrePageController;
     private String[] genreList; // listen med de forskellige genrer
     private String genre;
@@ -127,30 +126,25 @@ public class AllMovieSeriesGenrePage extends View {
 
                         // Tilføjer Mediet til rækken
                         row.add(plakat);
+                        row.setBorder(new EmptyBorder(10, 0, 10, 0));
                         // Tæller counter op så der er styr på hvor mange film der er tilføjet
                         counter++;
                     }
                 }
                 row.setBackground(backgroundGreen);
+                row.setBorder(new EmptyBorder(10, 0, 10, 0));
+
                 // Tilføjer rækken til listen af rækker
                 col.add(row);
             }
         }
         // Gør sådan at man kan scrolle i listen med rækker
         JScrollPane scrollPane = new JScrollPane(col);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
         scrollPane.setBackground(backgroundGreen);
         panel.add(scrollPane);
 
     }
 }
-
-
-
-
-
-
-
-
-
 
 

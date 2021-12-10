@@ -41,7 +41,8 @@ public class SearchPage extends View {
          JTextField searchTextField = new JTextField();
          JButton searchB = new JButton("Søg");
          searchTextField.setPreferredSize(new Dimension(500, 40));
-
+         searchB.setBorder(new EmptyBorder(12, 30, 11, 30));
+         //searchTextField.setBorder(BorderFactory.createMatteBorder(                 -1, -1, -1, -1, icon));
 
          // Bruger borderlayout da vi ønsker at kunne have søgefeltet i midten.
          panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
@@ -107,6 +108,7 @@ public class SearchPage extends View {
                          //plakat.addActionListener(e -> );
                          // Tilføjer Mediet til rækken
                          row.add(plakat);
+                         row.setBorder(new EmptyBorder(10, 0, 10, 0));
                          // Tæller counter op så der er styr på hvor mange film der er tilføjet
                          counter++;
                      }
@@ -118,6 +120,7 @@ public class SearchPage extends View {
          }
          // Gør såden at man kan scrolle i listen med rækker
          JScrollPane scrollPane = new JScrollPane(col);
+         scrollPane.getVerticalScrollBar().setUnitIncrement(16);
          panel.add(scrollPane);
 
      }
