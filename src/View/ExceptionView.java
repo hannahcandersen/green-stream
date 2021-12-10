@@ -15,6 +15,7 @@ public class ExceptionView {
     private void buildPage() {
         JFrame exceptionFrame = new JFrame("Fejlbesked");
         exceptionFrame.setSize(600, 200);
+        exceptionFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
