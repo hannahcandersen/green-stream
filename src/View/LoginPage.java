@@ -64,7 +64,7 @@ public class LoginPage extends View{
             plusButton.addActionListener(e -> loginPageController.addProfileActionListener());
         }
 
-    // Sætter Brackgrund color
+    // Sætter Backgrund color
         bottomPanel.setBackground(limeGreen);
         topPanel.setBackground(limeGreen);
 
