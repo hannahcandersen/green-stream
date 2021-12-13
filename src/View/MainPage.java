@@ -36,7 +36,7 @@ public class MainPage extends View {
     }
 
     /**
-     *
+     * Bygger sidens visuelle indhold
      * @param head - Titlen på selve kategorien listen af medierne
      * @param icon0 - Første medie i listen af kategorierne
      * @param icon1 - Andet medie i listen af kategoriern
