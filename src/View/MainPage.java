@@ -1,99 +1,99 @@
 package View;
 
 import Controller.MainPageController;
-import Model.Media;
-import Model.StreamingService;
 
 import javax.swing.*;
-import javax.swing.border.Border;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.util.ArrayList;
 
 public class MainPage extends View {
-    private JPanel mainPanel;
-    private ImageIcon poster;
-    private JButton titel;
-    private JPanel endPane;
-    private JScrollPane scrollPane;
-    private JPanel themePanel;
-
     MainPageController mainPageController;
+    private JPanel posterPanel, categoryPanel, mainPanel;
+    private JLabel bigLabel, categoryLable;
+    private ImageIcon poster, bigPic;
+    private JButton posterButton;
+    private JScrollPane scrollPane;
 
     /**
-     * Vi har på startsiden valgt nogle overskrifter at vise film under, f.eks. Netop Tilføjet.
-     * under disse overskrifter viser vi seks film.
+     * Instantiere controlleren og bygger siden
+     * @param mainPageController  - Sidens controller
      */
     public MainPage(MainPageController mainPageController){
-
         this.mainPageController = mainPageController;
-
         menubarVisible = true;
-        panel.setLayout(new BorderLayout());
-        this.endPane = new JPanel(new GridLayout(5, 1));
-        endPane.setBorder(new EmptyBorder(40, 0, 0, 0));
-        endPane.setBackground(backgroundGreen);
 
-        ImageIcon bigPic = new ImageIcon("Pictures/inter.png");
+        // Add det store reklame billede
+        bigPic = new ImageIcon(new ImageIcon("Pictures/inter.png").getImage().getScaledInstance(800, 300, Image.SCALE_DEFAULT));
+        bigLabel = new JLabel(bigPic);
 
-
-        Image image = bigPic.getImage();
-        image = image.getScaledInstance(800, 300,  java.awt.Image.SCALE_SMOOTH);
-        bigPic = new ImageIcon(image);
-
-        JLabel bigLabel = new JLabel(bigPic);
-        //bigLabel.setSize(500, 100);
-
-        endPane.add(bigLabel);
+    //  Opretter mainPanel
+        mainPanel = new JPanel(new GridLayout(5, 1));
+        mainPanel.setBorder(new EmptyBorder(40, 0, 0, 0));
+        mainPanel.setBackground(backgroundGreen);
+        mainPanel.add(bigLabel);
 
        addMedia();
-
-
-        this.scrollPane = new JScrollPane(endPane);
-        scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-        panel.setBackground(backgroundGreen);
-        panel.add(scrollPane);
-
-
-
     }
 
-    public void main(String head, String icon0, String icon1, String icon2, String icon3,
-                     String icon4, String icon5, String icon6){
+    /**
+     * Bygger sidens visuelle indhold
+     * @param head - Titlen på selve kategorien listen af medierne
+     * @param icon0 - Første medie i listen af kategorierne
+     * @param icon1 - Andet medie i listen af kategoriern
+     * @param icon2 - Tredje medie i listen af kategoriern
+     * @param icon3 - Fjerde medie i listen af kategoriern
+     * @param icon4 - Femte medie i listen af kategoriern
+     * @param icon5 - Sjette medie i listen af kategoriern
+     * @param icon6 - Syvende medie i listen af kategoriern
+     */
+    public void buildMainPage(String head, String icon0, String icon1, String icon2, String icon3, String icon4, String icon5, String icon6){
+    // Opretter categoryPanel
+        categoryPanel = new JPanel(new BorderLayout());
+        //Kategorierne for navne for `head`
+        categoryLable = new JLabel(head, SwingConstants.CENTER);
+        categoryLable.setFont(new Font("Serif", Font.BOLD, 30));
+        categoryLable.setBorder(new EmptyBorder(20, 0, 0, 0));
 
-        mainPanel = new JPanel();
-        mainPanel.setBackground(backgroundGreen);
-
-
-        //Netop Tilføje List
-        JLabel header = new JLabel(head, SwingConstants.CENTER);
-        header.setBackground(backgroundGreen);
-        header.setFont(new Font("Serif", Font.BOLD, 30));
-        header.setBorder(new EmptyBorder(20, 0, 0, 0));
-
+    // Opretter posterPanel
+        posterPanel = new JPanel();
+        // Tilføjer posterne til knapper via et Array
         String[] iconArr = {icon0, icon1, icon2, icon3, icon4, icon5, icon6};
-
         for (String icon: iconArr) {
             poster = new ImageIcon(icon);
-            this.titel = new JButton(poster);
-            titel.setContentAreaFilled(false);
-            titel.setBackground(limeGreen);
-            titel.setBorder(new EmptyBorder(0, 0, 0, 0));
-            titel.addActionListener(e -> mainPageController.showMediaActionListener(icon));
-            mainPanel.add(this.titel);
+            posterButton = new JButton(poster);
+            posterButton.setContentAreaFilled(false);
+            posterButton.setBackground(limeGreen);
+            posterButton.setBorder(new EmptyBorder(0, 0, 0, 0));
+            posterButton.addActionListener(e -> mainPageController.showMediaActionListener(icon));
+            posterPanel.add(posterButton);
         }
+    // Sætter Backgrund color
+        posterPanel.setBackground(backgroundGreen);
+        categoryLable.setBackground(backgroundGreen);
+        categoryPanel.setBackground(backgroundGreen);
 
-        themePanel = new JPanel(new BorderLayout());
-        themePanel.setBackground(backgroundGreen);
-        themePanel.add(header, BorderLayout.NORTH);
-        themePanel.add(mainPanel, BorderLayout.CENTER);
+    // Sammensætter categoryPanel
+        categoryPanel.add(categoryLable, BorderLayout.NORTH);
+        categoryPanel.add(posterPanel, BorderLayout.CENTER);
 
-        endPane.add(this.themePanel);
+        mainPanel.add(categoryPanel);
 
+    // Sammensætter til et panel
+        panel.setLayout(new BorderLayout());
+        panel.add(mainPanel);
+
+        // Laver scroll panen
+        scrollPane = new JScrollPane(mainPanel);
+        scrollPane.getVerticalScrollBar().setUnitIncrement(16); // Sætter hastigheden for hvor hurtig man kan scrolle
+        panel.setBackground(backgroundGreen);
+        panel.add(scrollPane);
     }
 
+    /**
+     * Indeholder daten for alle filmenes/seriernes posters
+     */
     public void addMedia(){
-        main("Populære",
+        buildMainPage("Populære",
                 "resources/filmplakater/Taxi Driver.jpg",
                 "resources/filmplakater/Good Will Hunting.jpg",
                 "resources/filmplakater/West Side Story.jpg",
@@ -102,8 +102,7 @@ public class MainPage extends View {
                 "resources/filmplakater/Singin' In The Rain.jpg",
                 "resources/Serierforsider/Sex & The City.jpg");
 
-
-        main("Medrivende indhold",
+        buildMainPage("Medrivende indhold",
                 "resources/filmplakater/Forrest Gump.jpg",
                 "resources/filmplakater/Jurassic Park.jpg",
                 "resources/filmplakater/Pulp Fiction.jpg",
@@ -112,8 +111,7 @@ public class MainPage extends View {
                 "resources/Serierforsider/GLOW.jpg",
                 "resources/Serierforsider/Game Of Thrones.jpg");
 
-
-        main("Netop Tilføjet",
+        buildMainPage("Netop Tilføjet",
                 "resources/filmplakater/ET.jpg",
                 "resources/filmplakater/Jaws.jpg",
                 "resources/Serierforsider/24.jpg",
@@ -122,7 +120,7 @@ public class MainPage extends View {
                 "resources/Serierforsider/Billions.jpg",
                 "resources/Serierforsider/Sons Of Anarchy.jpg");
 
-        main("GreenStream and chill",
+        buildMainPage("GreenStream and chill",
                 "resources/filmplakater/Casablanca.jpg",
                 "resources/filmplakater/Gone With The Wind.jpg",
                 "resources/Serierforsider/Pride And Prejudice.jpg",
@@ -130,12 +128,6 @@ public class MainPage extends View {
                 "resources/filmplakater/Titanic.jpg",
                 "resources/Serierforsider/Smallville.jpg",
                 "resources/filmplakater/Wuthering Heights.jpg");
-
     }
-
-        //main("Silkes forslag")
-        //main("Hannahs forslag")
-        //main("Marvel")
-
 }
 

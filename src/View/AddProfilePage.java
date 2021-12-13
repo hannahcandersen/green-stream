@@ -32,7 +32,7 @@ public class AddProfilePage extends View {
      */
     public AddProfilePage(int colorIndex, String username, AddProfilePageController addProfilePageController){
         this.addProfilePageController = addProfilePageController;
-        buildPage(colorIndex, username);
+        buildAddProfilePage(colorIndex, username);
     }
 
     /**
@@ -40,7 +40,7 @@ public class AddProfilePage extends View {
      * @param colorIndex - Indekset der bestemmer hvilken farve der står på comboboksen
      * @param usernameString - Navnet der står i tekstfeltet, som default er det "Brugernavn"
      */
-    public void buildPage(int colorIndex, String usernameString) {
+    public void buildAddProfilePage(int colorIndex, String usernameString) {
     // Opretter colorPane
         // comboBox og det tilhørende billede
         colorPane = new JPanel(new FlowLayout());
@@ -82,7 +82,7 @@ public class AddProfilePage extends View {
         mainPanel.add(usernamePanel);
         mainPanel.add(buttonPane);
 
-    // Sætter Brackgrund color
+    // Sætter Backgrund color
         colorPane.setBackground(limeGreen);
         usernamePanel.setBackground(limeGreen);
         buttonPane.setBackground(limeGreen);
