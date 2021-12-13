@@ -28,27 +28,27 @@ public class SeriesPage extends View implements ItemListener {
 
     public void buildPage() {
         //BorderLayout NORTH
-        titelPanel = new JPanel();
+        titelPanel = new JPanel(new BorderLayout());
+        JPanel t = new JPanel();
+        t.setBackground(darkerGreen);
         titel = new JLabel(serie.getName());
         titel.setFont(new Font("Serif", Font.BOLD, 40));
-        titelPanel.add(titel);
+        t.add(titel);
+        titelPanel.add(t, BorderLayout.NORTH);
 
-        //BorderLayout WEST
-        rigthPanel = new JPanel();
-        close = new JButton("X");
+        JPanel c = new JPanel(new BorderLayout());
+        c.setBackground(limeGreen);
+        ImageIcon back = new ImageIcon("Pictures/back.png");
+        Image image = back.getImage();
+        image = image.getScaledInstance(70, 70,  java.awt.Image.SCALE_SMOOTH);
+        back = new ImageIcon(image);
+        close = new JButton(back);
         close.addActionListener(e -> seriesPageController.goBackActionListener());
         close.setFont(new Font("Serif", Font.BOLD, 30));
         close.setContentAreaFilled(false);              // knappen bliver transperent
         close.setBorder(new EmptyBorder(20, 20, 0, 0));
-        rigthPanel.add(close);
-
-        rigthFill = new JLabel("                                    ");
-        rigthPanel.add(rigthFill);
-
-        //BorderLayout EAST
-        leftPanel = new JPanel();
-        leftFill = new JLabel("          ");
-        leftPanel.add(leftFill);
+        c.add(close, BorderLayout.WEST);
+        titelPanel.add(c, BorderLayout.SOUTH);
 
         //BorderLayout Center
         centerPanel = new JPanel();
@@ -179,22 +179,18 @@ public class SeriesPage extends View implements ItemListener {
         centerPanel.add(resumeRigthCenter);
 
         // Backgrund farve
-        titelPanel.setBackground(darkerGreen);
+        //titelPanel.setBackground(darkerGreen);
         imageLeftCenter.setBackground(limeGreen);
         infoCenterCenter.setBackground(limeGreen);
         resumeRigthCenter.setBackground(limeGreen);
-        rigthPanel.setBackground(limeGreen);
         centerPanel.setBackground(limeGreen);
-        leftPanel.setBackground(limeGreen);
         panel.setBackground(limeGreen);
 
         // Opsæt Borderlayout
         BorderLayoutPanel = new JPanel(new BorderLayout());
 
         BorderLayoutPanel.add(titelPanel, BorderLayout.NORTH);
-        BorderLayoutPanel.add(rigthPanel, BorderLayout.WEST);
         BorderLayoutPanel.add(centerPanel, BorderLayout.CENTER);
-        BorderLayoutPanel.add(leftPanel, BorderLayout.EAST);
 
         panel.add(BorderLayoutPanel);
     }
