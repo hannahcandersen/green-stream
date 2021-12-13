@@ -35,7 +35,6 @@ public class Controller {
         reader = new Reader(streamingService);
         boolean succesfulReading = reader.fillCollectionsSuccesFull();
 
-
         // Den eneste frame vi bruger
         JFrame theOnlyFrame = new JFrame();
 
