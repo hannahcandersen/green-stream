@@ -65,14 +65,6 @@ public class StreamingService {
         return mediaReturn;
     }
 
-    public ArrayList<Media> movieNameSearch(String genre) {
-        return nameSearch(genre, movies);
-    }
-
-    public ArrayList<Media> seriesNameSearch(String genre) {
-        return nameSearch(genre, series);
-    }
-
     private ArrayList<Media> genreSearch(String genre, ArrayList<Media> media) {
         ArrayList<Media> mediaReturn = new ArrayList<>();
         for (Media m: media) {
@@ -147,7 +139,6 @@ public class StreamingService {
     public Profile getCurrentProfile() {
         return profiles[currentProfileNumber];
     }
-
 
     // til test
     public void listAllMovies() {
