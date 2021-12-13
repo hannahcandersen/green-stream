@@ -6,6 +6,10 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
+/**
+ * Denne klasse er en subklasse af View klassen.
+ * Den repræsenterer siden som er hovedsiden i streaming tjenesten
+ */
 public class MainPage extends View {
     MainPageController mainPageController;
     private JPanel posterPanel, categoryPanel, mainPanel;

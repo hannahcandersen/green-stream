@@ -7,7 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Denne klasse er en subklasse af View klassen. Den repræsenterer siden som kan tilføje brugere til listen af brugere
+ * Denne klasse er en subklasse af View klassen.
+ * Den repræsenterer siden som kan tilføje brugere til listen af brugere
  */
 public class AddProfilePage extends View {
     private AddProfilePageController addProfilePageController;

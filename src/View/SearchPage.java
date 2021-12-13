@@ -12,33 +12,29 @@ import java.util.ArrayList;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Denne klasse er en subklasse til View klassen. SearchPage skal have et søgefelt og en søgeknap.
- *  så har den også en container til knappen og søgefeltet.
+ * Denne klasse er en subklasse af View klassen.
+ * Den repræsenterer siden man søger i
  */
 public class SearchPage extends View {
-
-    // Listen af film og serier der skal vises, hvis der ikke er søgt på noget er den tom.
-    private ArrayList<Media> mediaList;
-
-    // SearchPage controller
+    private ArrayList<Media> mediaList; // Listen er tom, før der bliver sat film/serier ind
     private SearchPageController searchPageController;
 
     /**
-     * Instantiere felterne og bygger siden
+     * Instantiere controlleren og bygger siden
      * @param mediaList - Listen af film og serier der skal vises, hvis der ikke er søgt på noget er den tom
-     * @param searchPageController - SearchPage controller
+     * @param searchPageController - Sidens controller
      */
      public SearchPage(ArrayList<Media> mediaList, SearchPageController searchPageController) {
          this.mediaList = mediaList;
          this.searchPageController = searchPageController;
+         menubarVisible = true;
          makeSearchPage();
      }
 
-     // Bygger sidens visuelle indhold
-     private void makeSearchPage() {
-
-         // Da den skal kunne vise menubaren selvom man er i søgefeltet.
-         menubarVisible = true;
+    /**
+     * Bygger sidens visuelle indhold
+     */
+    private void makeSearchPage() {
          JTextField searchTextField = new JTextField();
          JButton searchB = new JButton("Søg");
          searchTextField.setPreferredSize(new Dimension(500, 40));

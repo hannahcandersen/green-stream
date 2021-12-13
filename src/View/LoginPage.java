@@ -8,7 +8,8 @@ import java.awt.*;
 import javax.swing.border.EmptyBorder;
 
 /**
- * Denne klasse er en subklasse af View klassen. Den repræsenterer siden som kan viser listen a brugere
+ * Denne klasse er en subklasse af View klassen.
+ * Den repræsenterer siden som kan viser listen af brugere
  */
 public class LoginPage extends View{
     private LoginPageController loginPageController;

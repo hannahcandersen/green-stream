@@ -9,17 +9,25 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 
+/**
+ * Denne klasse er en subklasse af View klassen.
+ * Den repræsenterer siden ved valg af en serie
+ */
 public class SeriesPage extends View implements ItemListener {
-    private ImageIcon seriePoster;
+    private ImageIcon backIcon, seriePoster;
     private SeriesPageController seriesPageController;
-    private JPanel titelPanel, rigthPanel, leftPanel, centerPanel, imageLeftCenter, infoCenterCenter, resumeRigthCenter, BorderLayoutPanel;
-    private JLabel titel, rigthFill, leftFill, serieLabel, seasontext, episodetext, genreLabel, yearLabel, ratingLabel, resumeTitelLabel;
+    private JPanel topPanel, titelPanel, closePanel, centerPanel, imageLeftCenter, infoCenterCenter, resumeRigthCenter, BorderLayoutPanel;
+    private JLabel titel, serieLabel, seasontext, episodetext, genreLabel, yearLabel, ratingLabel, resumeTitelLabel;
     private JButton close, play, minList;
     static JComboBox valgSeason, valgEpisode;
     private JTextArea resumeArea;
-
     Serie serie;
 
+    /**
+     * Instantiere controlleren og bygger siden
+     * @param seriesPageController - Sidens controller
+     * @param serie - Kan hente dataen fra ´Serie`
+     */
     public SeriesPage(SeriesPageController seriesPageController, Serie serie){
         this.seriesPageController = seriesPageController;
         this.serie = serie;
@@ -27,33 +35,31 @@ public class SeriesPage extends View implements ItemListener {
     }
 
     public void buildPage() {
-        //BorderLayout NORTH
-        titelPanel = new JPanel(new BorderLayout());
-        JPanel t = new JPanel();
-        t.setBackground(darkerGreen);
+    // Opretter topPanel - BorderLayout NORTH
+        topPanel = new JPanel(new BorderLayout());
+        //Opretter titelPanel
+        titelPanel = new JPanel();
         titel = new JLabel(serie.getName());
         titel.setFont(new Font("Serif", Font.BOLD, 40));
-        t.add(titel);
-        titelPanel.add(t, BorderLayout.NORTH);
+        titelPanel.add(titel);
+        topPanel.add(titelPanel, BorderLayout.NORTH);
 
-        JPanel c = new JPanel(new BorderLayout());
-        c.setBackground(limeGreen);
-        ImageIcon back = new ImageIcon("Pictures/back.png");
-        Image image = back.getImage();
-        image = image.getScaledInstance(70, 70,  java.awt.Image.SCALE_SMOOTH);
-        back = new ImageIcon(image);
-        close = new JButton(back);
+        //Opretter closePanel
+        closePanel = new JPanel(new BorderLayout());
+        backIcon = new ImageIcon(new ImageIcon("Pictures/back.png").getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH));
+        close = new JButton(backIcon);
         close.addActionListener(e -> seriesPageController.goBackActionListener());
         close.setFont(new Font("Serif", Font.BOLD, 30));
         close.setContentAreaFilled(false);              // knappen bliver transperent
         close.setBorder(new EmptyBorder(20, 20, 0, 0));
-        c.add(close, BorderLayout.WEST);
-        titelPanel.add(c, BorderLayout.SOUTH);
+        closePanel.add(close, BorderLayout.WEST);
 
-        //BorderLayout Center
+        topPanel.add(closePanel, BorderLayout.SOUTH);
+
+    // BorderLayout Center
         centerPanel = new JPanel();
 
-        //Billede/vælg Left Center
+        // Billede Left Center
         imageLeftCenter = new JPanel();
         imageLeftCenter.setBorder(new EmptyBorder(15, 15, 0, 15));
         seriePoster = new ImageIcon(new ImageIcon(serie.getPicture()).getImage().getScaledInstance(250, 400, Image.SCALE_DEFAULT));
@@ -61,42 +67,34 @@ public class SeriesPage extends View implements ItemListener {
         serieLabel.setIcon(seriePoster);
         serieLabel.setBorder(new EmptyBorder(0, 0, 10, 0));
 
-        Integer[] s = new Integer[serie.getSeasons()];
+        // Laver et Array med det antal sæsoner serien har
+        Integer[] season = new Integer[serie.getSeasons()];
         for (int i = 0; i < serie.getSeasons(); i++) {
-            s[i] = (i + 1);
+            season[i] = (i + 1);
         }
 
-        Integer[] epi = new Integer[serie.getEpisodes().get(0)];
+        // Laver et Array med det antal episodes serien har
+        Integer[] episode = new Integer[serie.getEpisodes().get(0)];
         for (int i = 0; i < serie.getEpisodes().get(0); i++) {
-            epi[i] = (i + 1);
+            episode[i] = (i + 1);
         }
 
-        // season combobox
-        //String Seasons[] = {"Season 1", "Season 2", "Season 3", "Season 4"};
-        valgSeason = new JComboBox(s);
+        // Season combobox
+        valgSeason = new JComboBox(season);
         valgSeason.setSize(30, 60);
         valgSeason.addItemListener(this);
         seasontext = new JLabel("Vælg sæson ");
         valgSeason.setMaximumRowCount(5);
-        //seasontext.setForeground(Color.red);
 
-        // episode combobox
-        //String[] episode = {"Episode 1", "Episode 2", "Episode 3", "Episode 4", "Episode 5", "Episode 6"};
-
-        valgEpisode = new JComboBox(epi);
+        // Episode combobox
+        valgEpisode = new JComboBox(episode);
         valgEpisode.setSize(30, 60);
         valgEpisode.addItemListener(this);
         valgEpisode.setMaximumRowCount(5);
         episodetext = new JLabel("Vælg episode");
         episodetext.setBorder(new EmptyBorder(5, 0, 0, 0));
 
-        //episodetext.setForeground(Color.red);
-
-        centerPanel.setBorder(new EmptyBorder(15, 15, 0, 15));
-
-        //centerPanel.setBorder(new EmptyBorder(40, 40, 40, 40));
-        //centerPanel.setLayout(new BoxLayout(centerPanel, BoxLayout.PAGE_AXIS));
-
+    // Sammensætning af imageLeftCenter
         imageLeftCenter.add(serieLabel);
         imageLeftCenter.add(seasontext);
         imageLeftCenter.add(valgSeason);
@@ -105,19 +103,17 @@ public class SeriesPage extends View implements ItemListener {
         imageLeftCenter.setBorder(new EmptyBorder(40, 40, 40, 40));
         imageLeftCenter.setLayout(new BoxLayout(imageLeftCenter, BoxLayout.PAGE_AXIS));
 
-        //Info Center Center
+    //Info Center Center
         infoCenterCenter = new JPanel();
         // Play button
         play  = new JButton("Play 1, 1");
         play.setSize(800, 60); // size virker ikke
         play.setContentAreaFilled(false);
         play.addActionListener(e -> seriesPageController.playActionListener());
-        //play.setBorder(new EmptyBorder(20, 20, 0, 20));
         infoCenterCenter.add(play);
-
         infoCenterCenter.add(new JLabel(" "));
 
-        // minList button
+        // MinList button
         if (seriesPageController.getCurrentProfile().getMyList().contains(serie)) {
             minList = new JButton("Fjern fra min liste");
             minList.setSize(150, 60);
@@ -132,6 +128,7 @@ public class SeriesPage extends View implements ItemListener {
             infoCenterCenter.add(minList);
         }
 
+        // Adder alle mediets genre til en string, så den kan bliver brugt af "genreLabel"
         String genre = "";
         for (int i = 0; i < serie.getGenre().length; i++) {
             if (i != 0) {
@@ -140,13 +137,13 @@ public class SeriesPage extends View implements ItemListener {
             genre += serie.getGenre()[i];
         }
 
+        // Adder dataen om fra mediet til Labels
         genreLabel = new JLabel("Genre: " + genre);
         genreLabel.setFont(new Font("Serif", Font.PLAIN, 20));
         yearLabel = new JLabel("Udgivelsesår: " + serie.getYear());
         yearLabel.setFont(new Font("Serif", Font.PLAIN, 20));
         ratingLabel = new JLabel("Rating: " + serie.getRating());
         ratingLabel.setFont(new Font("Serif", Font.PLAIN, 20));
-
         infoCenterCenter.add(new JLabel(" "));
         infoCenterCenter.add(genreLabel);
         infoCenterCenter.add(yearLabel);
@@ -154,7 +151,7 @@ public class SeriesPage extends View implements ItemListener {
         infoCenterCenter.setBorder(new EmptyBorder(0, 90, 20, 0));
         infoCenterCenter.setLayout(new BoxLayout(infoCenterCenter, BoxLayout.PAGE_AXIS));
 
-        //Resume Rigth Center
+    //Resume Rigth Center
         resumeRigthCenter = new JPanel();
         resumeTitelLabel = new JLabel("Resume: ");
         resumeTitelLabel.setFont(new Font("Serif", Font.BOLD, 20));
@@ -173,13 +170,14 @@ public class SeriesPage extends View implements ItemListener {
         resumeRigthCenter.setBorder(new EmptyBorder(40, 80, 40, 40));
         resumeRigthCenter.setLayout(new BoxLayout(resumeRigthCenter, BoxLayout.PAGE_AXIS));
 
-        // kombiner alle tre centerPanel
+        // Sammensætning af alle tre centerPanel
         centerPanel.add(imageLeftCenter);
         centerPanel.add(infoCenterCenter);
         centerPanel.add(resumeRigthCenter);
 
         // Backgrund farve
-        //titelPanel.setBackground(darkerGreen);
+        titelPanel.setBackground(darkerGreen);
+        closePanel.setBackground(limeGreen);
         imageLeftCenter.setBackground(limeGreen);
         infoCenterCenter.setBackground(limeGreen);
         resumeRigthCenter.setBackground(limeGreen);
@@ -188,13 +186,16 @@ public class SeriesPage extends View implements ItemListener {
 
         // Opsæt Borderlayout
         BorderLayoutPanel = new JPanel(new BorderLayout());
-
-        BorderLayoutPanel.add(titelPanel, BorderLayout.NORTH);
+        BorderLayoutPanel.add(topPanel, BorderLayout.NORTH);
         BorderLayoutPanel.add(centerPanel, BorderLayout.CENTER);
 
         panel.add(BorderLayoutPanel);
     }
 
+    /**
+     * Tager og ændre siden efter sæson/episode comboboxen er ændret
+     * @param e - Ser efter om comboboxen bliver ændret
+     */
     @Override
     public void itemStateChanged(ItemEvent e) {
         if (e.getSource() == valgSeason) {
@@ -202,9 +203,9 @@ public class SeriesPage extends View implements ItemListener {
             for (int i = 0; i < serie.getEpisodes().get(((int)valgSeason.getSelectedItem())-1); i++) {
                 valgEpisode.addItem((i + 1));
             }
-
             play.setText("Play " + valgSeason.getSelectedItem() + ", " + valgEpisode.getSelectedItem());
         }
+
         if (e.getSource() == valgEpisode) {
             play.setText("Play " + valgSeason.getSelectedItem() + ", " + valgEpisode.getSelectedItem());
         }

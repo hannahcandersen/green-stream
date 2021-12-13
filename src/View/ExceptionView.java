@@ -3,15 +3,24 @@ package View;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Den side repræsenterer pop op vinduerne, der popper op ved et exception
+ */
 public class ExceptionView {
-
     String exceptionMessage;
 
+    /**
+     *
+     * @param exception
+     */
     public ExceptionView(String exception) {
         this.exceptionMessage = exception;
         buildPage();
     }
 
+    /**
+     * Bygger pop op vindiet
+     */
     private void buildPage() {
         JFrame exceptionFrame = new JFrame("Fejlbesked");
         exceptionFrame.setSize(600, 200);
