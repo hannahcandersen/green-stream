@@ -31,7 +31,7 @@ public class Menubar {
     private MenubarController menubarController;
 
     /**
-     * Instantiere felter der skal bruges
+     * Instantierer felter der skal bruges
      * @param genreList - Listen med genre
      * @param profilePicture - Profilbilledet (træet) for den bruger der er logget ind
      * @param menubarController - menubarens controller
