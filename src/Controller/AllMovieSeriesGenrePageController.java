@@ -34,7 +34,7 @@ public class AllMovieSeriesGenrePageController {
         controller.getSceneBuilder().loadPage(new AllMovieSeriesGenrePage(controller.getStreamingService().getGenreList(), genre, "Serier", controller.getStreamingService().seriesGenreSearch(genre), "Serier", controller.getAllMovieSeriesGenrePageController()));
     }
 
-    public void genreActionListener(String s, String genre) {
+    public void genreActionListener(String genre, String category) {
         controller.getSceneBuilder().loadPage(new AllMovieSeriesGenrePage(controller.getStreamingService().getGenreList(), genre, "Film og serier", controller.getStreamingService().allGenreSearch(genre), genre, controller.getAllMovieSeriesGenrePageController()));
     }
 
