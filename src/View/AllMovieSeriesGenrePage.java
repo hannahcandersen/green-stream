@@ -48,7 +48,7 @@ public class AllMovieSeriesGenrePage extends View {
 
     /**
      * Bygger sidens visuelle indhold
-     * @param mediaList
+     * @param mediaList - Listen af film og serier der skal vises
      */
     public void buildPage(ArrayList<Media> mediaList) {
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
