@@ -28,7 +28,7 @@ public class Serie extends Media {
     }
 
     /**
-     * Klassen retunere mediets sæsoner
+     * Konstruktøren retunere mediets sæsoner
      * @return mediets sæsoner
      */
     public int getSeasons() {
@@ -36,7 +36,7 @@ public class Serie extends Media {
     }
 
     /**
-     * Klassen retunere mediets episoder
+     * Konstruktøren retunere mediets episoder
      * @return mediets episoner
      */
     public ArrayList<Integer> getEpisodes() {

@@ -6,13 +6,10 @@ import java.io.File;
 import java.util.Scanner;
 import java.util.ArrayList;
 
-// reader
 public class Reader {
-
     StreamingService streamingService;
 
     public Reader(StreamingService streamingService) {
-
         this.streamingService = streamingService;
         //fillCollections();
     }
@@ -20,13 +17,12 @@ public class Reader {
     public boolean fillCollectionsSuccesFull() {
         boolean movies = fillMovies();
         boolean series = fillSeries();
+
         if (movies && series) {
             return  true;
-        }
-        else {
+        } else {
             return false;
         }
-
     }
 
     public boolean fillMovies() {
@@ -121,11 +117,9 @@ public class Reader {
         // et genereisk catch statement der fanger alle fejl og udskriver fejl i terminalen
         } catch (Exception e) {
 
-            System.out.println("Der skete en fejl med at indlæse serier fra txt filer");
+            // System.out.println("Der skete en fejl med at indlæse serier fra txt filer");
             new ExceptionView("Der skete en fejl med indlæsningen af serier. Prøv at genstarte programmet");
         }
         return false;
     }
-
-
 }

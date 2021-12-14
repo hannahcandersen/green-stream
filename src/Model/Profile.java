@@ -17,9 +17,6 @@ public class Profile {
         this.picture = picture;
     }
 
-    public void setName(String newName){
-        this.name = newName;
-    }
     public void setPicture(String newPicture){
          this.picture = newPicture;
     }
