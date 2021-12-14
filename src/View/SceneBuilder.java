@@ -17,6 +17,10 @@ public class SceneBuilder {
     // Skærmens dimenstioner, højde og bredte
     private final Dimension screenDim = Toolkit.getDefaultToolkit().getScreenSize();
 
+    /**
+     * Bygger programmets frame
+     * @param frame - Selve vindiet hele vores problem køre i
+     */
     public SceneBuilder(JFrame frame) {
         // Får framet som parameter når Scenebuilder bliver instantieret i Controlleren
         theOnlyFrame = frame;
@@ -26,17 +30,21 @@ public class SceneBuilder {
         theOnlyFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
-    // Instaniterer menubaren når den skal bruges, dvs første gang vi går ind på mainPage
+    // , dvs første gang vi går ind på mainPage
+
+    /**
+     * Instaniterer menubaren når den skal bruges
+     * @param menubar - Henter menubar dataen
+     */
     public void makeMenuBar(JMenuBar menubar) {
         this.menuBar = menubar;
     }
 
     /**
      * Metoden der skifter sidens indhold ud med page indhold
-     * @param page - siden der skal vises
+     * @param page - Siden der skal vises
      */
     public void loadPage(View page) {
-
         // Fjerner alt fra framet
         theOnlyFrame.getContentPane().removeAll();
         // Sætter det nye indhold på siden
@@ -45,13 +53,11 @@ public class SceneBuilder {
         // Hvis menubaren skal være synlig sættes denne på framet ellers sættes den til null
         if (page.isMenubarVisible()) {
             theOnlyFrame.setJMenuBar(menuBar);
-        }
-        else {
+        } else {
             theOnlyFrame.setJMenuBar(null);
         }
 
-        // sætter framet til at være synligt
+        // Sætter framet til at være synligt
         theOnlyFrame.setVisible(true);
     }
-
 }
