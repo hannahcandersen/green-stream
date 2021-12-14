@@ -10,15 +10,31 @@ import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.util.ArrayList;
 
+/**
+ * Denne klasse er en subklasse af View klassen.
+ * Den repræsenterer siden som kan viser film, serier og genre i de forskellige mediere
+ */
 public class AllMovieSeriesGenrePage extends View {
     private AllMovieSeriesGenrePageController allMovieSeriesGenrePageController;
-    private String[] genreList; // listen med de forskellige genrer
+    private String[] genreList;
     private String genre;
     private String category;
     private ArrayList<Media> mediaList;
-    private String pageTitle; // Titlen på siden - om det er film, serier, eller f.eks. crime
+    private String pageTitle;
     static JComboBox comboBox;
+    private JPanel topPanel, col, row;
+    private JLabel headline;
+    private JButton plakat;
 
+    /**
+     * Instantiere controlleren og bygger siden
+     * @param genreList - Er en liste af de forskellige genre
+     * @param genre - Skriver den valgte genre i topPanel
+     * @param category -
+     * @param mediaList -
+     * @param pageTitle -
+     * @param allMovieSeriesGenrePageController - Sidens controller
+     */
     public AllMovieSeriesGenrePage(String[] genreList, String genre, String category, ArrayList<Media> mediaList, String pageTitle, AllMovieSeriesGenrePageController allMovieSeriesGenrePageController) {
         this.genreList = genreList;
         this.genre = genre;
@@ -26,34 +42,35 @@ public class AllMovieSeriesGenrePage extends View {
         this.allMovieSeriesGenrePageController = allMovieSeriesGenrePageController;
         this.pageTitle = pageTitle;
         this.mediaList = mediaList;
-
+        menubarVisible = true;
         buildPage(mediaList);
     }
 
+    /**
+     * Bygger sidens visuelle indhold
+     * @param mediaList
+     */
     public void buildPage(ArrayList<Media> mediaList) {
-        menubarVisible = true;
-
-        // laver et JPanel "topPanel" øverst
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-        JPanel topPanel = new JPanel(new FlowLayout());
+    // Laver et JPanel "topPanel"
+        topPanel = new JPanel(new FlowLayout());
         topPanel.setSize(1000, 10);
 
-        // laver drop down menu og tilføjer til topPanel
+        // Laver drop down menu og tilføjer til topPanel
         comboBox = new JComboBox();
-        comboBox.setEditable(true);
+        comboBox.setEditable(true); // Viser det valgte i comboBoxen
 
-            // hvis man er på siden for film eller serier, tilføjes alle genrer til drop down
+            // Hvis man er på film/serie siden, tilføjes alle genrer til comboBoxen
             if (pageTitle.equals("Film") || pageTitle.equals("Serier")) {
+                // Laver sidens overskrift og tilføjer til topPanel
+                headline = new JLabel(category);
+                headline.setFont(headline.getFont().deriveFont(Font.BOLD, 50));
+                topPanel.add(headline);
 
-                // laver sidens overskrift og tilføjer til topPanel
-                JLabel text = new JLabel(category);
-                text.setFont(text.getFont().deriveFont(Font.BOLD, 50));
-                topPanel.add(text);
-
-                if(genre.equals("")) {
+                // Opsætning af det visuelle i comboBoxen
+                if (genre.equals("")) {
                     comboBox.setSelectedItem("Vælg genre");
-                }
-                else{
+                } else {
                     comboBox.setSelectedItem(genre);
                 }
 
@@ -61,7 +78,7 @@ public class AllMovieSeriesGenrePage extends View {
                     comboBox.addItem(genreName);
                 }
 
-                // tilføjer item listeners til film og seriers drop down, der får siden til at skifte til den rigtige side
+                // Item listeners til comboBoxen, så der kan skifte til den rigtige side ud fra medieret
                 comboBox.addItemListener(e -> {
                     if (e.getStateChange() == ItemEvent.SELECTED) {
                         String selectedGenre = (String) comboBox.getSelectedItem();
@@ -73,26 +90,23 @@ public class AllMovieSeriesGenrePage extends View {
                         }
                     }
                 });
-            }
-            // hvis man ikke er på siden for film og serier, er man på siden for genrer. tilføjer drop down til genrer med kategorierne alle, film og serier
-            else {
+            // Hvis man gå ind på genrer siden
+            } else {
+                // ComboBoxens kategorier
                 comboBox.addItem("Film og serier");
                 comboBox.addItem("Film");
                 comboBox.addItem("Serier");
 
-                // laver sidens overskrift og tilføjer til topPanel
-                JLabel text = new JLabel(genre);
-                text.setFont(text.getFont().deriveFont(Font.BOLD, 50));
-                topPanel.add(text);
-
+                // Laver sidens overskrift og tilføjer til topPanel
+                headline = new JLabel(genre);
+                headline.setFont(headline.getFont().deriveFont(Font.BOLD, 50));
+                topPanel.add(headline);
                 comboBox.setSelectedItem(category);
 
-
-                // tilføjer item listeners til genres drop down, der får siden til at skifte til den rigtige side
+                // Item listeners til comboBoxen, så der kan skifte til den rigtige side ud fra medieret
                 comboBox.addItemListener(e -> {
                     if (e.getStateChange() == ItemEvent.SELECTED) {
                         String selectedCategory = (String) comboBox.getSelectedItem();
-
                         if (selectedCategory.equals("Film og serier")) {
                             allMovieSeriesGenrePageController.genreActionListener(genre, selectedCategory);
                         }
@@ -106,59 +120,55 @@ public class AllMovieSeriesGenrePage extends View {
                 });
             }
 
-            //tilføjer comboBox til panel
+            // Tilføjer comboBox til topPanel
             comboBox.setBackground(backgroundGreen);
             comboBox.setEditable(false);
             topPanel.add(comboBox);
 
-            //tilføjer topPanel til panel
+        // Tilføjer topPanel til panel
             topPanel.setBackground(backgroundGreen);
             panel.add(topPanel, BorderLayout.CENTER);
 
-            // laver et scrollPane med listen af media
-            JPanel col = new JPanel();
+            col = new JPanel();
+            int counter = 0;   // Holder styr på hvor mange film der er tilføjet til panelet
 
-            // holder styr på hvor mange film der er tilføjet til panelet
-            int counter = 0;
-
-            // hvis listen ikke er tom
+            // Hvis listen ikke er tom
             if (mediaList != null && mediaList.size() > 0) {
-                // JPanel med det antal rækker der er nødvendigt for alle kunne vise alle film
-                col = new JPanel(new GridLayout((mediaList.size() / 6 + 1), 1));
+            // Jpanel med det antal rækker der er nødvendigt til at kunne vise filmen
+            col = new JPanel(new GridLayout((mediaList.size() / 6 + 1),1));
 
-                // Går igennem alle rækkerne
-                for (int i = 0; i <= mediaList.size() / 6; i++) {
-
-                    // JPanel med 6 pladser
-                    JPanel row = new JPanel(new GridLayout(1, 6));
-
-                    // Går igennem de 6 pladser på rækken
-                    for (int j = 0; j < 6; j++) {
-
-                        // Hvis der stadig er flere film tilbage at vise
-                        if (counter < mediaList.size()) {
-                            JButton plakat = new JButton();
-
-                            Media media = mediaList.get(counter);
-                            // Hvis mediet er en film findes filmens plakat, ellers er det en serie og dennes plakat findes
-                            if (mediaList.get(counter) instanceof Movie) {
-                                plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
-                                plakat.addActionListener(e -> allMovieSeriesGenrePageController.showMovieActionListener(media));
-                            } else {
-                                plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
-                                plakat.addActionListener(e -> allMovieSeriesGenrePageController.showSerieActionListener(media));
-                            }
-                            plakat.setPreferredSize(new Dimension(100, 200));
-                            plakat.setBorder(new EmptyBorder(0, 0, 0, 0));
+            // Går igennem alle rækkerne
+            for (int i = 0; i <= mediaList.size() / 6; i++) {
+                row = new JPanel(new GridLayout(1, 6));  // JPanel med 6 pladser
+                // Går igennem de 6 pladser på rækken
+                for (int j = 0; j < 6; j++) {
+                    // Hvis der stadig er flere film/serie tilbage at vise
+                    if (counter < mediaList.size()) {
+                        plakat = new JButton();
+                        Media media = mediaList.get(counter);
+                        // Finder mediets plakat om det er movie/serie
+                        if (mediaList.get(counter) instanceof Movie) {
+                            plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
                             plakat.setContentAreaFilled(false);
-
-                            // Tilføjer Mediet til rækken
-                            row.add(plakat);
-                            row.setBorder(new EmptyBorder(10, 0, 10, 0));
-                            // Tæller counter op så der er styr på hvor mange film der er tilføjet
-                            counter++;
+                            plakat.setBackground(limeGreen);
+                            plakat.setBorder(new EmptyBorder(0, 0, 0, 0));
+                            plakat.addActionListener(e -> allMovieSeriesGenrePageController.showMovieActionListener(media));
+                        } else {
+                            plakat = new JButton(new ImageIcon(mediaList.get(counter).getPicture()));
+                            plakat.setContentAreaFilled(false);
+                            plakat.setBackground(limeGreen);
+                            plakat.setBorder(new EmptyBorder(0, 0, 0, 0));
+                            plakat.addActionListener(e -> allMovieSeriesGenrePageController.showSerieActionListener(media));
                         }
+                        plakat.setPreferredSize(new Dimension(100, 200));
+                        plakat.setBorder(new EmptyBorder(0,0,0,0));
+
+                        // Tilføjer Mediet til rækken
+                        row.add(plakat);
+                        row.setBorder(new EmptyBorder(10, 0, 10, 0));
+                        counter++;
                     }
+                }
                     row.setBackground(backgroundGreen);
                     row.setBorder(new EmptyBorder(10, 0, 10, 0));
 
@@ -166,7 +176,7 @@ public class AllMovieSeriesGenrePage extends View {
                     col.add(row);
                 }
             }
-            // Gør sådan at man kan scrolle i listen med rækker
+            // Laver scroll panen
             JScrollPane scrollPane = new JScrollPane(col);
             scrollPane.getVerticalScrollBar().setUnitIncrement(16);
             scrollPane.setBackground(backgroundGreen);
