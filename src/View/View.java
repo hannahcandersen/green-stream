@@ -14,7 +14,7 @@ import Controller.*;
 /**
  * View klassen som alle sider nedarver fra, bortset fra menubaren
  */
-public class View extends JPanel {
+public abstract class View {
     // Feltet der bestemmer om siden har en menubar eller ej
     protected boolean menubarVisible = false;
     

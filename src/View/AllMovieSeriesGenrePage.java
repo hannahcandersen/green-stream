@@ -30,9 +30,9 @@ public class AllMovieSeriesGenrePage extends View {
      * Instantiere controlleren og bygger siden
      * @param genreList - Er en liste af de forskellige genre
      * @param genre - Skriver den valgte genre i topPanel
-     * @param category -
-     * @param mediaList -
-     * @param pageTitle -
+     * @param category - Skriver det valgte medie i topPanel
+     * @param mediaList - Inde holder alle medierne
+     * @param pageTitle - Titelen på siden
      * @param allMovieSeriesGenrePageController - Sidens controller
      */
     public AllMovieSeriesGenrePage(String[] genreList, String genre, String category, ArrayList<Media> mediaList, String pageTitle, AllMovieSeriesGenrePageController allMovieSeriesGenrePageController) {
@@ -133,9 +133,9 @@ public class AllMovieSeriesGenrePage extends View {
             int counter = 0;   // Holder styr på hvor mange film der er tilføjet til panelet
 
             // Hvis listen ikke er tom
-            if (mediaList != null && mediaList.size() > 0) {
-            // Jpanel med det antal rækker der er nødvendigt til at kunne vise filmen
-            col = new JPanel(new GridLayout((mediaList.size() / 6 + 1),1));
+        if (mediaList != null && mediaList.size() > 0) {
+        // Jpanel med det antal rækker der er nødvendigt til at kunne vise filmen
+        col = new JPanel(new GridLayout((mediaList.size() / 6 + 1),1));
 
             // Går igennem alle rækkerne
             for (int i = 0; i <= mediaList.size() / 6; i++) {
@@ -174,15 +174,13 @@ public class AllMovieSeriesGenrePage extends View {
 
                     // Tilføjer rækken til listen af rækker
                     col.add(row);
-                }
             }
+        }
             // Laver scroll panen
             JScrollPane scrollPane = new JScrollPane(col);
             scrollPane.getVerticalScrollBar().setUnitIncrement(16);
             scrollPane.setBackground(backgroundGreen);
             panel.add(scrollPane);
 
-        }
     }
-
-
+}
