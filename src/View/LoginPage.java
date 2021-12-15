@@ -5,6 +5,7 @@ import Model.Profile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 import javax.swing.border.EmptyBorder;
 
 /**
@@ -39,7 +40,7 @@ public class LoginPage extends View{
     private void buildLoginPage() {
     // Opretter topPanel
         topPanel = new JPanel();
-        logo = new ImageIcon(("Pictures/Logo.png"));
+        logo = new ImageIcon(getClass().getResource(("/Logo.png")));
         logoLabel = new JLabel(logo);
         topPanel.add(logoLabel);
         topPanel.setAlignmentX(JLabel.CENTER_ALIGNMENT);
@@ -56,7 +57,7 @@ public class LoginPage extends View{
 
         // Sætter plusButton ind, hvis der ikke er over 4 profiler
         if (currentLength < 4) {
-            plusIcon = new ImageIcon(("Pictures/Plus.png"));
+            plusIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/Plus.png")));
             plusButton = new JButton(plusIcon);
             plusButton.setIcon(plusIcon);
             plusButton.setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -82,7 +83,7 @@ public class LoginPage extends View{
      * @param profileNumber - Giver hver profil et nummer
      */
     private void addProfilePicture(String profilePicture, String name, int profileNumber){
-        userIcon = new ImageIcon(profilePicture);
+        userIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(profilePicture)));
         userButton = new JButton(userIcon);
         userButton.setContentAreaFilled(false);
         userButton.setBackground(limeGreen);

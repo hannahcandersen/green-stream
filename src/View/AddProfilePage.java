@@ -49,7 +49,7 @@ public class AddProfilePage extends View {
         comboBox = new JComboBox(comboBoxItems);
         comboBox.setSelectedIndex(colorIndex);
         comboBox.addActionListener(e -> addProfilePageController.chooseColorActionListener(comboBox.getSelectedIndex(), username.getText()));
-        choosenColour = new ImageIcon("Pictures/" + comboBoxItems[colorIndex] + ".png");
+        choosenColour = new ImageIcon(getClass().getResource("/" + comboBoxItems[colorIndex] + ".png"));
         color = new JLabel(choosenColour);
 
         colorPane.add(comboBox);
@@ -68,7 +68,7 @@ public class AddProfilePage extends View {
         // Knapperne
         buttonPane = new JPanel(new FlowLayout());
         add = new JButton("Tilføj");
-        add.addActionListener(e -> addProfilePageController.addProfileActionListener(new Profile(username.getText(), "Pictures/"+ comboBoxItems[comboBox.getSelectedIndex()] + ".png")));
+        add.addActionListener(e -> addProfilePageController.addProfileActionListener(new Profile(username.getText(), "/"+ comboBoxItems[comboBox.getSelectedIndex()] + ".png")));
         back = new JButton("Tilbage");
         back.addActionListener(e -> addProfilePageController.goBackActionListener());
 

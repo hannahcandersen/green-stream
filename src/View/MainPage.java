@@ -5,6 +5,7 @@ import Controller.MainPageController;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * Denne klasse er en subklasse af View klassen.
@@ -27,7 +28,7 @@ public class MainPage extends View {
         menubarVisible = true;
 
         // Add det store reklame billede
-        bigPic = new ImageIcon(new ImageIcon("Pictures/inter.png").getImage().getScaledInstance(800, 300, Image.SCALE_DEFAULT));
+        bigPic = new ImageIcon(new ImageIcon(getClass().getResource("/inter.png")).getImage().getScaledInstance(800, 300, Image.SCALE_DEFAULT));
         bigLabel = new JLabel(bigPic);
 
     //  Opretter mainPanel
@@ -63,7 +64,7 @@ public class MainPage extends View {
         // Tilføjer posterne til knapper via et Array
         String[] iconArr = {icon0, icon1, icon2, icon3, icon4, icon5, icon6};
         for (String icon: iconArr) {
-            poster = new ImageIcon(icon);
+            poster = new ImageIcon(Objects.requireNonNull(getClass().getResource(icon)));
             posterButton = new JButton(poster);
             posterButton.setContentAreaFilled(false);
             posterButton.setBackground(limeGreen);
@@ -98,40 +99,40 @@ public class MainPage extends View {
      */
     public void addMedia(){
         buildMainPage("Populære",
-                "resources/filmplakater/Taxi Driver.jpg",
-                "resources/filmplakater/Good Will Hunting.jpg",
-                "resources/filmplakater/West Side Story.jpg",
-                "resources/Serierforsider/Jessica Jones.jpg",
-                "resources/Serierforsider/Big Little Lies.jpg",
-                "resources/filmplakater/Singin' In The Rain.jpg",
-                "resources/Serierforsider/Sex & The City.jpg");
+                "/filmplakater/Taxi Driver.jpg",
+                "/filmplakater/Good Will Hunting.jpg",
+                "/filmplakater/West Side Story.jpg",
+                "/Serierforsider/Jessica Jones.jpg",
+                "/Serierforsider/Big Little Lies.jpg",
+                "/filmplakater/Singin' In The Rain.jpg",
+                "/Serierforsider/Sex & The City.jpg");
 
         buildMainPage("Medrivende indhold",
-                "resources/filmplakater/Forrest Gump.jpg",
-                "resources/filmplakater/Jurassic Park.jpg",
-                "resources/filmplakater/Pulp Fiction.jpg",
-                "resources/Serierforsider/Ally McBeal.jpg",
-                "resources/Serierforsider/Battlestar Galactica.jpg",
-                "resources/Serierforsider/GLOW.jpg",
-                "resources/Serierforsider/Game Of Thrones.jpg");
+                "/filmplakater/Forrest Gump.jpg",
+                "/filmplakater/Jurassic Park.jpg",
+                "/filmplakater/Pulp Fiction.jpg",
+                "/Serierforsider/Ally McBeal.jpg",
+                "/Serierforsider/Battlestar Galactica.jpg",
+                "/Serierforsider/GLOW.jpg",
+                "/Serierforsider/Game Of Thrones.jpg");
 
         buildMainPage("Netop Tilføjet",
-                "resources/filmplakater/ET.jpg",
-                "resources/filmplakater/Jaws.jpg",
-                "resources/Serierforsider/24.jpg",
-                "resources/Serierforsider/Daredevil.jpg",
-                "resources/Serierforsider/Luke Cage.jpg",
-                "resources/Serierforsider/Billions.jpg",
-                "resources/Serierforsider/Sons Of Anarchy.jpg");
+                "/filmplakater/ET.jpg",
+                "/filmplakater/Jaws.jpg",
+                "/Serierforsider/24.jpg",
+                "/Serierforsider/Daredevil.jpg",
+                "/Serierforsider/Luke Cage.jpg",
+                "/Serierforsider/Billions.jpg",
+                "/Serierforsider/Sons Of Anarchy.jpg");
 
         buildMainPage("GreenStream and chill",
-                "resources/filmplakater/Casablanca.jpg",
-                "resources/filmplakater/Gone With The Wind.jpg",
-                "resources/Serierforsider/Pride And Prejudice.jpg",
-                "resources/filmplakater/Some Like It Hot.jpg",
-                "resources/filmplakater/Titanic.jpg",
-                "resources/Serierforsider/Smallville.jpg",
-                "resources/filmplakater/Wuthering Heights.jpg");
+                "/filmplakater/Casablanca.jpg",
+                "/filmplakater/Gone With The Wind.jpg",
+                "/Serierforsider/Pride And Prejudice.jpg",
+                "/filmplakater/Some Like It Hot.jpg",
+                "/filmplakater/Titanic.jpg",
+                "/Serierforsider/Smallville.jpg",
+                "/filmplakater/Wuthering Heights.jpg");
     }
 }
 

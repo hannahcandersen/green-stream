@@ -3,6 +3,7 @@ package Model;
 import View.ExceptionView;
 
 import java.io.File;
+import java.util.Objects;
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -43,10 +44,11 @@ public class Reader {
     public boolean fillMovies() {
         try {
             // finder filen
-            File movieFile = new File("resources/film.txt");
+            //File movieFile = new File("resources/film.txt");
 
             // opretter scanner med filens info
-            Scanner scanner = new Scanner(movieFile);
+            Scanner scanner = new Scanner(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("film.txt")));
+
 
             while (scanner.hasNextLine()) {
                 // linjen med filmen og alle filmens info på
@@ -62,7 +64,7 @@ public class Reader {
                 movieGenreString = movieGenreString.replaceAll("\\s+","");
                 String[] movieGenres = movieGenreString.split(",");
                 double movieRating = Double.parseDouble(arrayInfoMovie[3].substring(1).replace(',','.'));
-                String moviePicture = "resources/filmplakater/" + movieName + ".jpg";
+                String moviePicture = "/filmplakater/" + movieName + ".jpg";
 
                 // indsætter filmen i streamingService
                 Movie movie = new Movie(movieName, movieYear, movieGenres, movieRating, moviePicture);
@@ -90,10 +92,10 @@ public class Reader {
     public boolean fillSeries() {
         try {
             // finder filen
-            File seriesFile = new File("resources/serier.txt");
+            //File seriesFile = new File("resources/serier.txt");
 
             // opretter en scanner med filens info
-            Scanner scanner = new Scanner(seriesFile);
+            Scanner scanner = new Scanner(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("serier.txt")));
 
             while (scanner.hasNextLine()) {
                 // linjen med filmen og alle filmens info på
@@ -125,7 +127,7 @@ public class Reader {
                 }
 
                 // billedefilens navn er det samme som navnet på filen + .jpg
-                String seriePicture =  "resources/Serierforsider/" + seriesName + ".jpg";
+                String seriePicture =  "/Serierforsider/" + seriesName + ".jpg";
 
                 // indsætter en serie i streamingService
                 Serie serie = new Serie(seriesName, serieYears, serieGenres, serieRating, seriePicture, serieSeasons, serieEpisodes);

@@ -46,7 +46,7 @@ public class SeriesPage extends View implements ItemListener {
 
         //Opretter closePanel
         closePanel = new JPanel(new BorderLayout());
-        backIcon = new ImageIcon(new ImageIcon("Pictures/back.png").getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH));
+        backIcon = new ImageIcon(new ImageIcon(getClass().getResource("/back.png")).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH));
         close = new JButton(backIcon);
         close.addActionListener(e -> seriesPageController.goBackActionListener());
         close.setFont(new Font("Serif", Font.BOLD, 30));
@@ -62,7 +62,7 @@ public class SeriesPage extends View implements ItemListener {
         // Billede Left Center
         imageLeftCenter = new JPanel();
         imageLeftCenter.setBorder(new EmptyBorder(15, 15, 0, 15));
-        seriePoster = new ImageIcon(new ImageIcon(serie.getPicture()).getImage().getScaledInstance(250, 400, Image.SCALE_DEFAULT));
+        seriePoster = new ImageIcon(new ImageIcon(getClass().getResource(serie.getPicture())).getImage().getScaledInstance(250, 400, Image.SCALE_DEFAULT));
         serieLabel = new JLabel(seriePoster);
         serieLabel.setIcon(seriePoster);
         serieLabel.setBorder(new EmptyBorder(0, 0, 10, 0));

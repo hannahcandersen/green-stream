@@ -16,9 +16,9 @@ public class Menubar {
     private final Color limeGreen = new Color(196,224,177);
 
     // Alle billeder der skal bruges i menubaren
-    private ImageIcon logo = new ImageIcon("Pictures/Logo.png");
-    private ImageIcon burgerMenu = new ImageIcon("Pictures/Burgermenu.png");
-    private ImageIcon searchIcon = new ImageIcon("Pictures/Search.png");
+    private ImageIcon logo = new ImageIcon(getClass().getResource("/Logo.png"));
+    private ImageIcon burgerMenu = new ImageIcon(getClass().getResource("/Burgermenu.png"));
+    private ImageIcon searchIcon = new ImageIcon(getClass().getResource("/Search.png"));
     private ImageIcon profileIcon;
 
     // Listen med genre
@@ -38,7 +38,7 @@ public class Menubar {
      */
     public Menubar(String[] genreList, String profilePicture, MenubarController menubarController) {
         this.genreList = genreList;
-        this.profileIcon = new ImageIcon(profilePicture);
+        this.profileIcon = new ImageIcon(getClass().getResource(profilePicture));
         this.menubarController = menubarController;
     }
 

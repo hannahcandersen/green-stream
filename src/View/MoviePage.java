@@ -4,6 +4,7 @@ import Controller.MoviePageController;
 import Model.Movie;
 
 import java.awt.*;
+import java.util.Objects;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
@@ -43,7 +44,7 @@ public class MoviePage extends View{
 
         //Opretter closePanel
         closePanel = new JPanel(new BorderLayout());
-        backIcon = new ImageIcon(new ImageIcon("Pictures/back.png").getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH));
+        backIcon = new ImageIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/back.png"))).getImage().getScaledInstance(70, 70, Image.SCALE_SMOOTH));
         close = new JButton(backIcon);
         close.addActionListener(e -> moviePageController.goBackActionListener());
         close.setFont(new Font("Serif", Font.BOLD, 30));
@@ -58,7 +59,8 @@ public class MoviePage extends View{
         // Billede Left-Center
         imageLeftCenter = new JPanel();
         imageLeftCenter.setBorder(new EmptyBorder(15, 15, 0, 15));
-        moviePoster = new ImageIcon(new ImageIcon(movie.getPicture()).getImage().getScaledInstance(250, 400, Image.SCALE_DEFAULT));
+        System.out.println(movie.getPicture());
+        moviePoster = new ImageIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource(movie.getPicture()))).getImage().getScaledInstance(250, 400, Image.SCALE_DEFAULT));
         movieLabel = new JLabel(moviePoster);
         movieLabel.setIcon(moviePoster);
         imageLeftCenter.add(movieLabel);
