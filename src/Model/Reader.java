@@ -6,14 +6,24 @@ import java.io.File;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/**
+ * Denne klasse læser informationerne om film og serier fra txt filerne film.txt og serier.txt
+ */
 public class Reader {
     StreamingService streamingService;
 
+    /**
+     * Kontruktør for Reader der instantiere streamingService
+     * @param streamingService - klassen der holder på arraylisterne med film og serier.
+     */
     public Reader(StreamingService streamingService) {
         this.streamingService = streamingService;
-        //fillCollections();
     }
 
+    /**
+     * En boolean metode tjekker om filerne er blevet indlæst uden fejl
+     * @return - returnere true hvis filerne er indlæst uden exceptions
+     */
     public boolean fillCollectionsSuccesFull() {
         boolean movies = fillMovies();
         boolean series = fillSeries();
@@ -25,6 +35,11 @@ public class Reader {
         }
     }
 
+    /**
+     * Metoden der går igennem hele film.txt filen og isætter en Movie med disse
+     * informationer i arraylisten i StreamingService
+     * @return - returnere true hvis film.txt filen blev læst uden exceptions
+     */
     public boolean fillMovies() {
         try {
             // finder filen
@@ -67,6 +82,11 @@ public class Reader {
         return false;
     }
 
+    /**
+     * Metoden der går igennem hele serier.txt filen og isætter en Serie med disse
+     * informationer i arraylisten i StreamingService
+     * @return - returnere true hvis serier.txt filen blev læst uden exceptions
+     */
     public boolean fillSeries() {
         try {
             // finder filen
