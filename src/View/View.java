@@ -11,6 +11,7 @@ public abstract class View {
 
     protected JPanel panel = new JPanel();
 
+
     // Vores grundfarver
     protected final Color backgroundGreen = new Color(236, 242, 223);
     protected final Color limeGreen = new Color(196,224,177);
