@@ -43,8 +43,6 @@ public class Reader {
      */
     public boolean fillMovies() {
         try {
-            // finder filen
-            //File movieFile = new File("resources/film.txt");
 
             // opretter scanner med filens info
             Scanner scanner = new Scanner(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("film.txt")));
@@ -73,11 +71,8 @@ public class Reader {
             }
             scanner.close();
             return true;
-
-        // tilføj flere catch statements
         // et generisk catch statement der fanger alle fejl og udskriver fejl i terminalen
         } catch (Exception e) {
-            System.out.println("Der skete en fejl med at indlæse film fra txt filer");
             new ExceptionView("Der skete en fejl med indlæsningen af film. Prøv at genstarte programmet");
 
         }
@@ -91,8 +86,6 @@ public class Reader {
      */
     public boolean fillSeries() {
         try {
-            // finder filen
-            //File seriesFile = new File("resources/serier.txt");
 
             // opretter en scanner med filens info
             Scanner scanner = new Scanner(Objects.requireNonNull(getClass().getClassLoader().getResourceAsStream("serier.txt")));
@@ -135,7 +128,6 @@ public class Reader {
             }
             scanner.close();
             return true;
-        // tilføj flere catch statements
         // et genereisk catch statement der fanger alle fejl og udskriver fejl i terminalen
         } catch (Exception e) {
 

@@ -59,7 +59,6 @@ public class MoviePage extends View{
         // Billede Left-Center
         imageLeftCenter = new JPanel();
         imageLeftCenter.setBorder(new EmptyBorder(15, 15, 0, 15));
-        System.out.println(movie.getPicture());
         moviePoster = new ImageIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource(movie.getPicture()))).getImage().getScaledInstance(250, 400, Image.SCALE_DEFAULT));
         movieLabel = new JLabel(moviePoster);
         movieLabel.setIcon(moviePoster);

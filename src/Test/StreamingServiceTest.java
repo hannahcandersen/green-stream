@@ -2,10 +2,7 @@ package Test;
 import Model.*;
 
 import Model.StreamingService;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import junit.framework.*;
 
 import java.util.ArrayList;
 
