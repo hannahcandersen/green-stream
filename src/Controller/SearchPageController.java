@@ -6,7 +6,7 @@ import View.SeriesPage;
 import Model.*;
 
 /**
- * SearchPage's controller der indeholder searchPage's ActionListeners
+ * Klassen der har metoderne der bliver brugt i SearchPage's actionListeners
  */
 public class SearchPageController {
 
@@ -29,10 +29,18 @@ public class SearchPageController {
         controller.getSceneBuilder().loadPage(new SearchPage(controller.getStreamingService().allNameSearch(search), this));
     }
 
+    /**
+     * Metoden der får siden til at gå til SeriesPage
+     * @param media - den Serie man gerne vil ind på
+     */
     public void showSerieActionListener(Media media) {
         controller.getSceneBuilder().loadPage(new SeriesPage(controller.getSeriesPageController(), (Serie)media));
     }
 
+    /**
+     * Metoden der får siden til at gå til MoviePage
+     * @param media - den film man gerne vil ind på
+     */
     public void showMovieActionListener(Media media) {
         controller.getSceneBuilder().loadPage(new MoviePage(controller.getMoviePageController(), (Movie)media));
     }

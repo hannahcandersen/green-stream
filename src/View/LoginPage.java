@@ -40,7 +40,7 @@ public class LoginPage extends View{
     private void buildLoginPage() {
     // Opretter topPanel
         topPanel = new JPanel();
-        logo = new ImageIcon(getClass().getResource(("/Logo.png")));
+        logo = new ImageIcon(Objects.requireNonNull(getClass().getResource(("/Logo.png"))));
         logoLabel = new JLabel(logo);
         topPanel.add(logoLabel);
         topPanel.setAlignmentX(JLabel.CENTER_ALIGNMENT);

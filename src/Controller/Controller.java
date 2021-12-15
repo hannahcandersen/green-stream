@@ -5,6 +5,9 @@ import View.*;
 
 import javax.swing.*;
 
+/**
+ * Hoved controlleren der står for den overordnede program logik.
+ */
 public class Controller {
 
     // Der hvor vi gemmer alle film, serier og profiler
@@ -63,16 +66,15 @@ public class Controller {
 
     }
 
-    // Laver menubaren
+    /**
+     * Laver menubaren igennem menubarController der har en reference til Menubar's metode makeMenu, som
+     * er denne metode der laver menuen.
+     */
     public void makeMenuBar() {
         sceneBuilder.makeMenuBar(menubarController.getMenubar().makeMenu());
     }
 
-
     // Getter metoder for alle felterne
-    public LoginPage getLoginPage() {
-        return loginPage;
-    }
 
     public StreamingService getStreamingService() {
         return streamingService;
@@ -80,10 +82,6 @@ public class Controller {
 
     public SceneBuilder getSceneBuilder() {
         return sceneBuilder;
-    }
-
-    public MenubarController getMenubarController() {
-        return menubarController;
     }
 
     public LoginPageController getLoginPageController() {

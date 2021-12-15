@@ -20,7 +20,10 @@ public class AddProfilePageController {
         this.controller = controller;
     }
 
-    // ActionListener som tilføjer en ny profil til listen af profiler og skifter side til loginsiden
+    /**
+     * Metoden som tilføjer en ny profil til listen af profiler og skifter side til loginsiden
+     * @param profile - profilen der skal tilføjes
+     */
     public void addProfileActionListener(Profile profile) {
         // tilføjer profilen til listen af profiler
         controller.getStreamingService().addProfile(profile);
@@ -28,12 +31,18 @@ public class AddProfilePageController {
         controller.getSceneBuilder().loadPage(new LoginPage(controller.getLoginPageController(), controller.getStreamingService().getProfiles(), controller.getStreamingService().getCurrentLength()));
     }
 
-    // ActionListener som går tilbage til loginsiden uden at tilføje en bruger
+    /**
+     * Metoden som går tilbage til loginsiden uden at tilføje en bruger
+     */
     public void goBackActionListener() {
         controller.getSceneBuilder().loadPage(new LoginPage(controller.getLoginPageController(), controller.getStreamingService().getProfiles(), controller.getStreamingService().getCurrentLength()));
     }
-    
-    // ActionListener der ændre træets farve
+
+    /**
+     * Metoden der ændre træets farve
+     * @param color - den valgte farve
+     * @param username - det valgte brugernavn
+     */
     public void chooseColorActionListener(int color, String username) {
         controller.getSceneBuilder().loadPage(new AddProfilePage(color, username, this));
     }

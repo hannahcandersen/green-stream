@@ -5,6 +5,7 @@ import Controller.MenubarController;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * Denne klasse ræpresentere menubaren som skal være i toppen af siden. Menubaren indeholder vores logo,
@@ -16,9 +17,9 @@ public class Menubar {
     private final Color limeGreen = new Color(196,224,177);
 
     // Alle billeder der skal bruges i menubaren
-    private ImageIcon logo = new ImageIcon(getClass().getResource("/Logo.png"));
-    private ImageIcon burgerMenu = new ImageIcon(getClass().getResource("/Burgermenu.png"));
-    private ImageIcon searchIcon = new ImageIcon(getClass().getResource("/Search.png"));
+    private ImageIcon logo = new ImageIcon(Objects.requireNonNull(getClass().getResource("/Logo.png")));
+    private ImageIcon burgerMenu = new ImageIcon(Objects.requireNonNull(getClass().getResource("/Burgermenu.png")));
+    private ImageIcon searchIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource("/Search.png")));
     private ImageIcon profileIcon;
 
     // Listen med genre
@@ -38,7 +39,7 @@ public class Menubar {
      */
     public Menubar(String[] genreList, String profilePicture, MenubarController menubarController) {
         this.genreList = genreList;
-        this.profileIcon = new ImageIcon(getClass().getResource(profilePicture));
+        this.profileIcon = new ImageIcon(Objects.requireNonNull(getClass().getResource(profilePicture)));
         this.menubarController = menubarController;
     }
 
@@ -132,6 +133,4 @@ public class Menubar {
         image = image.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH);
         return new ImageIcon(image);
     }
-
-
 }

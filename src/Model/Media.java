@@ -27,7 +27,7 @@ public abstract class Media {
     }
 
     /**
-     * Konstruktøren retunere mediets navn
+     * Metoden retunere mediets navn
      * @return mediets navn
      */
     public String getName() {
@@ -35,7 +35,7 @@ public abstract class Media {
     }
 
     /**
-     * Konstruktøren retunere mediets udgiveklses år
+     * Metoden retunere mediets udgiveklses år
      * @return mediets udgiveklses år
      */
     public String getYear() {
@@ -43,7 +43,7 @@ public abstract class Media {
     }
 
     /***
-     * Konstruktøren retunere mediets genre
+     * Metoden retunere mediets genre
      * @return mediets genre
      */
     public String[] getGenre() {
@@ -51,7 +51,7 @@ public abstract class Media {
     }
 
     /**
-     * Konstruktøren retunere mediets rating
+     * Metoden retunere mediets rating
      * @return mediets rating
      */
     public double getRating() {
@@ -59,7 +59,7 @@ public abstract class Media {
     }
 
     /**
-     * Konstruktøren retunere mediets poster
+     * Metoden retunere mediets poster
      * @return mediets poster
      */
     public String getPicture() {

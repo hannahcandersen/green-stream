@@ -5,6 +5,7 @@ import Model.Profile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 /**
  * Denne klasse er en subklasse af View klassen.
@@ -49,7 +50,7 @@ public class AddProfilePage extends View {
         comboBox = new JComboBox(comboBoxItems);
         comboBox.setSelectedIndex(colorIndex);
         comboBox.addActionListener(e -> addProfilePageController.chooseColorActionListener(comboBox.getSelectedIndex(), username.getText()));
-        choosenColour = new ImageIcon(getClass().getResource("/" + comboBoxItems[colorIndex] + ".png"));
+        choosenColour = new ImageIcon(Objects.requireNonNull(getClass().getResource("/" + comboBoxItems[colorIndex] + ".png")));
         color = new JLabel(choosenColour);
 
         colorPane.add(comboBox);

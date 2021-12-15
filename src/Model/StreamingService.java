@@ -36,7 +36,7 @@ public class StreamingService {
     }
 
     /**
-     * Klassen retunere arrray'et af profiler
+     * Metoden retunere arrray'et af profiler
      * @return arrray'et af profiler
      */
     public Profile[] getProfiles() {
@@ -44,7 +44,7 @@ public class StreamingService {
     }
 
     /**
-     * Klassen retunere antallet af bruger
+     * Metoden retunere antallet af bruger
      * @return antallet af bruger
      */
     public int getCurrentLength() {
@@ -93,7 +93,7 @@ public class StreamingService {
     }
 
     /**
-     * Konstruktøren retunere listen med genrene
+     * Metoden retunere listen med genrene
      * @param genre - En af genrene
      * @param media - listen af medierne
      * @return listen med genrene
@@ -129,7 +129,7 @@ public class StreamingService {
     }
 
     /**
-     * Konstruktøren retunere posteren til filmens titel
+     * Metoden retunere posteren til filmens titel
      * @param picture - henter billederne
      * @return posteren til filmens titel
      */
@@ -160,7 +160,7 @@ public class StreamingService {
     }
 
     /**
-     * Konstruktøren tilføjer en film til film listen
+     * Metoden tilføjer en film til film listen
      * @param movie - ny film
      */
     public void addMovie(Movie movie) {
@@ -168,7 +168,7 @@ public class StreamingService {
     }
 
     /**
-     * Konstruktøren tilføjer en serie til serie listen
+     * Metoden tilføjer en serie til serie listen
      * @param serie - ny serie
      */
     public void addSerie(Serie serie) {
@@ -176,7 +176,7 @@ public class StreamingService {
     }
 
     /**
-     * Konstruktøren retunere en liste af genre
+     * Metoden retunere en liste af genre
      * @return listen af genre
      */
     public String[] getGenreList() {
@@ -192,7 +192,7 @@ public class StreamingService {
     }
 
     /**
-     * Konstruktøren retunere hvilken bruger der bruges nu
+     * Metoden retunere hvilken bruger der bruges nu
      * @return den valgte bruger
      */
     public Profile getCurrentProfile() {
@@ -237,7 +237,7 @@ public class StreamingService {
     } */
 
     /**
-     * Konstruktøren retunere en liste med film
+     * Metoden retunere en liste med film
      * @return liste med film
      */
     public ArrayList<Media> getMovies() {
@@ -245,7 +245,7 @@ public class StreamingService {
     }
 
     /**
-     * Konstruktøren retunere en liste med serier
+     * Metoden retunere en liste med serier
      * @return liste med serier
      */
     public ArrayList<Media> getSeries() { return series; }

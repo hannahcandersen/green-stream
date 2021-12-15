@@ -8,6 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 /**
  * Denne klasse er en subklasse af View klassen.
@@ -68,13 +69,13 @@ public class MyListPage extends View{
                         Media media = mediaList.get(counter);
                         // Finder mediets plakat om det er movie/serie
                         if (mediaList.get(counter) instanceof Movie) {
-                            plakat = new JButton(new ImageIcon(getClass().getResource(mediaList.get(counter).getPicture())));
+                            plakat = new JButton(new ImageIcon(Objects.requireNonNull(getClass().getResource(mediaList.get(counter).getPicture()))));
                             plakat.setContentAreaFilled(false);
                             plakat.setBackground(limeGreen);
                             plakat.setBorder(new EmptyBorder(0, 0, 0, 0));
                             plakat.addActionListener(e -> myListPageController.showMovieActionListener(media));
                         } else {
-                            plakat = new JButton(new ImageIcon(getClass().getResource(mediaList.get(counter).getPicture())));
+                            plakat = new JButton(new ImageIcon(Objects.requireNonNull(getClass().getResource(mediaList.get(counter).getPicture()))));
                             plakat.setContentAreaFilled(false);
                             plakat.setBackground(limeGreen);
                             plakat.setBorder(new EmptyBorder(0, 0, 0, 0));

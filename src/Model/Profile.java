@@ -31,7 +31,7 @@ public class Profile {
     }
 
     /**
-     * Konstruktøren retunere brugerens navn
+     * Metoden retunere brugerens navn
      * @return brugerens navn
      */
     public String getName(){
@@ -39,7 +39,7 @@ public class Profile {
     }
 
     /**
-     * Konstruktøren retunere brugerens profilbillede
+     * Metoden retunere brugerens profilbillede
      * @return brugerens profilbillede
      */
     public String getPicture(){
@@ -47,7 +47,7 @@ public class Profile {
     }
 
     /**
-     * Konstruktøren retunere min liste med dens indhold også det nye medie
+     * Metoden retunere min liste med dens indhold også det nye medie
      * @return min liste med dens indhold også det nye medie
      */
     public void addToMyList(Media media) {
@@ -55,7 +55,7 @@ public class Profile {
     }
 
     /**
-     * Konstruktøren retunere min liste med dens indhold, men uden det fjernede medie
+     * Metoden retunere min liste med dens indhold, men uden det fjernede medie
      * @return min liste med dens indhold, men uden det fjernede medie
      */
     public void removeFromMyList(Media media) {
@@ -63,7 +63,7 @@ public class Profile {
     }
 
     /**
-     * Konstruktøren retunere giver brugeren min liste
+     * Metoden retunere giver brugeren min liste
      * @return giver brugeren min liste
      */
     public ArrayList<Media> getMyList() {

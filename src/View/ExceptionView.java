@@ -19,7 +19,7 @@ public class ExceptionView {
     }
 
     /**
-     * Bygger pop op vindiet
+     * Bygger pop op vinduet
      */
     private void buildPage() {
         JFrame exceptionFrame = new JFrame("Fejlbesked");
